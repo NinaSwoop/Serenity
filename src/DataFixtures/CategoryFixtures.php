@@ -6,7 +6,7 @@ use App\Entity\Category;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
-class CategoyFixture extends Fixture
+class CategoryFixture extends Fixture
 {
     private const CATEGORIES = [
         'Comprendre mon opération',
