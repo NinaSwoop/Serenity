@@ -69,7 +69,7 @@ class ContentController extends AbstractController
     #[Route('/{id}', name: 'app_content_delete', methods: ['POST'])]
     public function delete(Request $request, Content $content, ContentRepository $contentRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$content->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $content->getId(), $request->request->get('_token'))) {
             $contentRepository->remove($content, true);
         }
 

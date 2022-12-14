@@ -8,7 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class CategoyFixture extends Fixture
 {
-    const CATEGORIES = [
+    private const CATEGORIES = [
         'Comprendre mon opération',
         'Finir les démarches administratives',
         'Préparer mon arrivée en toute sérénité',
