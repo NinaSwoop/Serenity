@@ -24,12 +24,8 @@ class Category
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $progressColor = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Content::class)]
-    private Collection $contents;
-
     public function __construct()
     {
-        $this->contents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -69,36 +65,6 @@ class Category
     public function setProgressColor(?string $progressColor): self
     {
         $this->progressColor = $progressColor;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Content>
-     */
-    public function getContents(): Collection
-    {
-        return $this->contents;
-    }
-
-    public function addContent(Content $content): self
-    {
-        if (!$this->contents->contains($content)) {
-            $this->contents->add($content);
-            $content->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContent(Content $content): self
-    {
-        if ($this->contents->removeElement($content)) {
-            // set the owning side to null (unless already changed)
-            if ($content->getCategory() === $this) {
-                $content->setCategory(null);
-            }
-        }
 
         return $this;
     }
