@@ -1,7 +1,14 @@
 //start coding by removing this file and adding yours ;)
-@import "wcs";
 @import "~bootstrap/scss/bootstrap";
 
-* {
-    background-color: #FEFEFF;
+html,
+body {
+    background: linear-gradient(360deg, #FEFEFF 0%, #FFFFFF 100%);
+}
+
+.navbar {
+    border-radius: 15% 15% 0 0;
+    background-color: rgb(249, 249, 249);
+    box-shadow: 0px -5px 30px rgba(126, 126, 127, 0.1);
+    border: none;
 }
