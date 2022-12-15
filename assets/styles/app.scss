@@ -1,8 +1,22 @@
 //start coding by removing this file and adding yours ;)
 @import "~bootstrap/scss/bootstrap";
 
+
+$category1empty : #D9B520;
+$category1full : #F5D23F;
+$category2empty : #079FA5;
+$category2full : #4FD5B8;
+$category3empty : #F85585;
+$category3full : #F85585;
+$category4empty : #44D660;
+$category4full : #C2EB64;
+$category5empty : #040055;
+$category5full : #6A65F6;
+
+
 html,
 body {
+    font-family: 'Work Sans', sans-serif;
     background: linear-gradient(360deg, #FEFEFF 0%, #FFFFFF 100%);
 }
 

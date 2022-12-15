@@ -45,13 +45,13 @@ class CategoryFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::CATEGORIES as $key => $values) {
+        foreach (self::CATEGORIES as $values) {
             $category = new Category();
             $category->setTitle($values['title']);
             $category->setProgressColor($values['progressColor']);
             $category->setProgressbarColor($values['progressbarColor']);
             $manager->persist($category);
-            $this->addReference('category_' . $key, $category);
+            $this->addReference('category_' . $values['title'], $category);
         }
         $manager->flush();
     }
