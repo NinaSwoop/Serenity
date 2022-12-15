@@ -1,0 +1,22 @@
+{% include "/components/_progressbar.html.twig" %}
+
+<div class="m-5">
+	<h2>Quelques documents</h2>
+
+	{% for document in category.documents %}
+		<div class="professionalBox">
+			<p>
+				{{ document.title}}
+			</p>
+			<p>
+				<img src="" alt="">{{ document.picture}}
+			</p>
+			<p>
+				{{ document.description}}
+			</p>
+			<p>
+				{{ document.readTime}}
+			</p>
+		</div>
+	{% endfor %}
+</div>
