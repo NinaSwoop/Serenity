@@ -26,3 +26,152 @@ body {
     box-shadow: 0px -5px 30px rgba(126, 126, 127, 0.1);
     border: none;
 }
+
+.professionalBox {
+    background-color: #00D65B80;
+    padding: 10px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    margin: 10% 20% 0% 20%;
+    color: #FEFEFF;
+}
+
+.profil-dash {
+    height: 110px;
+}
+
+.picture-patient {
+    min-width: 100px;
+    border-radius: 25%;
+    background: url('../images/profil_picture_lastman.jpeg') center/cover no-repeat;
+}
+
+.progress-title {
+    position: absolute;
+    z-index: 1;
+    font-size: 1em;
+}
+
+.progress-level {
+    font-size: 1em;
+}
+
+.progress-title-cat {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.2em;
+}
+
+.progress-level-cat {
+    font-size: 1.2em;
+}
+
+.progressbar {
+    height: 10vh;
+}
+
+.progbar-100 {
+    width: 100%;
+}
+
+.progbar-90 {
+    width: 90%;
+}
+
+.progbar-80 {
+    width: 80%;
+}
+
+.progbar-70 {
+    width: 70%;
+}
+
+.progbar-60 {
+    width: 60%;
+}
+
+.progbar-50 {
+    width: 50%;
+}
+
+.progbar-40 {
+    width: 40%;
+}
+
+.progbar-30 {
+    width: 30%;
+}
+
+.progbar-20 {
+    width: 20%;
+}
+
+.progbar-10 {
+    width: 10%;
+}
+
+.progress {
+    position: relative;
+    height: 10vh;
+}
+
+.progress-index {
+    height: 6vh;
+    width: 55vw;
+    background-color: #F4F6FA;
+}
+
+.progressbar-index {
+    background-color: #AF8EFF99;
+}
+
+.thead-rdv {
+    color: #7265E3;
+    font-size: 1.2em;
+}
+
+.tbody-rdv {
+    color: #004F8B;
+    font-size: 1.5em;
+}
+
+.category1-progress {
+    background-color: #D9B520;
+}
+
+.category1-progressbar {
+    background-color: #F5D23F;
+}
+
+.category2-progress {
+    background-color: #079FA5;
+}
+
+.category2-progressbar {
+    background-color: #4FD5B8;
+}
+
+.category3-progress {
+    background-color: #C1486C;
+}
+
+.category3-progressbar {
+    background-color: #F85585;
+}
+
+.category4-progress {
+    background-color: #44D660;
+}
+
+.category4-progressbar {
+    background-color: #C2EB64;
+}
+
+.category5-progress {
+    background-color: #040055;
+}
+
+.category5-progressbar {
+    background-color: #6A65F6;
+}
