@@ -12,32 +12,32 @@ class CategoryFixtures extends Fixture
 
         [
             'title' => "Comprendre mon opération",
-            'progressColor' => "cat1-progress",
-            'progressbarColor' => "cat1-progressbar",
+            'progressColor' => "category1-progress",
+            'progressbarColor' => "category1-progressbar",
 
         ],
         [
             'title' => "Finir les démarches administratives",
-            'progressColor' => "cat2-progress",
-            'progressbarColor' => "cat2-progressbar",
+            'progressColor' => "category2-progress",
+            'progressbarColor' => "category2-progressbar",
 
         ],
         [
             'title' => "Préparer mon arrivée en toute sérénité",
-            'progressColor' => "cat3-progress",
-            'progressbarColor' => "cat3-progressbar",
+            'progressColor' => "category3-progress",
+            'progressbarColor' => "category3-progressbar",
 
         ],
         [
             'title' => "Anticiper ma sortie",
-            'progressColor' => "cat4-progress",
-            'progressbarColor' => "cat4-progressbar",
+            'progressColor' => "category4-progress",
+            'progressbarColor' => "category4-progressbar",
 
         ],
         [
             'title' => 'Ma check-list avant le départ à la clinique',
-            'progressColor' => 'cat5-progress',
-            'progressbarColor' => 'cat5-progressbar',
+            'progressColor' => 'category5-progress',
+            'progressbarColor' => 'category5-progressbar',
 
         ],
     ];
