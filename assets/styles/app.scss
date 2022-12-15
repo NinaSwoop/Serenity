@@ -58,20 +58,48 @@ body {
 }
 
 .progressbar{
-
     height: 10vh;
 }
 
+.progbar-100{
+    width: 100%;
+}
+.progbar-90{
+    width: 90%;
+}
+.progbar-80{
+    width: 80%;
+}
+.progbar-70{
+    width: 70%;
+}
+.progbar-60{
+    width: 60%;
+}
+.progbar-50{
+    width: 50%;
+}
+.progbar-40{
+    width: 40%;
+}
+.progbar-30{
+    width: 30%;
+}
+.progbar-20{
+    width: 20%;
+}
+.progbar-10{
+    width: 10%;
+}
 
 .progress{
     position: relative;
     height: 10vh;
-
 }
 
 .progress-index{
     height: 6vh;
-width: 60vw;
+width: 55vw;
 background-color: #F4F6FA;
 }
 
