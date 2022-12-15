@@ -27,89 +27,98 @@ body {
     border: none;
 }
 
-.profil-dash{
+.profil-dash {
     height: 110px;
 }
 
-.picture-patient{
+.picture-patient {
     min-width: 100px;
     border-radius: 25%;
-    background: url('assets/images/profil_picture_lastman.jpeg') center/cover no-repeat;
+    background: url('../images/profil_picture_lastman.jpeg') center/cover no-repeat;
 }
 
-.progress-title{
+.progress-title {
     position: absolute;
     z-index: 1;
     font-size: 1em;
 }
 
-.progress-level{
+.progress-level {
     font-size: 1em;
 }
 
-.progress-title-cat{
+.progress-title-cat {
     position: absolute;
     z-index: 1;
     font-size: 1.2em;
 }
 
-.progress-level-cat{
+.progress-level-cat {
     font-size: 1.2em;
 }
 
-.progressbar{
+.progressbar {
     height: 10vh;
 }
 
-.progbar-100{
+.progbar-100 {
     width: 100%;
 }
-.progbar-90{
+
+.progbar-90 {
     width: 90%;
 }
-.progbar-80{
+
+.progbar-80 {
     width: 80%;
 }
-.progbar-70{
+
+.progbar-70 {
     width: 70%;
 }
-.progbar-60{
+
+.progbar-60 {
     width: 60%;
 }
-.progbar-50{
+
+.progbar-50 {
     width: 50%;
 }
-.progbar-40{
+
+.progbar-40 {
     width: 40%;
 }
-.progbar-30{
+
+.progbar-30 {
     width: 30%;
 }
-.progbar-20{
+
+.progbar-20 {
     width: 20%;
 }
-.progbar-10{
+
+.progbar-10 {
     width: 10%;
 }
 
-.progress{
+.progress {
     position: relative;
     height: 10vh;
 }
 
-.progress-index{
+.progress-index {
     height: 6vh;
-width: 55vw;
-background-color: #F4F6FA;
+    width: 55vw;
+    background-color: #F4F6FA;
 }
 
-.progressbar-index{
+.progressbar-index {
     background-color: #AF8EFF99;
 }
 
 .thead-rdv {
     color: #7265E3;
-    font-size:1.2em;
+    font-size: 1.2em;
 }
 
 .tbody-rdv {
@@ -117,42 +126,42 @@ background-color: #F4F6FA;
     font-size: 1.5em;
 }
 
-.cat1-progress{
+.category1-progress {
     background-color: #D9B520;
 }
 
-.cat1-progressbar{
+.category1-progressbar {
     background-color: #F5D23F;
 }
 
-.cat2-progress{
+.category2-progress {
     background-color: #079FA5;
 }
 
-.cat2-progressbar{
+.category2-progressbar {
     background-color: #4FD5B8;
 }
 
-.cat3-progress{
+.category3-progress {
     background-color: #C1486C;
 }
 
-.cat3-progressbar{
+.category3-progressbar {
     background-color: #F85585;
 }
 
-.cat4-progress{
+.category4-progress {
     background-color: #44D660;
 }
 
-.cat4-progressbar{
+.category4-progressbar {
     background-color: #C2EB64;
 }
 
-.cat5-progress{
+.category5-progress {
     background-color: #040055;
 }
 
-.cat5-progressbar{
+.category5-progressbar {
     background-color: #6A65F6;
 }
