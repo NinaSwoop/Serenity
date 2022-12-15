@@ -1,6 +1,8 @@
-<div class="container">
+{% include "/components/_progressbar.html.twig" %}
+
+<div class="container p-0">
 	{% for checklist in category.checklists %}
-		<div class="card shadow-sm bg-body rounded m-4">
+		<div class="card shadow-sm bg-body rounded m-3">
 			<div class="card-body">
 				<div class="form-check" id="form">
 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck">
