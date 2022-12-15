@@ -6,8 +6,8 @@ use App\Repository\SchemaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SchemaRepository::class)]
-#[ORM\Table(name: '`schema`')]
-class Schema
+#[ORM\Table(name: '`schema_content`')]
+class SchemaContent
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,6 +16,10 @@ class Schema
 
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
+
+    #[ORM\ManyToOne(inversedBy: 'schemaContents')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -30,6 +34,18 @@ class Schema
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
