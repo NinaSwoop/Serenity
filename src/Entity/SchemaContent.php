@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\SchemaRepository;
+use App\Repository\SchemaContentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: SchemaRepository::class)]
+#[ORM\Entity(repositoryClass: SchemaContentRepository::class)]
 #[ORM\Table(name: '`schema_content`')]
 class SchemaContent
 {
