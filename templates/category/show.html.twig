@@ -1,34 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
+{% block title %}Category
+{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ category.title }}</td>
-            </tr>
-            <tr>
-                <th>ProgressbarColor</th>
-                <td>{{ category.progressbarColor }}</td>
-            </tr>
-            <tr>
-                <th>ProgressColor</th>
-                <td>{{ category.progressColor }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_category_index') }}">back to list</a>
-
-    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-
-    {{ include('category/_delete_form.html.twig') }}
+	{% if category.title == 'Comprendre mon opération' %}
+		{% include 'components/_componentCategory1.html.twig' %}
+	{% endif %}
+	{% if category.title == 'Finir les démarches administratives' %}
+		{% include 'components/_componentCategory2.html.twig' %}
+	{% endif %}
+	{% if category.title == 'Préparer mon arrivée en toute sérénité' %}
+		{% include 'components/_componentCategory3.html.twig' %}
+	{% endif %}
+	{% if category.title == 'Anticiper ma sortie' %}
+		{% include 'components/_componentCategory4.html.twig' %}
+	{% endif %}
+	{% if category.title == 'Ma check-list avant le départ à la Clinique' %}
+		{% include 'components/_componentCategory5.html.twig' %}
+	{% endif %}
 {% endblock %}
