@@ -5,6 +5,10 @@
 
 {% block body %}
 
+	<div class="d-inline-flex flex-row justify-content-start m-2 mt-5">
+		<a href="/"><img src='/build/images/arrow_back.cdc1cdca.png' alt="Retour en arrière" class="m-2 ms-3"></a>
+		<h1 class="ms-2">Ma préparation</h1>
+	</div>
 
 	{% if category.title == 'Comprendre mon opération' %}
 		{% include 'components/_componentCategory1.html.twig' %}
