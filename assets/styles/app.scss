@@ -14,22 +14,37 @@ body {
 }
 
 .profil-dash{
-    height: 20vh;
+    height: 110px;
 }
 
 .picture-patient{
-    width: 40vw;
+    min-width: 100px;
     border-radius: 25%;
-    background: url('/home/busy-gnl/Documents/Wild Code School/Projet 3/2022_09_PHP_Lyon_P3_Serenity/assets/images/profil_picture_lastman.jpeg') center no-repeat;
+    background: url('/home/busy-gnl/Documents/Wild Code School/Projet 3/2022_09_PHP_Lyon_P3_Serenity/assets/images/profil_picture_lastman.jpeg') center/cover no-repeat;
 }
-
 
 .progress-title{
     position: absolute;
     z-index: 1;
+    font-size: 1em;
+}
+
+.progress-level{
+    font-size: 1em;
+}
+
+.progress-title-cat{
+    position: absolute;
+    z-index: 1;
+    font-size: 1.2em;
+}
+
+.progress-level-cat{
+    font-size: 1.2em;
 }
 
 .progressbar{
+
     height: 10vh;
 }
 
@@ -41,7 +56,7 @@ body {
 }
 
 .progress-index{
-    height: 5vh;
+    height: 6vh;
 width: 60vw;
 background-color: #F4F6FA;
 }
@@ -50,8 +65,14 @@ background-color: #F4F6FA;
     background-color: #AF8EFF99;
 }
 
-.dash-rdv {
+.thead-rdv {
     color: #7265E3;
+    font-size:1.2em;
+}
+
+.tbody-rdv {
+    color: #004F8B;
+    font-size: 1.5em;
 }
 
 .cat1-progress{
