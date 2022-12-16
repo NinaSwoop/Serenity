@@ -1,24 +1,15 @@
-<div class="progress rounded-4 {{category.progressColor}} m-3">
-	<div class="progress-bar progbar-40 rounded-4-start {{ category.progressbarColor }}" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10">
-		<div class="progress-title-cat px-3">{{category.title}}
-			: la chirurgie des croisés</div>
-	</div>
-	<span class="progress-level-cat align-self-center text-white ms-auto p-2">4/10</span>
-</div>
+{% include "/components/_progressbar.html.twig" %}
 
-<h2>Schémas et documentations</h2>
-<section class="container">
-	<div class="shema1"></div>
-	<div class="shema2"></div>
-	<div class="shema3"></div>
+<div class="m-3">
 
-</section>
-
-
-<h2>Les vidéos du Dr Noailles</h2>
-<section class="container">
-	<div class="video1"></div>
-	<div class="video2"></div>
-	<div class="video3"></div>
-
-</section>
+	<p>Préparons nous à vivre la journée de l’intevention une première fois, histoire d’être en toute sérénité le jour J :</p>
+	{% for course in category.medicalCourses %}
+		<p class="step">
+			Etape
+			{{course.step}}
+			:
+			{{course.title}}
+		</p>
+		<img src="{{asset('build/images/' ~ course.picture)}}" class="rounded mx-auto d-block" alt=""/>
+	</p>
+{% endfor %}</div>
