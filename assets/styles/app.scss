@@ -13,7 +13,6 @@ $category4full : #C2EB64;
 $category5empty : #040055;
 $category5full : #6A65F6;
 
-
 html,
 body {
     font-family: 'Work Sans', sans-serif;
@@ -51,6 +50,7 @@ body {
     position: absolute;
     z-index: 1;
     font-size: 1em;
+    font-weight: bold;
 }
 
 .progress-level {
@@ -60,15 +60,20 @@ body {
 .progress-title-cat {
     position: absolute;
     z-index: 1;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
 .progress-level-cat {
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 .progressbar {
     height: 10vh;
+}
+
+.progress{
+position: relative;
 }
 
 .progbar-100 {
@@ -174,4 +179,22 @@ body {
 
 .category5-progressbar {
     background-color: #6A65F6;
+}
+
+.schema-card {
+
+    border: none;
+}
+
+.schema-picture {
+
+    width: 100%;
+}
+
+.video-card{
+    height: 12em;
+}
+
+.video-picture {
+    width: 12em;
 }

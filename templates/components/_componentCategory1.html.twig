@@ -1,0 +1,40 @@
+{% include "/components/_progressbar.html.twig" %}
+
+<h2 class="my-3 mx-4">Schémas et documentations</h2>
+<section class="container mx-4">
+	<div class="row">
+		{% for schema in category.schemaContents %}
+			<div {% if loop.index0 == 7 %} class="col-10 card schema-card" {% else %} class="card schema-card col-5 g-3" {% endif %}>
+				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
+			</div>
+		{% endfor %}
+	</div>
+
+
+</section>
+
+
+<h2 class="my-3 mx-4">Les vidéos du Dr Noailles</h2>
+<section class="mx-4">
+	{% for video in category.videos %}
+		<div class="card mb-3 ">
+			<div class="row g-0">
+				<div class="col-4 video-car">
+					<img src="{{asset('build/images/' ~ video.picture)}}" class="img-fluid rounded-start video-picture h-100" alt="...">
+				</div>
+				<div class="col-8">
+					<div class="card-body">
+
+						<p class="card-text">{{video.title}}</p>
+						<p class="card-text">
+							<small class="text-muted">{{video.duration}}
+								minutes</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+
+</section>
