@@ -27,6 +27,7 @@ body {
     border: none;
 }
 
+/* Professional show component_4 */
 .professionalBox {
     background-color: #00D65B80;
     padding: 10px;
@@ -37,6 +38,11 @@ body {
     color: #FEFEFF;
 }
 
+.step {
+    font-weight: bold;
+}
+
+/* Dashboard */
 .profil-dash {
     height: 110px;
 }
@@ -202,3 +208,5 @@ h5.card-title {
 .text-muted {
     font-size: 13px;
 }
+
+/* End of Dashboard */
