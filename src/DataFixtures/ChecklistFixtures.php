@@ -31,8 +31,8 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
             'category' => 'Ma check-list avant le départ à la clinique'
         ],
         [
-            'name' => 'Get influenza vaccine each fall',
-            'description' => "Getting Vaccinated",
+            'name' => 'Carte de mutuelle',
+            'description' => "Facultatif",
             'category' => 'Ma check-list avant le départ à la clinique'
         ]
     ];
