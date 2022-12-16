@@ -182,6 +182,29 @@ body {
     background-color: #6A65F6;
 }
 
+.documentPicture {
+    border-radius: 16px;
+    height: 130px;
+}
+
+.documentCard {
+    width: 170px;
+    font-size: 14px;
+    line-height: 18px;
+    border: none;
+}
+
+.documentCard>.card-body {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+h5.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
 .text-muted {
     font-size: 13px;
 }
