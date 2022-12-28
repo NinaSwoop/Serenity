@@ -190,7 +190,8 @@ position: relative;
 }
 
 .schema-picture {
-
+    box-sizing: border-box;
+    padding: 16px;
     width: 100%;
 }
 
