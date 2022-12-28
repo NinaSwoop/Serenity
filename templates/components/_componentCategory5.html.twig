@@ -1,0 +1,15 @@
+{% include "/components/_progressbar.html.twig" %}
+
+<div class="container p-0">
+	{% for checklist in category.checklists %}
+		<div class="card shadow-sm bg-body rounded m-3">
+			<div class="card-body">
+				<div class="form-check" id="form">
+					<input class="form-check-input" type="checkbox" value="" id="defaultCheck">
+					<label class="form-check-label" for="defaultCheck1">{{ checklist.name }}</label>
+					<p class="text-muted mb-0">{{ checklist.description }}</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
