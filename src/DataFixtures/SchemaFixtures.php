@@ -33,6 +33,7 @@ class SchemaFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::SCHEMACONTENT as $values) {
             $schemaContent = new SchemaContent();
             $schemaContent->setPicture($values['picture']);
+            $schemaContent->setTitle($values['picture']);
             $schemaContent->setCategory($this->getReference('category_' . $values['category']));
             $manager->persist($schemaContent);
         }

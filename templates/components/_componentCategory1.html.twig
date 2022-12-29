@@ -3,23 +3,11 @@
 <h2 class="my-3 mx-4">Schémas et documentations</h2>
 <section class="container d-flex justify-content-center">
 	<div class="row">
-		{% for schema in category.schemaContents %}
-			{% if loop.index0 <= 2 %}
-				<div class="card schema-card col-6 g-4">
-					<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
-				</div>
-			{% endif %}
-			{% if loop.index0 == 3 %}
-				<a href="">
-					<div class="card schema-card col-6 g-4">
-						<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
-					</div>
-				</a>
-			{% endif %}
+		{% for schema in category.schemaContents | slice (0,4) %}
+			{% include "/components/_component_shemas_modal.html.twig" %}
 		{% endfor %}
-	</div>
-	{% include "/component/_component_shemas_modal.html.twig" %}
 
+	</div>
 </section>
 
 
