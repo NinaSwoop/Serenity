@@ -11,21 +11,21 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
 {
     public const VIDEOS = [
         [
-            'title' => 'Mon chirurgien me parle des croisées',
-            'picture' => 'Video1.jpg',
+            'title' => 'LIGAMENTOPLASTIE DU LIGAMENT CROISÉ ANTÉRIEUR PAR ARTHROSCOPIE',
+            'picture' => 'https://www.youtube.com/embed/QC91hgRi5vY',
             'duration' => 3,
             'category' => 'Comprendre mon opération'
         ],
         [
-            'title' => 'Comment améliorer ma prise en charge',
-            'picture' => 'Video2.jpg',
+            'title' => 'PROTHÈSE TOTALE DE GENOU',
+            'picture' => 'https://www.youtube.com/watch?v=Su2-oVbP8qU',
             'duration' => 4,
             'category' => 'Comprendre mon opération'
         ],
         [
-            'title' => 'Témoignages de patients',
-            'picture' => 'Video3.jpg',
-            'duration' => 7,
+            'title' => 'PROTHÈSE TOTALE DE HANCHE PAR VOIE ANTÉRIEURE MINI-INVASIVE',
+            'picture' => 'https://www.youtube.com/watch?v=FKHuLgs5fzA',
+            'duration' => 4,
             'category' => 'Comprendre mon opération'
         ]
     ];
