@@ -8,7 +8,11 @@ $category4empty : #44D660;
 $category4full : #C2EB64;
 $category5empty : #040055;
 $category5full : #6A65F6;
+$card-border-color: none;
+$component-active-bg: #0EAD69;
+$border-radius: 16px;
 
+@import "~bootstrap/scss/bootstrap";
 
 html,
 body {
@@ -34,11 +38,11 @@ body {
     color: #FEFEFF;
 }
 
+/* Dashboard */
 .step {
     font-weight: bold;
 }
 
-/* Dashboard */
 .profil-dash {
     height: 110px;
 }
