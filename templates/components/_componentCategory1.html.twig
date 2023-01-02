@@ -1,0 +1,37 @@
+{% include "/components/_progressbar.html.twig" %}
+
+<h2 class="my-3 mx-4">Schémas et documentations</h2>
+<section class="container d-flex justify-content-center">
+	<div class="row">
+		{% for schema in category.schemaContents | slice (0,4) %}
+			{% include "/components/_component_shemas_modal.html.twig" %}
+		{% endfor %}
+
+	</div>
+</section>
+
+
+<h2 class="my-3 mx-4">Les vidéos du Dr. Noailles</h2>
+<section class="mx-4">
+	{% for video in category.videos %}
+		<div class="card mb-3 ">
+			<div class="row g-0">
+				<div class="col-8 video-card">
+					<iframe src="{{video.picture}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-3">
+					<div class="card-body d-flex flex-column p-0">
+
+						<p class="card-text ms-auto">
+							<strong>{{video.title}}</strong>
+						</p>
+						<p class="card-text ms-auto">
+							<small class="text-muted">{{video.duration}}
+								minutes</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</section>
