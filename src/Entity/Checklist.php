@@ -91,5 +91,4 @@ class Checklist
 
         return $this;
     }
-
 }
