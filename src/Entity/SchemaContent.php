@@ -92,13 +92,4 @@ class SchemaContent
 
         return $this;
     }
-
-    public function removeSecretariat(Secretariat $secretariat): self
-    {
-        if ($this->secretariats->removeElement($secretariat)) {
-            $secretariat->removeSchemaContent($this);
-        }
-
-        return $this;
-    }
 }

@@ -106,13 +106,4 @@ class Video
 
         return $this;
     }
-
-    public function removeSecretariat(Secretariat $secretariat): self
-    {
-        if ($this->secretariats->removeElement($secretariat)) {
-            $secretariat->removeVideo($this);
-        }
-
-        return $this;
-    }
 }

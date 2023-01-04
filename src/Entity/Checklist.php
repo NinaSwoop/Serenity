@@ -74,30 +74,22 @@ class Checklist
         return $this;
     }
 
-//    /**
-//     * @return Collection<int, Secretariat>
-//     */
-//    public function getSecretariats(): Collection
-//    {
-//        return $this->secretariats;
-//    }
-//
-//    public function addSecretariat(Secretariat $secretariat): self
-//    {
-//        if (!$this->secretariats->contains($secretariat)) {
-//            $this->secretariats->add($secretariat);
-//            $secretariat->addChecklist($this);
-//        }
-//
-//        return $this;
-//    }
-//
-//    public function removeSecretariat(Secretariat $secretariat): self
-//    {
-//        if ($this->secretariats->removeElement($secretariat)) {
-//            $secretariat->removeChecklist($this);
-//        }
-//
-//        return $this;
-//    }
+    /**
+     * @return Collection<int, Secretariat>
+     */
+    public function getSecretariats(): Collection
+    {
+        return $this->secretariats;
+    }
+
+    public function addSecretariat(Secretariat $secretariat): self
+    {
+        if (!$this->secretariats->contains($secretariat)) {
+            $this->secretariats->add($secretariat);
+            $secretariat->addChecklist($this);
+        }
+
+        return $this;
+    }
+
 }

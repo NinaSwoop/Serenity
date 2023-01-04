@@ -121,13 +121,4 @@ class Document
 
         return $this;
     }
-
-    public function removeSecretariat(Secretariat $secretariat): self
-    {
-        if ($this->secretariats->removeElement($secretariat)) {
-            $secretariat->removeDocument($this);
-        }
-
-        return $this;
-    }
 }

@@ -106,13 +106,4 @@ class MedicalCourse
 
         return $this;
     }
-
-    public function removeSecretariat(Secretariat $secretariat): self
-    {
-        if ($this->secretariats->removeElement($secretariat)) {
-            $secretariat->removeMedicalCourse($this);
-        }
-
-        return $this;
-    }
 }
