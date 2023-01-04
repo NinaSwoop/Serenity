@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DocumentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DocumentRepository::class)]
@@ -28,6 +30,14 @@ class Document
     #[ORM\ManyToOne(inversedBy: 'documents')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'document')]
+    private Collection $secretariats;
+
+    public function __construct()
+    {
+        $this->secretariats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,33 @@ class Document
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Secretariat>
+     */
+    public function getSecretariats(): Collection
+    {
+        return $this->secretariats;
+    }
+
+    public function addSecretariat(Secretariat $secretariat): self
+    {
+        if (!$this->secretariats->contains($secretariat)) {
+            $this->secretariats->add($secretariat);
+            $secretariat->addDocument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSecretariat(Secretariat $secretariat): self
+    {
+        if ($this->secretariats->removeElement($secretariat)) {
+            $secretariat->removeDocument($this);
+        }
 
         return $this;
     }
