@@ -18,7 +18,7 @@ class SecretariatFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         foreach (self::SECRETARIAT as $secretariatName) {
-            $secretariat = new secretariat();
+            $secretariat = new Secretariat();
             $secretariat->setName($secretariatName);
             $manager->persist($secretariat);
             $this->addReference('secretariat_' . $secretariatName, $secretariat);
