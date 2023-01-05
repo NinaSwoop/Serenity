@@ -1,11 +1,11 @@
 {% include "/components/_progressbar.html.twig" %}
 
-<div class="mt-4 ms-4">
-	<h2>Quelques documents</h2>
+<h2 class="my-4 mx-4">Quelques documents</h2>
 
-	<section class="d-flex justify-content-start flex-wrap">
+<section class="d-flex justify-content-center p-0">
+	<div class="row mx-4">
 		{% for document in category.documents %}
-			<div class="card documentCard m-2">
+			<div class="card schema-card col-6 g-3">
 				<img class="card-img-top documentPicture" src="{{asset('build/images/' ~ document.picture)}}" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">{{ document.title}}</h5>
@@ -19,5 +19,5 @@
 				</div>
 			</div>
 		{% endfor %}
-	</section>
-</div>
+	</div>
+</section>
