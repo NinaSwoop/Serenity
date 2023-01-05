@@ -4,5 +4,17 @@
 {% endblock %}
 
 {% block body %}
-	{% include "components/_componentCategory4.html.twig" %}
+	<div class="connexionPageBody">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100 carrousel-picture" src="{{asset('build/images/reassuringDoctor.png')}}" alt="First slide">
+				</div>
+			</div>
+		</div>
+
+		<div class="connexionPageBottom d-flex p-2 justify-content-around align-items-center">
+			<a class="btn btn-light registrationBtn p-3 col-5 me-3" href="{{ path("app_login") }}" role="button">Se connecter</a>
+		</div>
+	</div>
 {% endblock %}

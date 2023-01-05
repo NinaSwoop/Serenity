@@ -4,26 +4,50 @@
 {% endblock %}
 
 {% block body %}
-	{% if error %}
-		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
+	<div class="connexionPageBody pt-5">
 
-	<form action="{{ path('app_login') }}" method="post">
-		<div class="form-group">
-			<label for="username">Email:</label>
-			<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Entrez votre adresse e-mail">
-		</div>
-		<div class="form-group">
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="_password" placeholder="Entrez votre adresse mot de passe">
-		</div>
-		<input
-		type="hidden" name="_target_path" value="/category">
+		<section class="connexionPageTitle p-5">
+			<h1 class="fw-bold">Connectez vous</h1>
+			<h2 class="fw-bold">à votre espace personnel</h2>
+		</section>
 
-		{# If you want to control the URL the user is redirected to on success
-			    <input type="hidden" name="_target_path" value="/account"> #}
+		{% if error %}
+			<section class="px-5">
+				<div class="connexionFormErrors text-center alert alert-danger p-2 ps-3">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			</section>
 
-		<button type="submit" class="btn btn-primary">Me connecter</button>
+		{% endif %}
 
-	</form>
-{% endblock %}
+		<section class="connexionPageForm p-5 pt-2 pb-2">
+			<form action="{{ path('app_login') }}" method="post">
+				<div class="form-group mt-3">
+					<label class="connexionLabel pb-2" for="username">Adresse Email</label>
+					<input class="connexionInput p-2 ps-3 col-12 border-0" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Entrez votre adresse e-mail">
+				</div>
+				<div class="form-group mt-3">
+					<label class="connexionLabel pb-2" for="password">Mot de passe</label>
+					<input class="connexionInput p-2 ps-3 col-12" type="password" id="password" name="_password" placeholder="Entrez votre adresse mot de passe">
+				</div>
+				<input
+				type="hidden" name="_target_path" value="/category">
+
+				{# If you want to control the URL the user is redirected to on success <input type="hidden" name="_target_path" value="/account"> #}
+
+				<button type="submit" class="btn btn-light registrationBtn p-3 col-8 m-5 mb-3">Se connecter</button>
+			</form>
+		</section>
+
+		<section class="connexionPageInfo m-5 mb-3 p-2 mt-2 text-center text-light">
+			<h3 class="fw-bold">
+				Informations:</h3>
+			<p>
+				Vous trouverez votre mot de passe sur le document d’admission transmis par le secrétariat.
+			</p>
+			<p>En cas de perte du mot de passe, rapprochez vous de votre secrétariat.
+			</p>
+		</section>
+		<section class="text-center">
+			<a class="connexionPageLink text-light btn btn-outline-light" href="/">Retour à la page d'accueil</a>
+		</section>
+	</div>
+</section>{% endblock %}
