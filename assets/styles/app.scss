@@ -234,3 +234,79 @@ h5.card-title {
 }
 
 /* End of Dashboard */
+
+
+/* Connexion Pages */
+
+.connexionPageBody {
+    background: linear-gradient(45deg, #12B2B3 0%, #56E0E0 100%);
+    height: 100vh;
+}
+
+#carouselExampleIndicators {
+    height: 66vh;
+    border-radius: 0px 0px 0px 40px;
+    box-shadow: 0px 10px 20px rgba(0, 64, 128, 0.16);
+}
+
+.carrousel-picture {
+    border-radius: 0px 0px 0px 40px;
+    height: 66vh;
+}
+
+.carousselControl {
+    color: black;
+}
+
+.connexionPageBottom {
+    height: 34vh;
+}
+
+.connexionBtn,
+.registrationBtn {
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px #12B2B3;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.registrationBtn {
+    color: #12B2B3;
+}
+
+.connexionPageTitle {
+    color: #FFFFFF;
+    font-style: normal;
+    text-align: center;
+}
+
+.connexionPageTitle>h1 {
+    font-size: 40px;
+}
+
+.connexionPageTitle>h2 {
+    font-size: 25px;
+}
+
+.connexionLabel {
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.connexionInput {
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+}
+
+.connexionInput:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(48, 151, 151, 0.911);
+}
+
+/* End of Connexion Pages */
