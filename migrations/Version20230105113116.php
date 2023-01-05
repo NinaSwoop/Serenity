@@ -39,7 +39,8 @@ final class Version20230105113116 extends AbstractMigration
         $this->addSql('ALTER TABLE secretariat_video ADD CONSTRAINT FK_17657C329C1004E FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE secretariat_checklist ADD CONSTRAINT FK_E8F226EAA628C492 FOREIGN KEY (secretariat_id) REFERENCES secretariat (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE secretariat_checklist ADD CONSTRAINT FK_E8F226EAB16D08A7 FOREIGN KEY (checklist_id) REFERENCES checklist (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE user ADD secretariat_id INT NOT NULL, CHANGE phonenumber phonenumber VARCHAR(255) NOT NULL');        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649A628C492 FOREIGN KEY (secretariat_id) REFERENCES secretariat (id)');
+        $this->addSql('ALTER TABLE user ADD secretariat_id INT NOT NULL, CHANGE phonenumber phonenumber VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649A628C492 FOREIGN KEY (secretariat_id) REFERENCES secretariat (id)');
         $this->addSql('CREATE INDEX IDX_8D93D649A628C492 ON user (secretariat_id)');
     }
 
