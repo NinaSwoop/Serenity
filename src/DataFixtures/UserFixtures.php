@@ -19,7 +19,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'role' => ['ROLE_ADMIN'],
             'password' => 'jeanmicheladmin',
             'picture' => 'adminpicture.jpg',
-            'secretariat' => 'secretariat_maternité',
+            'secretariat' => 'secretariat_neurologie',
 
         ],
         [
@@ -40,7 +40,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'role' => ['ROLE_USER'],
             'password' => 'nina1234+',
             'picture' => 'ninapicture.jpeg',
-            'secretariat' => 'secretariat_neurologie',
+            'secretariat' => 'secretariat_maternité',
         ],
     ];
 

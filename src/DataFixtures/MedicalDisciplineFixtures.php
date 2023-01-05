@@ -26,9 +26,19 @@ class MedicalDisciplineFixtures extends Fixture implements DependentFixtureInter
             'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ],
         [
-            'name' => 'Ordonnance',
+            'name' => 'Neurologue',
             'category' => 'Anticiper ma sortie',
-            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+            'secretariat' => ['secretariat_neurologie']
+        ],
+        [
+            'name' => 'Sage femme',
+            'category' => 'Anticiper ma sortie',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'name' => 'Orthoprothésiste',
+            'category' => 'Anticiper ma sortie',
+            'secretariat' => ['secretariat_orthopédie']
         ],
     ];
 
