@@ -20,28 +20,28 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
         [
             'step' => 2,
             'title' => 'Installation en chambre',
-            'picture' => 'MedicalCourse-maternite1.jpg',
+            'picture' => 'MedicalCourse-mater1.jpg',
             'category' => 'Préparer mon arrivée en toute sérénité',
             'secretariat' => ['secretariat_maternité']
         ],
         [
             'step' => 3,
             'title' => 'Phase de travail',
-            'picture' => 'MedicalCourse-maternite3.jpg',
+            'picture' => 'MedicalCourse-mater3.jpg',
             'category' => 'Préparer mon arrivée en toute sérénité',
             'secretariat' => ['secretariat_maternité']
         ],
         [
             'step' => 4,
             'title' => 'Pose de la péridurale',
-            'picture' => 'MedicalCourse-maternite2.jpeg',
+            'picture' => 'MedicalCourse-mater2.jpeg',
             'category' => 'Préparer mon arrivée en toute sérénité',
             'secretariat' => ['secretariat_maternité']
         ],
         [
             'step' => 5,
             'title' => 'Accouchement',
-            'picture' => 'MedicalCourse-maternite4.jpg',
+            'picture' => 'MedicalCourse-mater4.jpg',
             'category' => 'Préparer mon arrivée en toute sérénité',
             'secretariat' => ['secretariat_maternité']
         ],
@@ -51,6 +51,41 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
             'picture' => 'MedicalCourse2.jpeg',
             'category' => 'Préparer mon arrivée en toute sérénité',
             'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
+        ],
+        [
+            'step' => 2,
+            'title' => 'Consultation pré-opératoire',
+            'picture' => 'MedicalCourse3.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_neurologie', 'secretariat_orthopédie']
+        ],
+        [
+            'step' => 3,
+            'title' => 'Visite neuro-chirurgien',
+            'picture' => 'MedicalCourse-neuro1.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_neurologie']
+        ],
+        [
+            'step' => 3,
+            'title' => 'Visite chirurgien',
+            'picture' => 'MedicalCourse-ortho1.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_orthopédie']
+        ],
+        [
+            'step' => 4,
+            'title' => 'Transfert bloc opératoire',
+            'picture' => 'MedicalCourse4.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_neurologie', 'secretariat_orthopédie']
+        ],
+        [
+            'step' => 5,
+            'title' => 'Intervention',
+            'picture' => 'MedicalCourse5.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_neurologie', 'secretariat_orthopédie']
         ],
     ];
 

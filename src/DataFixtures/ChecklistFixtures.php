@@ -47,13 +47,13 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
             'secretariat' => ['secretariat_maternité']
         ],
         [
-            'name' => 'Résultats analyse RAI',
+            'name' => 'Résultats analyses RAI',
             'description' => "Obligatoire",
             'category' => 'Ma check-list avant le départ à la clinique',
             'secretariat' => ['secretariat_maternité']
         ],
         [
-            'name' => 'Résultats analyse Sérologie',
+            'name' => 'Résultats analyse sérologie',
             'description' => "Obligatoire",
             'category' => 'Ma check-list avant le départ à la clinique',
             'secretariat' => ['secretariat_maternité']
