@@ -44,6 +44,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $phonenumber = null;
 
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Secretariat $secretariat = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -169,6 +173,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhonenumber(string $phonenumber): self
     {
         $this->phonenumber = $phonenumber;
+
+        return $this;
+    }
+
+    public function getSecretariat(): ?Secretariat
+    {
+        return $this->secretariat;
+    }
+
+    public function setSecretariat(?Secretariat $secretariat): self
+    {
+        $this->secretariat = $secretariat;
 
         return $this;
     }
