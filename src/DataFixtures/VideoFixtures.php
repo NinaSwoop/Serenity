@@ -20,14 +20,14 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'title' => 'PROTHÈSE TOTALE DE GENOU',
-            'picture' => 'https://www.youtube.com/watch?v=Su2-oVbP8qU',
+            'picture' => 'https://www.youtube.com/embed/Su2-oVbP8qU',
             'duration' => 4,
             'category' => 'Comprendre mon opération',
             'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ],
         [
             'title' => 'PROTHÈSE TOTALE DE HANCHE PAR VOIE ANTÉRIEURE MINI-INVASIVE',
-            'picture' => 'https://www.youtube.com/watch?v=FKHuLgs5fzA',
+            'picture' => 'https://www.youtube.com/embed/FKHuLgs5fzA',
             'duration' => 4,
             'category' => 'Comprendre mon opération',
             'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
