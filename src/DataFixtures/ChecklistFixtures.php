@@ -39,7 +39,43 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
             'description' => "Facultatif",
             'category' => 'Ma check-list avant le départ à la clinique',
             'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
-        ]
+        ],
+        [
+            'name' => 'Valise de maternité',
+            'description' => "Obligatoire",
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'name' => 'Résultats analyse RAI',
+            'description' => "Obligatoire",
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'name' => 'Résultats analyse Sérologie',
+            'description' => "Obligatoire",
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'name' => 'Résultats IRM',
+            'description' => "Obligatoire",
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_neurologie']
+        ],
+        [
+            'name' => 'Bilan pré-opératoire',
+            'description' => "Obligatoire",
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_neurologie', 'secretariat_orthopédie']
+        ],
+        [
+            'name' => 'Résultats scinthigraphie osseuse',
+            'description' => "Obligatoire",
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_orthopédie']
+        ],
     ];
 
     public function load(ObjectManager $manager): void
