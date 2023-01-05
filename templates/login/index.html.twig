@@ -11,11 +11,12 @@
 			<h2 class="fw-bold">à votre espace personnel</h2>
 		</section>
 
-		<section class="connexionFormErrors text-center">
-			{% if error %}
-				<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
-		</section>
+		{% if error %}
+			<section class="px-5">
+				<div class="connexionFormErrors text-center alert alert-danger p-2 ps-3">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			</section>
+
+		{% endif %}
 
 		<section class="connexionPageForm p-5 pt-2 pb-2">
 			<form action="{{ path('app_login') }}" method="post">
