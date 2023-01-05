@@ -42,14 +42,6 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
             'category' => 'Finir les démarches administratives',
             'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
-        [
-            'title' => 'Avez-vous vu votre anesthésiste ?',
-            'picture' => 'Document4.jpg',
-            'read_time' =>  0,
-            'description' => 'Prendre rendez-vous',
-            'category' => 'Finir les démarches administratives',
-            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
-        ],
     ];
 
     public function load(ObjectManager $manager): void

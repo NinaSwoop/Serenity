@@ -7,14 +7,14 @@
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<section class="d-flex profil-dash m-3">
 			<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
-			<div class="d-flex flex-column mx-3">
+			<div class="d-flex flex-column ms-3 ">
 				<div class=" my-2 fs-3">
 					{{app.user.firstname}}
 				</div>
 
-				<div class="progress rounded-5 progress-index d-flex">
+				<div class="progress globalProgressBar progress-index d-flex">
 					<div class="progress-bar rounded-5-start progbar-70 progressbar-index" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
-						<div class="progress-title text-dark p-1">
+						<div class="progress-title p-2">
 							Préparation pour ma chirurgie
 						</div>
 					</div>
