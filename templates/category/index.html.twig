@@ -4,19 +4,25 @@
 {% endblock %}
 
 {% block body %}
-	<section class="d-flex profil-dash m-3">
-		<div class="picture-patient"></div>
-		<div class="d-flex flex-column mx-3">
-			<div class=" my-2 fs-3">Jesse</div>
-			<div class="progress rounded-5 progress-index d-flex">
-				<div class="progress-bar rounded-5-start progbar-70 progressbar-index" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
-					<div class="progress-title text-dark p-1">Préparation pour ma chirurgie</div>
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		<section class="d-flex profil-dash m-3">
+			<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+			<div class="d-flex flex-column mx-3">
+				<div class=" my-2 fs-3">
+					{{app.user.firstname}}
 				</div>
-				<span class="progress-level align-self-center ms-auto p-2">70%</span>
-			</div>
-		</div>
-	</section>
 
+				<div class="progress rounded-5 progress-index d-flex">
+					<div class="progress-bar rounded-5-start progbar-70 progressbar-index" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-title text-dark p-1">
+							Préparation pour ma chirurgie
+						</div>
+					</div>
+					<span class="progress-level align-self-center ms-auto p-2">70%</span>
+				</div>
+			</div>
+		</section>
+	{% endif %}
 	<div class="d-flex justify-content-end m-3">
 
 
@@ -32,17 +38,13 @@
 				<tr>
 					<td class="px-3">{{ "now"|date("d/m/Y") }}</td>
 
-					<td>{{ "now"|date("H:i") }}</td>
+					<td>{{ "now-1"|date("H:i") }}</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-
-
 	{% for category in categories %}
 
 		{% include "components/_progressbar.html.twig" %}
 	{% endfor %}
-
-
 {% endblock %}

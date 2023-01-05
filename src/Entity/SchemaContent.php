@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SchemaContentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SchemaContentRepository::class)]
@@ -23,6 +25,14 @@ class SchemaContent
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
+
+    #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'schemaContent')]
+    private Collection $secretariats;
+
+    public function __construct()
+    {
+        $this->secretariats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +71,16 @@ class SchemaContent
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function addSecretariat(Secretariat $secretariat): self
+    {
+        if (!$this->secretariats->contains($secretariat)) {
+            $this->secretariats->add($secretariat);
+            $secretariat->addSchemaContent($this);
+        }
 
         return $this;
     }

@@ -14,19 +14,23 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
             'title' => 'LIGAMENTOPLASTIE DU LIGAMENT CROISÉ ANTÉRIEUR PAR ARTHROSCOPIE',
             'picture' => 'https://www.youtube.com/embed/QC91hgRi5vY',
             'duration' => 3,
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+
         ],
         [
             'title' => 'PROTHÈSE TOTALE DE GENOU',
             'picture' => 'https://www.youtube.com/embed/Su2-oVbP8qU',
             'duration' => 4,
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ],
         [
             'title' => 'PROTHÈSE TOTALE DE HANCHE PAR VOIE ANTÉRIEURE MINI-INVASIVE',
             'picture' => 'https://www.youtube.com/embed/FKHuLgs5fzA',
             'duration' => 4,
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ]
     ];
 
@@ -38,6 +42,9 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
             $video->setPicture($values['picture']);
             $video->setDuration($values['duration']);
             $video->setCategory($this->getReference('category_' . $values['category']));
+            foreach ($values['secretariat'] as $secretariat) {
+                $video->addSecretariat($this->getReference($secretariat));
+            }
             $manager->persist($video);
         }
         $manager->flush();
@@ -46,7 +53,7 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CategoryFixtures::class,
+            SecretariatFixtures::class,
         ];
     }
 }
