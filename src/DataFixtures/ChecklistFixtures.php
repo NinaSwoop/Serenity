@@ -14,26 +14,31 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
             'name' => 'Pièce d\'identité',
             'description' => "Obligatoire",
             'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
         [
             'name' => 'Consultation anesthésique',
             'description' => "Obligatoire",
-            'category' => 'Ma check-list avant le départ à la clinique'
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
         [
             'name' => 'Test COVID',
             'description' => "Datant de moins de 3 jours",
-            'category' => 'Ma check-list avant le départ à la clinique'
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
         [
             'name' => 'Carte bleue',
             'description' => "Facultatif",
-            'category' => 'Ma check-list avant le départ à la clinique'
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
         [
             'name' => 'Carte de mutuelle',
             'description' => "Facultatif",
-            'category' => 'Ma check-list avant le départ à la clinique'
+            'category' => 'Ma check-list avant le départ à la clinique',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ]
     ];
 
@@ -44,6 +49,9 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
             $checklist->setName($values['name']);
             $checklist->setDescription($values['description']);
             $checklist->setCategory($this->getReference('category_' . $values['category']));
+            foreach ($values['secretariat'] as $secretariat) {
+                $checklist->addSecretariat($this->getReference($secretariat));
+            }
             $manager->persist($checklist);
         }
         $manager->flush();
@@ -52,7 +60,7 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CategoryFixtures::class,
+            SecretariatFixtures::class,
         ];
     }
 }

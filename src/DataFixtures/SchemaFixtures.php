@@ -12,19 +12,23 @@ class SchemaFixtures extends Fixture implements DependentFixtureInterface
     public const SCHEMACONTENT = [
         [
             'picture' => 'Schema1.jpg',
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ],
         [
             'picture' => 'Schema2.jpg',
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ],
         [
             'picture' => 'Schema3.jpg',
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ],
         [
             'picture' => 'Schema4.jpg',
-            'category' => 'Comprendre mon opération'
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
         ]
     ];
 
@@ -35,6 +39,9 @@ class SchemaFixtures extends Fixture implements DependentFixtureInterface
             $schemaContent->setPicture($values['picture']);
             $schemaContent->setTitle($values['picture']);
             $schemaContent->setCategory($this->getReference('category_' . $values['category']));
+            foreach ($values['secretariat'] as $secretariat) {
+                $schemaContent->addSecretariat($this->getReference($secretariat));
+            }
             $manager->persist($schemaContent);
         }
         $manager->flush();
@@ -43,7 +50,7 @@ class SchemaFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CategoryFixtures::class,
+            SecretariatFixtures::class,
         ];
     }
 }
