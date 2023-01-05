@@ -14,19 +14,22 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
             'step' => 1,
             'title' => 'La douche bétadinée',
             'picture' => 'MedicalCourse1.png',
-            'category' => 'Préparer mon arrivée en toute sérénité'
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_orthopédie']
         ],
         [
             'step' => 2,
             'title' => 'Votre dossier administratif',
             'picture' => 'MedicalCourse2.jpg',
-            'category' => 'Préparer mon arrivée en toute sérénité'
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
         [
             'step' => 3,
             'title' => 'La douche non bétadinée',
             'picture' => 'MedicalCourse3.jpg',
-            'category' => 'Préparer mon arrivée en toute sérénité'
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie']
         ],
     ];
 
@@ -38,6 +41,9 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
             $medicalCourse->setTitle($values['title']);
             $medicalCourse->setPicture($values['picture']);
             $medicalCourse->setCategory($this->getReference('category_' . $values['category']));
+            foreach ($values['secretariat'] as $secretariat) {
+                $medicalCourse->addSecretariat($this->getReference($secretariat));
+            }
             $manager->persist($medicalCourse);
         }
         $manager->flush();
@@ -46,7 +52,7 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CategoryFixtures::class,
+            SecretariatFixtures::class,
         ];
     }
 }

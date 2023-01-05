@@ -4,10 +4,11 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserFixtures extends Fixture
+class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     public const USERS = [
         [
@@ -17,7 +18,8 @@ class UserFixtures extends Fixture
             'email' => 'jeanmicheladmin@gmail.com',
             'role' => ['ROLE_ADMIN'],
             'password' => 'jeanmicheladmin',
-            'picture' => 'adminpicture.jpg'
+            'picture' => 'adminpicture.jpg',
+            'secretariat' => 'secretariat_maternité',
 
         ],
         [
@@ -27,7 +29,8 @@ class UserFixtures extends Fixture
             'email' => 'ibrabra@gmail.com',
             'role' => ['ROLE_USER'],
             'password' => 'ibrabra1234+',
-            'picture' => 'ibrabrapicture.jpeg'
+            'picture' => 'ibrabrapicture.jpeg',
+            'secretariat' => 'secretariat_orthopédie',
         ],
         [
             'firstname' => 'Nina',
@@ -36,7 +39,8 @@ class UserFixtures extends Fixture
             'email' => 'nina@gmail.com',
             'role' => ['ROLE_USER'],
             'password' => 'nina1234+',
-            'picture' => 'ninapicture.jpeg'
+            'picture' => 'ninapicture.jpeg',
+            'secretariat' => 'secretariat_neurologie',
         ],
     ];
 
@@ -49,7 +53,7 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::USERS as $values) {
+        foreach (self::USERS as $key => $values) {
             $user = new User();
             $user->setEmail($values['email']);
             $user->setRoles($values['role']);
@@ -57,10 +61,19 @@ class UserFixtures extends Fixture
             $user->setLastname($values['lastname']);
             $user->setPhonenumber($values['phonenumber']);
             $user->setPicture($values['picture']);
+            $user->setSecretariat($this->getReference($values['secretariat']));
+            $this->addReference('user_' . $key, $user);
             $hash = $this->passwordHasher->hashPassword($user, $values['password']);
             $user->setPassword($hash);
             $manager->persist($user);
         }
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            SecretariatFixtures::class,
+        ];
     }
 }

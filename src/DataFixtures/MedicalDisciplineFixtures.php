@@ -10,10 +10,26 @@ use Doctrine\Persistence\ObjectManager;
 class MedicalDisciplineFixtures extends Fixture implements DependentFixtureInterface
 {
     public const MEDICALDISCIPLINES = [
-        ['name' => 'Kinésithérapeute', 'category' => 'Anticiper ma sortie'],
-        ['name' => 'Infirmier', 'category' => 'Anticiper ma sortie'],
-        ['name' => 'Psychologue', 'category' => 'Anticiper ma sortie'],
-        ['name' => 'Ordonnance', 'category' => 'Anticiper ma sortie']
+        [
+            'name' => 'Kinésithérapeute',
+            'category' => 'Anticiper ma sortie',
+            'secretariat' => ['secretariat_orthopédie']
+        ],
+        [
+            'name' => 'Infirmier',
+            'category' => 'Anticiper ma sortie',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+        ],
+        [
+            'name' => 'Psychologue',
+            'category' => 'Anticiper ma sortie',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+        ],
+        [
+            'name' => 'Ordonnance',
+            'category' => 'Anticiper ma sortie',
+            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+        ],
     ];
 
     public function load(ObjectManager $manager): void
@@ -22,6 +38,9 @@ class MedicalDisciplineFixtures extends Fixture implements DependentFixtureInter
             $medicalDiscipline = new MedicalDiscipline();
             $medicalDiscipline->setName($values['name']);
             $medicalDiscipline->setCategory($this->getReference('category_' . $values['category']));
+            foreach ($values['secretariat'] as $secretariat) {
+                $medicalDiscipline->addSecretariat($this->getReference($secretariat));
+            }
             $manager->persist($medicalDiscipline);
         }
         $manager->flush();
@@ -30,7 +49,7 @@ class MedicalDisciplineFixtures extends Fixture implements DependentFixtureInter
     public function getDependencies()
     {
         return [
-            CategoryFixtures::class,
+            SecretariatFixtures::class,
         ];
     }
 }
