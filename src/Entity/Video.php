@@ -89,14 +89,6 @@ class Video
         return $this;
     }
 
-    /**
-     * @return Collection<int, Secretariat>
-     */
-    public function getSecretariats(): Collection
-    {
-        return $this->secretariats;
-    }
-
     public function addSecretariat(Secretariat $secretariat): self
     {
         if (!$this->secretariats->contains($secretariat)) {
