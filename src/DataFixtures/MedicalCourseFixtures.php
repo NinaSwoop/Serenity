@@ -12,24 +12,45 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
     public const MEDICALCOURSES = [
         [
             'step' => 1,
-            'title' => 'La douche bétadinée',
+            'title' => 'Prise en charge administrative',
             'picture' => 'MedicalCourse1.png',
-            'category' => 'Préparer mon arrivée en toute sérénité',
-            'secretariat' => ['secretariat_orthopédie']
-        ],
-        [
-            'step' => 2,
-            'title' => 'Votre dossier administratif',
-            'picture' => 'MedicalCourse2.jpg',
             'category' => 'Préparer mon arrivée en toute sérénité',
             'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
         [
-            'step' => 3,
-            'title' => 'La douche non bétadinée',
-            'picture' => 'MedicalCourse3.jpg',
+            'step' => 2,
+            'title' => 'Installation en chambre',
+            'picture' => 'MedicalCourse-maternite1.jpg',
             'category' => 'Préparer mon arrivée en toute sérénité',
-            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie']
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'step' => 3,
+            'title' => 'Phase de travail',
+            'picture' => 'MedicalCourse-maternite3.jpg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'step' => 4,
+            'title' => 'Pose de la péridurale',
+            'picture' => 'MedicalCourse-maternite2.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'step' => 5,
+            'title' => 'Accouchement',
+            'picture' => 'MedicalCourse-maternite4.jpg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'step' => 6,
+            'title' => 'Retour en chambre',
+            'picture' => 'MedicalCourse2.jpeg',
+            'category' => 'Préparer mon arrivée en toute sérénité',
+            'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
         ],
     ];
 

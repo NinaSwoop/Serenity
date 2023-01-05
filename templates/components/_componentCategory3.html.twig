@@ -2,14 +2,14 @@
 
 <div class="m-3">
 
-	<p>Préparons nous à vivre la journée de l’intevention une première fois, histoire d’être en toute sérénité le jour J :</p>
+	<p>Préparons nous à vivre la journée de l’intervention une première fois, histoire d’être en toute sérénité le jour J :</p>
 	{% for course in category.medicalCourses %}
 		<p class="step">
-			Etape
+			Étape
 			{{course.step}}
 			:
 			{{course.title}}
 		</p>
 		<img src="{{asset('build/images/' ~ course.picture)}}" class="rounded mx-auto d-block" alt=""/>
-	</p>
+
 {% endfor %}</div>
