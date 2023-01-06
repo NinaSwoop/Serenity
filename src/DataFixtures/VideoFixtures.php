@@ -11,26 +11,26 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
 {
     public const VIDEOS = [
         [
-            'title' => 'LIGAMENTOPLASTIE DU LIGAMENT CROISÉ ANTÉRIEUR PAR ARTHROSCOPIE',
-            'picture' => 'https://www.youtube.com/embed/QC91hgRi5vY',
+            'title' => "L'ACCOUCHEMENT",
+            'picture' => 'https://www.youtube.com/embed/NM2KJA8uSuc',
             'duration' => 3,
             'category' => 'Comprendre mon opération',
-            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+            'secretariat' => ['secretariat_maternité']
 
         ],
         [
-            'title' => 'PROTHÈSE TOTALE DE GENOU',
+            'title' => 'PROTHÈSE DU PIED',
             'picture' => 'https://www.youtube.com/embed/Su2-oVbP8qU',
             'duration' => 4,
             'category' => 'Comprendre mon opération',
-            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+            'secretariat' => ['secretariat_orthopédie']
         ],
         [
-            'title' => 'PROTHÈSE TOTALE DE HANCHE PAR VOIE ANTÉRIEURE MINI-INVASIVE',
-            'picture' => 'https://www.youtube.com/embed/FKHuLgs5fzA',
+            'title' => 'LA NEUROCHIRURGIE',
+            'picture' => 'https://www.youtube.com/embed/hXFBWXuZIdo',
             'duration' => 4,
             'category' => 'Comprendre mon opération',
-            'secretariat' => ['secretariat_orthopédie', 'secretariat_maternité', 'secretariat_neurologie']
+            'secretariat' => ['secretariat_neurologie']
         ]
     ];
 

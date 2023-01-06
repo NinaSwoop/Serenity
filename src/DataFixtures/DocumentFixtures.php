@@ -12,7 +12,7 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
     public const DOCUMENTS = [
         [
             'title' => 'Fiche administrative',
-            'picture' => 'Document1.jpg',
+            'picture' => 'Document1.jpeg',
             'read_time' => 15,
             'description' => '',
             'category' => 'Finir les démarches administratives',
@@ -20,7 +20,7 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'title' => 'Consentement éclairé',
-            'picture' => 'Document2.jpg',
+            'picture' => 'Document2.jpeg',
             'read_time' => 15,
             'description' => '',
             'category' => 'Finir les démarches administratives',
@@ -28,7 +28,7 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'title' => 'Votre retour mutuelle',
-            'picture' => 'Document3.jpg',
+            'picture' => 'Document3.jpeg',
             'read_time' => 15,
             'description' => '',
             'category' => 'Finir les démarches administratives',
@@ -36,11 +36,35 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'title' => 'Avez-vous vu votre anesthésiste ?',
-            'picture' => 'Document4.jpg',
+            'picture' => 'Document4.jpeg',
             'read_time' =>  0,
             'description' => 'Prendre rendez-vous',
             'category' => 'Finir les démarches administratives',
             'secretariat' => ['secretariat_maternité', 'secretariat_neurologie', 'secretariat_orthopédie']
+        ],
+        [
+            'title' => 'Avez-vous préparé votre valise de maternité ?',
+            'picture' => 'Document-mater1.jpg',
+            'read_time' =>  0,
+            'description' => '',
+            'category' => 'Finir les démarches administratives',
+            'secretariat' => ['secretariat_maternité']
+        ],
+        [
+            'title' => 'Avez-vous réalisé votre IRM ?',
+            'picture' => 'Document-neuro1.jpeg',
+            'read_time' =>  0,
+            'description' => 'Prendre rendez-vous',
+            'category' => 'Finir les démarches administratives',
+            'secretariat' => ['secretariat_neurologie']
+        ],
+        [
+            'title' => 'Avez-vous réalisé votre radio ?',
+            'picture' => 'Document-ortho1.jpeg',
+            'read_time' =>  0,
+            'description' => 'Prendre rendez-vous',
+            'category' => 'Finir les démarches administratives',
+            'secretariat' => ['secretariat_orthopédie']
         ],
     ];
 
