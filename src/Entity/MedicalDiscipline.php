@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\MedicalDisciplineRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: MedicalDisciplineRepository::class)]
+class MedicalDiscipline
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\ManyToOne(inversedBy: 'medicalDisciplines')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'medicalDiscipline')]
+    private Collection $secretariats;
+
+    public function __construct()
+    {
+        $this->secretariats = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function addSecretariat(Secretariat $secretariat): self
+    {
+        if (!$this->secretariats->contains($secretariat)) {
+            $this->secretariats->add($secretariat);
+            $secretariat->addMedicalDiscipline($this);
+        }
+
+        return $this;
+    }
+}

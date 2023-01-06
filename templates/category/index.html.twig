@@ -1,0 +1,50 @@
+{% extends 'baseCategory.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block body %}
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		<section class="d-flex profil-dash m-3">
+			<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+			<div class="d-flex flex-column ms-3 ">
+				<div class=" my-2 fs-3">
+					{{app.user.firstname}}
+				</div>
+
+				<div class="progress globalProgressBar progress-index d-flex">
+					<div class="progress-bar rounded-5-start progbar-70 progressbar-index" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-title p-2">
+							Préparation pour ma chirurgie
+						</div>
+					</div>
+					<span class="progress-level align-self-center ms-auto p-2">70%</span>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+	<div class="d-flex justify-content-end m-3">
+
+
+		<table class="">
+			<thead class="thead-rdv">
+				<tr>
+					<th class="px-3">DATE</th>
+
+					<th>HEURE</th>
+				</tr>
+			</thead>
+			<tbody class="tbody-rdv">
+				<tr>
+					<td class="px-3">{{ "now"|date("d/m/Y") }}</td>
+
+					<td>{{ "now-1"|date("H:i") }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	{% for category in categories %}
+
+		{% include "components/_progressbar.html.twig" %}
+	{% endfor %}
+{% endblock %}

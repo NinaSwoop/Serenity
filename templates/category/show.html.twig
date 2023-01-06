@@ -1,0 +1,40 @@
+{% extends 'baseCategory.html.twig' %}
+
+{% block title %}
+	{{category.title}}
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	{{ encore_entry_script_tags('dashboard') }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="d-inline-flex flex-row justify-content-start m-2 mt-5">
+		<a href="/category"><img src="{{asset('build/images/arrow_back.cdc1cdca.png') }}" alt="Retour en arrière" class="m-2 ms-3"></a>
+		<h1 class="ms-2">Ma préparation</h1>
+	</div>
+
+	{% if category.title == 'Comprendre mon opération' %}
+		{% include 'components/_componentCategory1.html.twig' %}
+
+	{% endif %}
+	{% if category.title == 'Finir les démarches administratives' %}
+		{% include 'components/_componentCategory2.html.twig' %}
+
+	{% endif %}
+	{% if category.title == 'Préparer mon arrivée en toute sérénité' %}
+		{% include 'components/_componentCategory3.html.twig' %}
+
+	{% endif %}
+	{% if category.title == 'Anticiper ma sortie' %}
+		{% include 'components/_componentCategory4.html.twig' %}
+
+	{% endif %}
+	{% if category.title == 'Ma check-list avant le départ à la clinique' %}
+		{% include 'components/_componentCategory5.html.twig' %}
+
+	{% endif %}
+
+
+{% endblock %}
