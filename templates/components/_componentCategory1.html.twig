@@ -23,8 +23,12 @@
 			</div>
 
 			<div class="modal-footer">
-				<button class="btn btn-primary" data-bs-target="#modal{{schema.id - 1}}" data-bs-toggle="modal">Schéma précédent</button>
-				<button class="btn btn-primary" data-bs-target="#modal{{schema.id + 1}}" data-bs-toggle="modal">Schéma suivant</button>
+				<a data-bs-target="#modal{{schema.id - 1}}" data-bs-toggle="modal" >
+                    <img class="arrow-modal" src="{{asset('build/images/left-arrow.svg')}}" alt="left arrow">
+                </a>
+				<a data-bs-target="#modal{{schema.id + 1}}" data-bs-toggle="modal">
+                    <img class="arrow-modal" src="{{asset('build/images/right-arrow.svg')}}" alt="right arrow">
+                </a>
 			</div>
 		</div>
 	</div>
