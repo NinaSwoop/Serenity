@@ -34,6 +34,9 @@ class Document
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'document')]
     private Collection $secretariats;
 
+    #[ORM\ManyToOne(inversedBy: 'document')]
+    private ?UserDocument $userDocument = null;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
@@ -110,6 +113,18 @@ class Document
             $this->secretariats->add($secretariat);
             $secretariat->addDocument($this);
         }
+
+        return $this;
+    }
+
+    public function getUserDocument(): ?UserDocument
+    {
+        return $this->userDocument;
+    }
+
+    public function setUserDocument(?UserDocument $userDocument): self
+    {
+        $this->userDocument = $userDocument;
 
         return $this;
     }
