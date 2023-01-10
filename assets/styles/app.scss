@@ -18,6 +18,7 @@ html,
 body {
     font-family: 'Work Sans', sans-serif;
     background: linear-gradient(360deg, #FEFEFF 0%, #FFFFFF 100%);
+    margin-bottom: 40px;
 }
 
 .navbar {
@@ -318,3 +319,17 @@ h5.card-title {
 }
 
 /* End of Connexion Pages */
+
+/* Arrows Modal in _ComponentCategory1 */
+
+.modal-footer {
+    justify-content: space-between;
+}
+
+.arrow-modal {
+    width : 40px;
+    height: 34px;
+}
+
+/* End of Arrows Modal in _ComponentCategory1 */
+
