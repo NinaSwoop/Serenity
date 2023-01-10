@@ -2,39 +2,41 @@
 
 <h2 class="my-4 mx-4">Schémas et documentations</h2>
 <section class="d-flex justify-content-center p-0">
-	<div class="row mx-4"> {% for schema in category.schemaContents %}
+	<div class="row mx-4">
+		{% for schema in category.schemaContents %}
 
-		<div type="button" 
-			{% if loop.index0 < 4 %} class="card schema-card col-6 g-2"
-			{% else %} class="card schema-card col-6 g-2 d-none" 
-			{% endif %} data-bs-target="#modal{{schema.id}}" data-bs-toggle="modal">
-			<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
+<div type="button" {% if loop.index0 < 4 %} class="card schema-card col-6 g-2" {% else %}
+  class="card schema-card col-6 g-2 d-none" {% endif %} data-bs-target="#modal{{schema.id}}" data-bs-toggle="modal">
+	<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
+</div>
+			<div class="modal fade" id="modal{{schema.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="modalLabel">
+					{{schema.title}}</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<div class="modal-body card schema-card col-12 g-3">
+				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
+					<p>
+						<a href="/category">Marquer comme fait/vu</a>
+					</p>
+			</div>
+
+			<div class="modal-footer">
+				<a data-bs-target="#modal{{schema.id - 1}}" data-bs-toggle="modal" >
+                    <img class="arrow-modal" src="{{asset('build/images/left-arrow.svg')}}" alt="left arrow">
+                </a>
+				<a data-bs-target="#modal{{schema.id + 1}}" data-bs-toggle="modal">
+                    <img class="arrow-modal" src="{{asset('build/images/right-arrow.svg')}}" alt="right arrow">
+                </a>
+			</div>
 		</div>
-
-		<div class="modal fade" id="modal{{schema.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="modalLabel">{{schema.title}}</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-
-					<div class="modal-body card schema-card col-12 g-3">
-						<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
-						<p>
-							<a href="#">Marquer comme fait/vu</a>
-						</p>
-					</div>
-
-					<div class="modal-footer">
-						<a data-bs-target="#modal{{schema.id - 1}}" data-bs-toggle="modal"><img class="arrow-modal" src="{{asset('build/images/left-arrow.svg')}}" alt="left arrow"></a>
-						<a data-bs-target="#modal{{schema.id + 1}}" data-bs-toggle="modal"><img class="arrow-modal" src="{{asset('build/images/right-arrow.svg')}}" alt="right arrow"></a>
-					</div>
-				</div>
-=
-		</div>
+	</div>
+</div>
 		{% endfor %}
-		
 		{% if category.schemaContents|length > 3 %}
 			<button class="btn my-2 border" id="show-more-schemas">Afficher plus</button>
 		{% endif %}
@@ -52,14 +54,13 @@
 				</div>
 				<div class="col-sm-4 col-12">
 					<div class="card-body d-flex flex-column p-0">
+
 						<p class="card-text card-title px-2">
 							<strong>{{video.title}}</strong>
 						</p>
 						<p class="card-text card-subtitle p-2">
-							<small class="text-muted">{{video.duration}} minutes</small>
-						</p>
-						<p>
-							<a href="#"> Marquer comme fait/vu</a>
+							<small class="text-muted">{{video.duration}}
+								minutes</small>
 						</p>
 					</div>
 				</div>
