@@ -5,11 +5,12 @@
 	<p>Préparons nous à vivre la journée de l’intervention une première fois, histoire d’être en toute sérénité le jour J :</p>
 	{% for course in category.medicalCourses %}
 
-		<p class="step my-4">
+		<p class="step my-4 d-flex justify-content-between align-items-center">
 			Étape
 			{{course.step}}
 			:
 			{{course.title}}
+            <img style="width: 30px" src="{{ asset('build/images/checked-empty.svg')}}" alt="...">
 		</p>
 		<img src="{{asset('build/images/' ~ course.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>
     {% endfor %}
