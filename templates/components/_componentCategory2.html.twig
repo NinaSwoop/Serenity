@@ -7,6 +7,7 @@
 		{% for document in category.documents %}
 			<div class="card schema-card col-6 g-3">
 				<img class="card-img-top documentPicture" src="{{asset('build/images/' ~ document.picture)}}" alt="Card image cap">
+                <img class ="empty-checked" src="{{ asset('build/images/checked-empty.svg')}}" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">{{ document.title}}</h5>
 					<p class="card-text card-subtitle text-muted">
