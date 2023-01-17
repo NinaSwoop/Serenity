@@ -47,7 +47,6 @@ class CategoryController extends AbstractController
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
-
         ]);
     }
 
