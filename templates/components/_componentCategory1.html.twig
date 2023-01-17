@@ -21,7 +21,7 @@
 			<div class="modal-body card schema-card col-12 g-3">
 				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
 					<p>
-						<a href="/category">Marquer comme fait/vu</a>
+						<a href="{{ path("app_schema_content_check" , { id: schema.id }) }}">Marquer comme fait/vu</a>
 					</p>
 			</div>
 

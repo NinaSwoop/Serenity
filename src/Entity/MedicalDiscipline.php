@@ -81,7 +81,7 @@ class MedicalDiscipline
         return $this->userMedDisciplines;
     }
 
-    public function addUserDocument(UserMedDiscipline $userMedDiscipline): self
+    public function addUserMedicalDiscipline(UserMedDiscipline $userMedDiscipline): self
     {
         if (!$this->userMedDisciplines->contains($userMedDiscipline)) {
             $this->userMedDisciplines->add($userMedDiscipline);
