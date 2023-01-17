@@ -40,6 +40,8 @@ class UserDocumentController extends AbstractController
         } else {
             $userDocument->setIsChecked(true);
         }
+
+        // Ajouter implémentation de la date ou retrait si on uncheck
         $userDocRepository->save($userDocument, true);
 
         $category = $categoryRepository->findOneBy(['title' => 'Finir les démarches administratives']);
