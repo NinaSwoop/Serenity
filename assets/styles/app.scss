@@ -86,6 +86,7 @@ body {
     position: relative;
 }
 
+/*
 .progbar-100 {
     width: 100%;
 }
@@ -125,7 +126,7 @@ body {
 .progbar-10 {
     width: 10%;
 }
-
+*/
 .progress {
     position: relative;
     height: 10vh;
@@ -327,9 +328,8 @@ h5.card-title {
 }
 
 .arrow-modal {
-    width : 40px;
+    width: 40px;
     height: 34px;
 }
 
 /* End of Arrows Modal in _ComponentCategory1 */
-

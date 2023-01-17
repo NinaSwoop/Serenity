@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\User;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\ChecklistRepository;
+use App\Repository\UserDocumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,12 +17,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
-    {
+    public function index(
+        CategoryRepository $categoryRepository,
+        UserDocumentRepository $userDocRepo
+    ): Response {
         $categories = $categoryRepository->findAll();
+        $documentChecked = $userDocRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
 
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+            'document' => $documentChecked
         ]);
     }
 
@@ -43,10 +50,12 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show(Category $category, UserDocumentRepository $userDocRepo): Response
     {
+        $documentChecked = $userDocRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'document' => $documentChecked
 
         ]);
     }
