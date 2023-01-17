@@ -25,9 +25,13 @@ class MedicalDiscipline
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'medicalDiscipline')]
     private Collection $secretariats;
 
+    #[ORM\OneToMany(mappedBy: 'medicalDiscipline', targetEntity: UserMedDiscipline::class)]
+    private Collection $userMedDisciplines;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
+        $this->userMedDisciplines = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,6 +68,36 @@ class MedicalDiscipline
         if (!$this->secretariats->contains($secretariat)) {
             $this->secretariats->add($secretariat);
             $secretariat->addMedicalDiscipline($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserMedDiscipline>
+     */
+    public function getUserMedicalDisciplines(): Collection
+    {
+        return $this->userMedDisciplines;
+    }
+
+    public function addUserDocument(UserMedDiscipline $userMedDiscipline): self
+    {
+        if (!$this->userMedDisciplines->contains($userMedDiscipline)) {
+            $this->userMedDisciplines->add($userMedDiscipline);
+            $userMedDiscipline->setMedicalDiscipline($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserMedicalDiscipline(UserMedDiscipline $userMedDiscipline): self
+    {
+        if ($this->userMedDisciplines->removeElement($userMedDiscipline)) {
+            // set the owning side to null (unless already changed)
+            if ($userMedDiscipline->getMedicalDiscipline() === $this) {
+                $userMedDiscipline->setMedicalDiscipline(null);
+            }
         }
 
         return $this;
