@@ -151,6 +151,11 @@ body {
     font-size: 1.5em;
 }
 
+.arrow-back {
+    width: 20px;
+    height: 20px;
+}
+
 .category1-progress {
     background-color: #D9B520;
 }
@@ -326,6 +331,7 @@ h5.card-title {
 /* End of Connexion Pages */
 
 /* Arrows Modal in _ComponentCategory1 */
+
 .modal-footer {
     justify-content: space-between;
 }
@@ -334,4 +340,6 @@ h5.card-title {
     width : 40px;
     height: 34px;
 }
+
 /* End of Arrows Modal in _ComponentCategory1 */
+
