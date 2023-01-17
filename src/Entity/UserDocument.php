@@ -19,12 +19,12 @@ class UserDocument
     private ?bool $isChecked = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $checkedAt = null;
+    private ?\DateTime $checkedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'userDocuments')]
     private ?User $user = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'userDocuments')]
     private ?Document $document = null;
 
     public function getId(): ?int
@@ -44,12 +44,12 @@ class UserDocument
         return $this;
     }
 
-    public function getcheckedAt(): ?\DateTimeImmutable
+    public function getcheckedAt(): ?\DateTime
     {
         return $this->checkedAt;
     }
 
-    public function setcheckedAt(?\DateTimeImmutable $checkedAt): self
+    public function setcheckedAt(?\DateTime $checkedAt): self
     {
         $this->checkedAt = $checkedAt;
 

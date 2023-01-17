@@ -70,7 +70,7 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::DOCUMENTS as $values) {
+        foreach (self::DOCUMENTS as $key => $values) {
             $document = new Document();
             $document->setTitle($values['title']);
             $document->setPicture($values['picture']);
@@ -81,6 +81,8 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
                 $document->addSecretariat($this->getReference($secretariat));
             }
             $manager->persist($document);
+            $key++;
+            $this->addReference('document_' . $key, $document);
         }
         $manager->flush();
     }

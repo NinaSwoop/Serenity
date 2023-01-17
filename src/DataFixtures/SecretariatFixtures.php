@@ -13,7 +13,7 @@ class SecretariatFixtures extends Fixture implements DependentFixtureInterface
         'maternité',
         'neurologie',
         'orthopédie',
-        ];
+    ];
 
     public function load(ObjectManager $manager): void
     {
@@ -23,8 +23,9 @@ class SecretariatFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($secretariat);
             $this->addReference('secretariat_' . $secretariatName, $secretariat);
         }
-            $manager->flush();
+        $manager->flush();
     }
+
     public function getDependencies()
     {
         return [
