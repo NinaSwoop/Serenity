@@ -4,15 +4,9 @@
 	{% for checklist in category.checklists %}
 		<div class="card shadow-sm bg-body rounded mb-4">
 			<div class="card-body">
-				<div class="form-check" id="form">
-					<input class="form-check-input" type="checkbox" value="" id="defaultCheck">
-					<label class="form-check-label" for="defaultCheck1">{{ checklist.name }}</label>
-					<p class="text-muted mb-0">{{ checklist.description }}</p>
-					<p>
-						<a href="#">Marquer comme fait/vu</a>
-					</p>
-				</div>
-			</div>
+                <p class="d-flex justify-content-between align-items-center">{{ checklist.name }}<a href="#"><img class ="empty-checked-relative" src="{{ asset('build/images/checked-empty.svg')}}" alt="..."></a></p>
+                <p class="text-muted mb-0">{{ checklist.description }}</p>
+            </div>
 		</div>
 	{% endfor %}
 </div>

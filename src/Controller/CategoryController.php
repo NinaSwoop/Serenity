@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\UserDocumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,10 +44,20 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show(Category $category, UserDocumentRepository $userDocRepository): Response
     {
+//        à mettre dans la PR -> $userDocRepository
+        $user = $this->getUser();
+        $userDocuments = $userDocRepository->findBy(
+            [
+                'user' => $user->getId()
+            ]
+        );
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'user' => $user,
+            'userDocuments' => $userDocuments,
 
         ]);
     }
