@@ -19,6 +19,22 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
 
         ],
         [
+            'title' => "ACCOUCHER SANS PÉRIDURALE",
+            'picture' => 'https://www.youtube.com/embed/fe7S_-QoI6o',
+            'duration' => 10,
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_maternité']
+
+        ],
+        [
+            'title' => "LES SUITES DE COUCHES",
+            'picture' => 'https://www.youtube.com/embed/rroZ9Tn4Oa8',
+            'duration' => 8,
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_maternité']
+
+        ],
+        [
             'title' => 'PROTHÈSE DU PIED',
             'picture' => 'https://www.youtube.com/embed/Su2-oVbP8qU',
             'duration' => 4,
@@ -26,9 +42,37 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
             'secretariat' => ['secretariat_orthopédie']
         ],
         [
+            'title' => 'CHIRURGIE ORTHOPÉDIQUE ÉPAULE',
+            'picture' => 'https://www.youtube.com/embed/g0ANw4IRrlU',
+            'duration' => 7,
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie']
+        ],
+        [
+            'title' => 'RÉPARATION D\'UNE RUPTURE DE LA COIFFE',
+            'picture' => 'https://www.youtube.com/embed/RuPP_ilhndY',
+            'duration' => 12,
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_orthopédie']
+        ],
+        [
             'title' => 'LA NEUROCHIRURGIE',
             'picture' => 'https://www.youtube.com/embed/hXFBWXuZIdo',
-            'duration' => 4,
+            'duration' => 5,
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_neurologie']
+        ],
+        [
+            'title' => 'SCLÉROSE EN PLAQUES',
+            'picture' => 'https://www.youtube.com/embed/muIoiyebzBA',
+            'duration' => 14,
+            'category' => 'Comprendre mon opération',
+            'secretariat' => ['secretariat_neurologie']
+        ],
+        [
+            'title' => 'DÉPRESSION ET PERTES DE NEURONES',
+            'picture' => 'https://www.youtube.com/embed/vCavRhuxlTg',
+            'duration' => 8,
             'category' => 'Comprendre mon opération',
             'secretariat' => ['secretariat_neurologie']
         ]
@@ -36,7 +80,7 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::VIDEOS as $values) {
+        foreach (self::VIDEOS as $key => $values) {
             $video = new Video();
             $video->settitle($values['title']);
             $video->setPicture($values['picture']);
@@ -46,6 +90,8 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
                 $video->addSecretariat($this->getReference($secretariat));
             }
             $manager->persist($video);
+            $key++;
+            $this->addReference('video_' . $key, $video);
         }
         $manager->flush();
     }
