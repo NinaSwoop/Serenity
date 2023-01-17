@@ -20,7 +20,7 @@
 					</p>
 					<p class="card-text card-subtitle text-muted">{{ document.description}}</p>
 					<p>
-						<a href="#">Marquer comme fait/vu</a>
+						<a href="{{ path("app_document_check" , { id: document.id }) }}">Marquer comme fait/vu</a>
 					</p>
 				</div>
 			</div>
