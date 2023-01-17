@@ -19,8 +19,8 @@ class UserChecklistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/check', name: 'app_checklist_check')]
-    public function checkDocument(
+    #[Route('/{id}/check/', name: 'app_checklist_check')]
+    public function checkChecklist(
         Checklist $checklist,
         UserChecklistRepository $userCheRepository,
         CategoryRepository $categoryRepository

@@ -16,10 +16,10 @@ class UserMedicalCourse
     #[ORM\Column]
     private ?bool $isChecked = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $checkedAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $checkedAt = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'userMedicalCourses')]
     private ?MedicalCourse $medicalCourse = null;
 
     #[ORM\ManyToOne(inversedBy: 'userMedicalCourses')]
@@ -42,12 +42,12 @@ class UserMedicalCourse
         return $this;
     }
 
-    public function getCheckedAt(): ?\DateTimeImmutable
+    public function getCheckedAt(): ?\DateTime
     {
         return $this->checkedAt;
     }
 
-    public function setCheckedAt(\DateTimeImmutable $checkedAt): self
+    public function setCheckedAt(\DateTime $checkedAt): self
     {
         $this->checkedAt = $checkedAt;
 

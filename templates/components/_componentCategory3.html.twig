@@ -13,7 +13,7 @@
 		</p>
 		<img src="{{asset('build/images/' ~ course.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>
 		<p>
-			<a href="#">Marquer comme fait/vu</a>
+			<a href="{{ path("app_medicalCourse_check" , { id: course.id }) }}">Marquer comme fait/vu</a>
 		</p>
 	{% endfor %}
 </div>
