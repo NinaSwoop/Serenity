@@ -39,6 +39,16 @@ class UserMedDisciplineRepository extends ServiceEntityRepository
         }
     }
 
+    public function findMedicalDisciplineByUser(int $userId): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->join('u.medicalDiscipline', 'medicalDiscipline')
+            ->select('u', 'medicalDiscipline')
+            ->where('u.user =' . $userId)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
 //    /**
 //     * @return UserMedDiscipline[] Returns an array of UserMedDiscipline objects
 //     */
