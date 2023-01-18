@@ -28,9 +28,13 @@ class Checklist
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'checklist')]
     private Collection $secretariats;
 
+    #[ORM\OneToMany(mappedBy: 'checklist', targetEntity: UserDocument::class)]
+    private Collection $userChecklists;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
+        $this->userChecklists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -79,6 +83,36 @@ class Checklist
         if (!$this->secretariats->contains($secretariat)) {
             $this->secretariats->add($secretariat);
             $secretariat->addChecklist($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserChecklist>
+     */
+    public function getUserDocuments(): Collection
+    {
+        return $this->userChecklists;
+    }
+
+    public function addUserDocument(UserChecklist $userChecklist): self
+    {
+        if (!$this->userChecklists->contains($userChecklist)) {
+            $this->userChecklists->add($userChecklist);
+            $userChecklist->setChecklist($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserDocument(UserChecklist $userChecklist): self
+    {
+        if ($this->userChecklists->removeElement($userChecklist)) {
+            // set the owning side to null (unless already changed)
+            if ($userChecklist->getChecklist() === $this) {
+                $userChecklist->setChecklist(null);
+            }
         }
 
         return $this;

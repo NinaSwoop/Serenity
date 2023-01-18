@@ -10,7 +10,7 @@
 				{{ userMedicalDiscipline.medicalDiscipline.name}}</span>
 		</p>
 		<p>
-			<a href="#">Marquer comme fait/vu</a>
+			<a href="{{ path("app_medical_discipline_check" , { id: professional.id }) }}">Marquer comme fait/vu</a>
 		</p>
 	</p>
 {% endfor %}</div>
