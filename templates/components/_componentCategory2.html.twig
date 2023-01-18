@@ -7,20 +7,20 @@
 		{% for userDocument in userDocuments %}
 			<div class="card schema-card col-6 g-3">
 				<img class="card-img-top documentPicture" src="{{asset('build/images/' ~ userDocument.document.picture)}}" alt="Card image cap">
-                <a href="{{ path("app_document_check" , { id: document.id }) }}">
-                    <i class="bi {{ document.userDocument.isChecked ? 'bi-heart-fill' : 'bi-heart' }}"></i>
-                </a>
+				<a href="{{ path("app_document_check" , { id: userDocument.document.id }) }}">
+					<i class="bi {{ userDocument.isChecked ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+				</a>
 				<div class="card-body">
-					<h5 class="card-title">{{ document.title}}</h5>
+					<h5 class="card-title">{{ userDocument.document.title}}</h5>
 					<p class="card-text card-subtitle text-muted">
-						{% if document.readTime != 0 %}
-							{{ document.readTime}}
+						{% if userDocument.document.readTime != 0 %}
+							{{ userDocument.document.readTime}}
 							minutes
 						{% endif %}
 					</p>
-					<p class="card-text card-subtitle text-muted">{{ document.description}}</p>
+					<p class="card-text card-subtitle text-muted">{{ userDocument.document.description}}</p>
 					<p>
-						<a href="{{ path("app_document_check" , { id: document.id }) }}">Marquer comme fait/vu</a>
+						<a href="{{ path("app_document_check" , { id: userDocument.document.id }) }}">Marquer comme fait/vu</a>
 					</p>
 				</div>
 			</div>
@@ -29,6 +29,4 @@
 </section>
 
 
-
 {#<img class ="empty-checked-absolute" src="{{ asset('build/images/checked-empty.svg')}}" alt="...">#}
-
