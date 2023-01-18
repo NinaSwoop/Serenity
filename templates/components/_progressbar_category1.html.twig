@@ -1,5 +1,9 @@
-{% set total = (app.user.userSchemaContents)|length %}
-{% set isChecked = (schema)|length %}
+{% set total2 = (app.user.userSchemaContents)|length %}
+{% set total1 = (app.user.userVideos)|length %}
+{% set total = (total1 + total2) %}
+{% set isChecked2 = (video)|length %}
+{% set isChecked1 = (schema)|length %}
+{% set isChecked = (isChecked2 + isChecked1) %}
 {% set percent = (isChecked / total)*100 %}
 
 

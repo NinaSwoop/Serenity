@@ -19,7 +19,7 @@ class UserChecklistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/check/', name: 'app_checklist_check')]
+    #[Route('/{id}/check/checklist', name: 'app_checklist_check')]
     public function checkChecklist(
         Checklist $checklist,
         UserChecklistRepository $userCheRepository,
@@ -43,6 +43,10 @@ class UserChecklistController extends AbstractController
 
         $category = $categoryRepository->findOneBy(['title' => 'Ma check-list avant le départ à la clinique']);
 
-        return $this->redirectToRoute('app_category_show', ['id' => $category->getId()], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute(
+            'app_category_show',
+            ['title' => $category->getTitle()],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

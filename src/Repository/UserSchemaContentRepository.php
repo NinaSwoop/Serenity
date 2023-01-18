@@ -39,6 +39,17 @@ class UserSchemaContentRepository extends ServiceEntityRepository
         }
     }
 
+    public function findSchemaByUser(int $userId): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->join('u.schemaContent', 'schemaContent')
+            ->select('u', 'schemaContent')
+            ->where('u.user =' . $userId)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return UserSchemaContent[] Returns an array of UserSchemaContent objects
 //     */

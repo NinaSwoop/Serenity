@@ -1,15 +1,15 @@
 {% include "/components/_progressbar_category5.html.twig" %}
 
 <div class="container p-4 my-4">
-	{% for checklist in category.checklists %}
+	{% for userChecklist in userChecklists %}
 		<div class="card shadow-sm bg-body rounded mb-4">
 			<div class="card-body">
 				<div class="form-check" id="form">
 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck">
-					<label class="form-check-label" for="defaultCheck1">{{ checklist.name }}</label>
-					<p class="text-muted mb-0">{{ checklist.description }}</p>
+					<label class="form-check-label" for="defaultCheck1">{{ userChecklist.checklist.name }}</label>
+					<p class="text-muted mb-0">{{ userChecklist.checklist.description }}</p>
 					<p>
-						<a href="{{ path("app_checklist_check" , { id: checklist.id }) }}">Marquer comme fait/vu</a>
+						<a href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">Marquer comme fait/vu</a>
 					</p>
 				</div>
 			</div>

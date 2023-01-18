@@ -3,9 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\UserDocument;
+use App\Entity\UserMedicalCourse;
 use App\Entity\User;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\UserChecklistRepository;
+use App\Repository\UserDocumentRepository;
+use App\Repository\UserMedDisciplineRepository;
+use App\Repository\UserMedicalCourseRepository;
+use App\Repository\UserSchemaContentRepository;
+use App\Repository\UserVideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,12 +61,36 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{title}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category, CategoryService $categoryService): Response
-    {
+    public function show(
+        Category $category,
+        UserDocumentRepository $userDocRepository,
+        UserSchemaContentRepository $userSchemaRepository,
+        UserChecklistRepository $userCheckRepository,
+        UserVideoRepository $userVideoRepository,
+        UserMedicalCourseRepository $userCourseRepository,
+        UserMedDisciplineRepository $userDiscRepository,
+        CategoryService $categoryService
+    ): Response {
+
         $elementsChecked = $categoryService->elementChecked();
+
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        $userDocuments = $userDocRepository->findDocumentByUser($user->getId());
+        $userSchemas = $userSchemaRepository->findSchemaByUser($user->getId());
+        $userVideos = $userVideoRepository->findVideoByUser($user->getId());
+        $userMedicalCourses = $userCourseRepository->findMedicalCourseByUser($user->getId());
+        $userMedDisciplines = $userDiscRepository->findMedicalDisciplineByUser($user->getId());
+        $userChecklists = $userCheckRepository->findChecklistByUser($user->getId());
 
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'userDocuments' => $userDocuments,
+            'userChecklists' => $userChecklists,
+            'userSchemas' => $userSchemas,
+            'userVideos' => $userVideos,
+            'userMedicalCourses' => $userMedicalCourses,
+            'userMedicalDisciplines' => $userMedDisciplines,
             'categories' => $elementsChecked['categories'],
             'document' => $elementsChecked['documentChecked'],
             'checklist' => $elementsChecked['CheckListChecked'],
@@ -66,7 +98,6 @@ class CategoryController extends AbstractController
             'medicalC' => $elementsChecked['medCChecked'],
             'schema' => $elementsChecked['schemaChecked'],
             'video' => $elementsChecked['videoChecked']
-
         ]);
     }
 

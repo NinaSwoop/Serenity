@@ -39,6 +39,17 @@ class UserChecklistRepository extends ServiceEntityRepository
         }
     }
 
+    public function findChecklistByUser(int $userId): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->join('u.checklist', 'checklist')
+            ->select('u', 'checklist')
+            ->where('u.user =' . $userId)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return UserChecklist[] Returns an array of UserChecklist objects
 //     */
