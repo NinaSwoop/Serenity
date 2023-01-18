@@ -39,6 +39,17 @@ class UserVideoRepository extends ServiceEntityRepository
         }
     }
 
+    public function findVideoByUser(int $userId): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->join('u.video', 'video')
+            ->select('u', 'video')
+            ->where('u.user =' . $userId)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return UserVideo[] Returns an array of UserVideo objects
 //     */
