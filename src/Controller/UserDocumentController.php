@@ -45,6 +45,10 @@ class UserDocumentController extends AbstractController
 
         $category = $categoryRepository->findOneBy(['title' => 'Finir les démarches administratives']);
 
-        return $this->redirectToRoute('app_category_show', ['id' => $category->getId()], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute(
+            'app_category_show',
+            ['title' => $category->getTitle()],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }
