@@ -8,7 +8,10 @@
 		<p class="professionalBox d-flex justify-content-around align-items-center">
 			<span>
 				{{ professional.name}}</span>
-            <a href="#"><img class ="empty-checked-relative" src="{{ asset('build/images/checked-empty.svg')}}" alt="..."></a>
+			<a href="#"><img class="empty-checked-relative" src="{{ asset('build/images/checked-empty.svg')}}" alt="..."></a>
 		</p>
-
+		<p>
+			<a href="{{ path("app_medical_discipline_check" , { id: professional.id }) }}">Marquer comme fait/vu</a>
+		</p>
+	</p>
 {% endfor %}</div>

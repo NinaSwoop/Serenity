@@ -10,10 +10,12 @@
 			{{course.step}}
 			:
 			{{course.title}}
-            <a href="#"><img class ="empty-checked-relative" src="{{ asset('build/images/checked-empty.svg')}}" alt="..."></a>
+			<a href="#"><img class="empty-checked-relative" src="{{ asset('build/images/checked-empty.svg')}}" alt="..."></a>
 		</p>
 		<img src="{{asset('build/images/' ~ course.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>
-
+		<p>
+			<a href="{{ path("app_medicalCourse_check" , { id: course.id }) }}">Marquer comme fait/vu</a>
+		</p>
 	{% endfor %}
 </div>
 
@@ -24,4 +26,3 @@
 {#<a href="{{ path('program_watchlist', {id: program.id})}}">#}
 {#    <i class="bi {{ app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>#}
 {#</a>#}
-

@@ -29,9 +29,13 @@ class SchemaContent
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'schemaContent')]
     private Collection $secretariats;
 
+    #[ORM\OneToMany(mappedBy: 'schemaContent', targetEntity: UserSchemaContent::class)]
+    private Collection $userSchemaContents;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
+        $this->userSchemaContents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,6 +84,36 @@ class SchemaContent
         if (!$this->secretariats->contains($secretariat)) {
             $this->secretariats->add($secretariat);
             $secretariat->addSchemaContent($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserSchemaContent>
+     */
+    public function getUserSchemaContents(): Collection
+    {
+        return $this->userSchemaContents;
+    }
+
+    public function addUserSchemaContent(UserSchemaContent $userSchemaContent): self
+    {
+        if (!$this->userSchemaContents->contains($userSchemaContent)) {
+            $this->userSchemaContents->add($userSchemaContent);
+            $userSchemaContent->setSchemaContent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserSchemaContent(UserSchemaContent $userSchemaContent): self
+    {
+        if ($this->userSchemaContents->removeElement($userSchemaContent)) {
+            // set the owning side to null (unless already changed)
+            if ($userSchemaContent->getSchemaContent() === $this) {
+                $userSchemaContent->setSchemaContent(null);
+            }
         }
 
         return $this;

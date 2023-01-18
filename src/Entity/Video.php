@@ -31,9 +31,13 @@ class Video
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'video')]
     private Collection $secretariats;
 
+    #[ORM\OneToMany(mappedBy: 'video', targetEntity: UserVideo::class)]
+    private Collection $userVideos;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
+        $this->userVideos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +98,36 @@ class Video
         if (!$this->secretariats->contains($secretariat)) {
             $this->secretariats->add($secretariat);
             $secretariat->addVideo($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserVideo>
+     */
+    public function getUserVideos(): Collection
+    {
+        return $this->userVideos;
+    }
+
+    public function addUserVideo(UserVideo $userVideo): self
+    {
+        if (!$this->userVideos->contains($userVideo)) {
+            $this->userVideos->add($userVideo);
+            $userVideo->setVideo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserVideo(UserVideo $userVideo): self
+    {
+        if ($this->userVideos->removeElement($userVideo)) {
+            // set the owning side to null (unless already changed)
+            if ($userVideo->getVideo() === $this) {
+                $userVideo->setVideo(null);
+            }
         }
 
         return $this;

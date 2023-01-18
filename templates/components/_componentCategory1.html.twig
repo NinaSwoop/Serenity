@@ -22,7 +22,7 @@
 			<div class="modal-body card schema-card col-12 g-3">
 				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ schema.picture)}}" alt="Card image cap">
 					<p>
-						<a href="/category">Marquer comme fait/vu</a>
+						<a href="{{ path("app_schema_content_check" , { id: schema.id }) }}">Marquer comme fait/vu</a>
 					</p>
 			</div>
 
@@ -62,6 +62,9 @@
 						<p class="card-text card-subtitle p-2">
 							<small class="text-muted">{{video.duration}}
 								minutes</small>
+						</p>
+						<p>
+							<a href="{{ path("app_video_check" , { id: video.id }) }}">Marquer comme fait/vu</a>
 						</p>
 					</div>
 				</div>
