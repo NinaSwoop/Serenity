@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\UserDocument;
 use App\Entity\UserMedicalCourse;
+use App\Entity\User;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Repository\UserChecklistRepository;
@@ -17,17 +18,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CategoryService;
 
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, CategoryService $categoryService): Response
     {
+        $elementsChecked = $categoryService->elementChecked();
         $categories = $categoryRepository->findAll();
 
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
+
         ]);
     }
 
@@ -50,7 +60,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
+    #[Route('/{title}', name: 'app_category_show', methods: ['GET'])]
     public function show(
         Category $category,
         UserDocumentRepository $userDocRepository,
@@ -58,8 +68,11 @@ class CategoryController extends AbstractController
         UserChecklistRepository $userCheckRepository,
         UserVideoRepository $userVideoRepository,
         UserMedicalCourseRepository $userCourseRepository,
-        UserMedDisciplineRepository $userDiscRepository
+        UserMedDisciplineRepository $userDiscRepository,
+        CategoryService $categoryService
     ): Response {
+
+        $elementsChecked = $categoryService->elementChecked();
 
         /** @var \App\Entity\User */
         $user = $this->getUser();
@@ -77,7 +90,14 @@ class CategoryController extends AbstractController
             'userSchemas' => $userSchemas,
             'userVideos' => $userVideos,
             'userMedicalCourses' => $userMedicalCourses,
-            'userMedicalDisciplines' => $userMedDisciplines
+            'userMedicalDisciplines' => $userMedDisciplines,
+            'categories' => $elementsChecked['categories'],
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
         ]);
     }
 

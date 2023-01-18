@@ -1,0 +1,13 @@
+{% set total = app.user.userChecklists|length %}
+{% set isChecked = checklist|length %}
+{% set percent = (isChecked / total)*100 %}
+
+
+<a href="{{ path("app_category_show" , { title: "Ma check-list avant le départ à la clinique" }) }}" class="text-decoration-none">
+	<div class="progress rounded-4 my-3 mx-4 category5-progress">
+		<div class="progress-bar rounded-4-start category5-progressbar" style="width: {{percent}}%" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10">
+			<div class="progress-title-cat px-3">Ma check-list avant le départ à la clinique</div>
+		</div>
+		<span class="progress-level-cat align-self-center text-white ms-auto p-2">{{isChecked}}/{{total}}</span>
+	</div>
+</a>
