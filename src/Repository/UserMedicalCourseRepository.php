@@ -39,6 +39,17 @@ class UserMedicalCourseRepository extends ServiceEntityRepository
         }
     }
 
+    public function findMedicalCourseByUser(int $userId): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->join('u.medicalCourse', 'medicalCourse')
+            ->select('u', 'medicalCourse')
+            ->where('u.user =' . $userId)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return UserMedicalCourse[] Returns an array of UserMedicalCourse objects
 //     */

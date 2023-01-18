@@ -1,4 +1,4 @@
-{% include "/components/_progressbar.html.twig" %}
+{% include "/components/_progressbar_category2.html.twig" %}
 
 <h2 class="my-4 mx-4">Quelques documents</h2>
 
@@ -6,10 +6,12 @@
 	<div class="row mx-4">
 		{% for userDocument in userDocuments %}
 			<div class="card schema-card col-6 g-3">
+
 				<div class="background-check"></div>
 				<a href="{{ path("app_document_check" , { id: userDocument.document.id }) }}">
 					<i class="bi {{ userDocument.isChecked ? 'bi-check-circle-fill' : 'bi-check-circle' }}"></i>
 				</a>
+
 				<img class="card-img-top documentPicture" src="{{asset('build/images/' ~ userDocument.document.picture)}}" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">{{ userDocument.document.title}}</h5>
@@ -20,6 +22,7 @@
 						{% endif %}
 					</p>
 					<p class="card-text card-subtitle text-muted">{{ userDocument.document.description}}</p>
+
 				</div>
 			</div>
 		{% endfor %}
