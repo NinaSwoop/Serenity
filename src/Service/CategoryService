@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Service;
+
+use App\Repository\CategoryRepository;
+use App\Repository\UserChecklistRepository;
+use App\Repository\UserDocumentRepository;
+use App\Repository\UserMedDisciplineRepository;
+use App\Repository\UserMedicalCourseRepository;
+use App\Repository\UserSchemaContentRepository;
+use App\Repository\UserVideoRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
+class CategoryService extends AbstractController
+{
+
+    public function ElementChecked(
+        CategoryRepository $categoryRepository,
+        UserDocumentRepository $userDocRepo,
+        UserChecklistRepository $userCheckRepo,
+        UserMedDisciplineRepository $userMedDRepo,
+        UserMedicalCourseRepository $userMedCRepo,
+        UserSchemaContentRepository $userSchemaRepo,
+        UserVideoRepository $userVideoRepo
+    ): array {
+        $elementsChecked['categories'] = $categoryRepository->findAll();
+        $elementsChecked['documentChecked'] = $userDocRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+        $elementsChecked['CheckListChecked'] = $userCheckRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+        $elementsChecked['medDChecked'] = $userMedDRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+        $elementsChecked['medCChecked'] = $userMedCRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+        $elementsChecked['schemaChecked'] = $userSchemaRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+        $elementsChecked['videoChecked'] = $userVideoRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+
+        return $elementsChecked;
+    }
+}
