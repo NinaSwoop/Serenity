@@ -85,7 +85,9 @@ class UserDocumentFixtures extends Fixture implements DependentFixtureInterface
             $userDocument->setUser($this->getReference('user_' . $values['user_id']));
             $userDocument->setDocument($this->getReference('document_' . $values['document_id']));
             $userDocument->setIsChecked($faker->boolean());
-            $userDocument->setcheckedAt($faker->dateTimeBetween('2022-01-01', '2022-12-31'));
+            if ($userDocument->isIsChecked()) {
+                $userDocument->setcheckedAt($faker->dateTimeBetween('2022-01-01', '2022-12-31'));
+            }
             $manager->persist($userDocument);
         }
         $manager->flush();

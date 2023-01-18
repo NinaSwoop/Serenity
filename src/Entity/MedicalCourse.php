@@ -31,9 +31,13 @@ class MedicalCourse
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'medicalCourse')]
     private Collection $secretariats;
 
+    #[ORM\OneToMany(mappedBy: 'medicalCourse', targetEntity: UserMedicalCourse::class)]
+    private Collection $userMedicalCourses;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
+        $this->userMedicalCourses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +98,36 @@ class MedicalCourse
         if (!$this->secretariats->contains($secretariat)) {
             $this->secretariats->add($secretariat);
             $secretariat->addMedicalCourse($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserMedicalCourse>
+     */
+    public function getUserMedicalCourses(): Collection
+    {
+        return $this->userMedicalCourses;
+    }
+
+    public function addUserMedicalCourses(UserMedicalCourse $userMedicalCourse): self
+    {
+        if (!$this->userMedicalCourses->contains($userMedicalCourse)) {
+            $this->userMedicalCourses->add($userMedicalCourse);
+            $userMedicalCourse->setMedicalCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserMedicalCourse(UserMedicalCourse $userMedicalCourse): self
+    {
+        if ($this->userMedicalCourses->removeElement($userMedicalCourse)) {
+            // set the owning side to null (unless already changed)
+            if ($userMedicalCourse->getMedicalCourse() === $this) {
+                $userMedicalCourse->setMedicalCourse(null);
+            }
         }
 
         return $this;

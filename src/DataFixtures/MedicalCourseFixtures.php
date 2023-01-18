@@ -91,7 +91,7 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::MEDICALCOURSES as $values) {
+        foreach (self::MEDICALCOURSES as $key => $values) {
             $medicalCourse = new MedicalCourse();
             $medicalCourse->setStep($values['step']);
             $medicalCourse->setTitle($values['title']);
@@ -101,6 +101,8 @@ class MedicalCourseFixtures extends Fixture implements DependentFixtureInterface
                 $medicalCourse->addSecretariat($this->getReference($secretariat));
             }
             $manager->persist($medicalCourse);
+            $key++;
+            $this->addReference('medical_course_' . $key, $medicalCourse);
         }
         $manager->flush();
     }

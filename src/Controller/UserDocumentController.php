@@ -20,7 +20,7 @@ class UserDocumentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/check', name: 'app_document_check')]
+    #[Route('/{id}/check/document', name: 'app_document_check')]
     public function checkDocument(
         Document $document,
         UserDocumentRepository $userDocRepository,
@@ -40,6 +40,7 @@ class UserDocumentController extends AbstractController
         } else {
             $userDocument->setIsChecked(true);
         }
+
         $userDocRepository->save($userDocument, true);
 
         $category = $categoryRepository->findOneBy(['title' => 'Finir les démarches administratives']);
