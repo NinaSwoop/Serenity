@@ -53,9 +53,6 @@ body {
 }
 
 /* Dashboard */
-.step {
-    font-weight: bold;
-}
 
 .profil-dash {
     height: 110px;
@@ -73,28 +70,27 @@ body {
     border-radius: 25%;
 }
 
-
-.globalProgressBar {
-    border-radius: 16px;
-}
-
 .progress-title {
+    font-weight: bold;
     color: black;
     text-overflow: ellipsis;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 .progress-level {
-    font-size: 1em;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .progress-title-cat {
+    font-weight: bold;
     position: absolute;
     z-index: 1;
     font-size: 1.2em;
 }
 
 .progress-level-cat {
+    font-weight: bold;
     font-size: 1.3em;
 }
 
@@ -129,7 +125,7 @@ body {
     background-color: $category1empty;
 }
 
-#category1-progressbar {
+.category1-progressbar {
     background-color: $category1full;
 }
 
@@ -137,7 +133,7 @@ body {
     background-color: $category2empty;
 }
 
-#category2-progressbar {
+.category2-progressbar {
     background-color: $category2full;
 }
 
@@ -145,7 +141,7 @@ body {
     background-color: $category3empty;
 }
 
-#category3-progressbar {
+.category3-progressbar {
     background-color: $category3full;
 }
 
@@ -153,7 +149,7 @@ body {
     background-color: $category4empty;
 }
 
-#category4-progressbar {
+.category4-progressbar {
     background-color: $category4full;
 }
 
@@ -161,7 +157,7 @@ body {
     background-color: $category5empty;
 }
 
-#category5-progressbar {
+.category5-progressbar {
     background-color: $category5full;
 }
 

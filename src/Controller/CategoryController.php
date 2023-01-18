@@ -2,24 +2,24 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Category;
-use App\Form\CategoryType;
 use App\Entity\UserDocument;
-use App\Service\CategoryService;
 use App\Entity\UserMedicalCourse;
+use App\Entity\User;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use App\Repository\UserVideoRepository;
-use App\Repository\UserDocumentRepository;
 use App\Repository\UserChecklistRepository;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\Repository\UserDocumentRepository;
 use App\Repository\UserMedDisciplineRepository;
 use App\Repository\UserMedicalCourseRepository;
 use App\Repository\UserSchemaContentRepository;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\UserVideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CategoryService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[IsGranted('ROLE_USER')]
 #[Route('/category')]
