@@ -6,30 +6,30 @@
 		{% for userSchema in userSchemas %}
 
 <div type="button" {% if loop.index0 < 4 %} class="card schema-card col-6 g-2" {% else %}
-  class="card schema-card col-6 g-2 d-none" {% endif %} data-bs-target="#modal{{userSchema.schema.id}}" data-bs-toggle="modal">
-	<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schema.picture)}}" alt="Card image cap">
+  class="card schema-card col-6 g-2 d-none" {% endif %} data-bs-target="#modal{{userSchema.schemaContent.id}}" data-bs-toggle="modal">
+	<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap">
 </div>
-			<div class="modal fade" id="modal{{userSchema.schema.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">
+			<div class="modal fade" id="modal{{userSchema.schemaContent.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="modalLabel">
-					{{userSchema.schema.title}}</h1>
+					{{userSchema.schemaContent.title}}</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
 			<div class="modal-body card schema-card col-12 g-3">
-				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schema.picture)}}" alt="Card image cap">
+				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap">
 					<p>
-						<a href="{{ path("app_schema_content_check" , { id: schema.id }) }}">Marquer comme fait/vu</a>
+						<a href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}">Marquer comme fait/vu</a>
 					</p>
 			</div>
 
 			<div class="modal-footer">
-				<a data-bs-target="#modal{{userSchema.schema.id - 1}}" data-bs-toggle="modal" >
+				<a data-bs-target="#modal{{userSchema.schemaContent.id - 1}}" data-bs-toggle="modal" >
                     <img class="arrow-modal" src="{{asset('build/images/left-arrow.svg')}}" alt="left arrow">
                 </a>
-				<a data-bs-target="#modal{{userSchema.schema.id + 1}}" data-bs-toggle="modal">
+				<a data-bs-target="#modal{{userSchema.schemaContent.id + 1}}" data-bs-toggle="modal">
                     <img class="arrow-modal" src="{{asset('build/images/right-arrow.svg')}}" alt="right arrow">
                 </a>
 			</div>
@@ -37,7 +37,7 @@
 	</div>
 </div>
 		{% endfor %}
-		{% if userSchema.category.schemaContents|length > 3 %}
+		{% if category.schemaContents|length > 3 %}
 			<button class="btn my-2 border" id="show-more-schemas">Afficher plus</button>
 		{% endif %}
 	</div>
@@ -50,20 +50,20 @@
 		<div class="card mb-3 border-bottom">
 			<div class="row g-3">
 				<div class="col-sm-8 col-12 video-card">
-					<iframe src="{{userVideos.video.picture}}" class="w-100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe src="{{userVideo.video.picture}}" class="w-100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 				<div class="col-sm-4 col-12">
 					<div class="card-body d-flex flex-column p-0">
 
 						<p class="card-text card-title px-2">
-							<strong>{{userVideos.video.title}}</strong>
+							<strong>{{userVideo.video.title}}</strong>
 						</p>
 						<p class="card-text card-subtitle p-2">
-							<small class="text-muted">{{userVideos.video.duration}}
+							<small class="text-muted">{{userVideo.video.duration}}
 								minutes</small>
 						</p>
 						<p>
-							<a href="{{ path("app_video_check" , { id: video.id }) }}">Marquer comme fait/vu</a>
+							<a href="{{ path("app_video_check" , { id: userVideo.video.id }) }}">Marquer comme fait/vu</a>
 						</p>
 					</div>
 				</div>

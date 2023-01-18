@@ -50,10 +50,6 @@ class UserDocumentRepository extends ServiceEntityRepository
         return $queryBuilder->getResult();
     }
 
-    // SELECT * FROM user_document as u
-    // JOIN document ON document.id = u.document_id
-    // WHERE user_id = 7;
-
     //    /**
     //     * @return UserDocument[] Returns an array of UserDocument objects
     //     */

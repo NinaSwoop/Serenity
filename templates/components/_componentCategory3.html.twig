@@ -7,13 +7,13 @@
 
 		<p class="step my-4">
 			Étape
-			{{medicalCourse.course.step}}
+			{{userMedicalCourse.medicalCourse.step}}
 			:
-			{{medicalCourse.course.title}}
+			{{userMedicalCourse.medicalCourse.title}}
 		</p>
-		<img src="{{asset('build/images/' ~ medicalCourse.course.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>
+		<img src="{{asset('build/images/' ~ userMedicalCourse.medicalCourse.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>
 		<p>
-			<a href="{{ path("app_medicalCourse_check" , { id: course.id }) }}">Marquer comme fait/vu</a>
+			<a href="{{ path("app_medicalCourse_check" , { id: userMedicalCourse.medicalCourse.id }) }}">Marquer comme fait/vu</a>
 		</p>
 	{% endfor %}
 </div>

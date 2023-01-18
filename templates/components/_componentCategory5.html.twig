@@ -9,7 +9,7 @@
 					<label class="form-check-label" for="defaultCheck1">{{ userChecklist.checklist.name }}</label>
 					<p class="text-muted mb-0">{{ userChecklist.checklist.description }}</p>
 					<p>
-						<a href="{{ path("app_checklist_check" , { id: checklist.id }) }}">Marquer comme fait/vu</a>
+						<a href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">Marquer comme fait/vu</a>
 					</p>
 				</div>
 			</div>
