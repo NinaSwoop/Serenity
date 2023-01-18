@@ -3,23 +3,33 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\User;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CategoryService;
 
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, CategoryService $categoryService): Response
     {
+        $elementsChecked = $categoryService->elementChecked();
         $categories = $categoryRepository->findAll();
 
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
+
         ]);
     }
 
@@ -42,11 +52,21 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    #[Route('/{title}', name: 'app_category_show', methods: ['GET'])]
+    public function show(Category $category, CategoryService $categoryService): Response
     {
+        $elementsChecked = $categoryService->elementChecked();
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'categories' => $elementsChecked['categories'],
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
+
         ]);
     }
 

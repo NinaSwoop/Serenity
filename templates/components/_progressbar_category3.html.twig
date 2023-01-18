@@ -1,0 +1,13 @@
+{% set total = app.user.userMedicalCourses|length %}
+{% set isChecked = medicalC|length %}
+{% set percent = (isChecked / total)*100 %}
+
+
+<a href="{{ path("app_category_show" , { title: "Préparer mon arrivée en toute sérénité" }) }}" class="text-decoration-none">
+	<div class="progress rounded-4 my-3 mx-4 category3-progress">
+		<div class="progress-bar rounded-4-start category3-progressbar" style="width: {{percent}}%" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10">
+			<div class="progress-title-cat px-3">Préparer mon arrivée en toute sérénité</div>
+		</div>
+		<span class="progress-level-cat align-self-center text-white ms-auto p-2">{{isChecked}}/{{total}}</span>
+	</div>
+</a>
