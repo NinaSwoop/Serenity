@@ -215,10 +215,9 @@ body {
     width: 12em;
 }
 
-
-//.documentPicture {
-//    height: 130px;
-//}
+.documentPicture {
+    height: 130px;
+}
 
 .documentCard {
     width: 170px;
@@ -242,14 +241,29 @@ h5.card-title {
     font-size: 13px;
 }
 
-.empty-checked-absolute {
-    width: 30px;
+.bi-check-circle-fill {
     position: absolute;
-    margin: 20px;
+    color: #0EAD69;
+    font-size: 2rem;
+    margin-left: 7.2px;
+
 }
 
-.empty-checked-relative {
-    width: 30px;
+.bi-check-circle {
+    position: absolute;
+    color: #0EAD69;
+    font-size: 2rem;
+    margin-left: 7.2px;
+}
+
+.background-check {
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 7.2px;
+    margin-left: 7.2px;
 }
 
 /* End of Dashboard */
@@ -337,9 +351,8 @@ h5.card-title {
 }
 
 .arrow-modal {
-    width : 40px;
+    width: 40px;
     height: 34px;
 }
 
 /* End of Arrows Modal in _ComponentCategory1 */
-
