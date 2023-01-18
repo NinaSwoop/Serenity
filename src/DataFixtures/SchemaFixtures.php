@@ -104,7 +104,7 @@ class SchemaFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::SCHEMACONTENT as $values) {
+        foreach (self::SCHEMACONTENT as $key => $values) {
             $schemaContent = new SchemaContent();
             $schemaContent->setPicture($values['picture']);
             $schemaContent->setTitle($values['title']);
@@ -113,6 +113,8 @@ class SchemaFixtures extends Fixture implements DependentFixtureInterface
                 $schemaContent->addSecretariat($this->getReference($secretariat));
             }
             $manager->persist($schemaContent);
+            $key++;
+            $this->addReference('schema_content_' . $key, $schemaContent);
         }
         $manager->flush();
     }

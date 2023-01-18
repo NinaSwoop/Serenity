@@ -80,7 +80,7 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::CHECKLISTS as $values) {
+        foreach (self::CHECKLISTS as $key => $values) {
             $checklist = new Checklist();
             $checklist->setName($values['name']);
             $checklist->setDescription($values['description']);
@@ -89,6 +89,8 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
                 $checklist->addSecretariat($this->getReference($secretariat));
             }
             $manager->persist($checklist);
+            $key++;
+            $this->addReference('checklist_' . $key, $checklist);
         }
         $manager->flush();
     }

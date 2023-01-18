@@ -44,7 +44,7 @@ class MedicalDisciplineFixtures extends Fixture implements DependentFixtureInter
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::MEDICALDISCIPLINES as $values) {
+        foreach (self::MEDICALDISCIPLINES as $key => $values) {
             $medicalDiscipline = new MedicalDiscipline();
             $medicalDiscipline->setName($values['name']);
             $medicalDiscipline->setCategory($this->getReference('category_' . $values['category']));
@@ -52,6 +52,8 @@ class MedicalDisciplineFixtures extends Fixture implements DependentFixtureInter
                 $medicalDiscipline->addSecretariat($this->getReference($secretariat));
             }
             $manager->persist($medicalDiscipline);
+            $key++;
+            $this->addReference('medical_discipline_' . $key, $medicalDiscipline);
         }
         $manager->flush();
     }

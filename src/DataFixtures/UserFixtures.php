@@ -20,7 +20,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'password' => 'jeanmicheladmin',
             'picture' => 'adminpicture.jpg',
             'secretariat' => 'secretariat_neurologie',
-
         ],
         [
             'firstname' => 'Ibrahim',
@@ -62,10 +61,11 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setPhonenumber($values['phonenumber']);
             $user->setPicture($values['picture']);
             $user->setSecretariat($this->getReference($values['secretariat']));
-            $this->addReference('user_' . $key, $user);
             $hash = $this->passwordHasher->hashPassword($user, $values['password']);
             $user->setPassword($hash);
             $manager->persist($user);
+            $key++;
+            $this->addReference('user_' . $key, $user);
         }
         $manager->flush();
     }
