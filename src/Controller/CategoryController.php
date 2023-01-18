@@ -6,13 +6,6 @@ use App\Entity\Category;
 use App\Entity\User;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use App\Repository\ChecklistRepository;
-use App\Repository\UserChecklistRepository;
-use App\Repository\UserDocumentRepository;
-use App\Repository\UserMedDisciplineRepository;
-use App\Repository\UserMedicalCourseRepository;
-use App\Repository\UserSchemaContentRepository;
-use App\Repository\UserVideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,13 +16,13 @@ use App\Service\CategoryService;
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(): Response
+    public function index(CategoryRepository $categoryRepository, CategoryService $categoryService): Response
     {
-        $elementsChecked = new CategoryService;
-        $elementsChecked->elementsChecked();
+        $elementsChecked = $categoryService->elementChecked();
+        $categories = $categoryRepository->findAll();
 
         return $this->render('category/index.html.twig', [
-            'categories' => $elementsChecked['categories'],
+            'categories' => $categories,
             'document' => $elementsChecked['documentChecked'],
             'checklist' => $elementsChecked['CheckListChecked'],
             'medicalD' => $elementsChecked['medDChecked'],
@@ -59,33 +52,20 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(
-        CategoryRepository $categoryRepository,
-        Category $category,
-        UserDocumentRepository $userDocRepo,
-        UserChecklistRepository $userCheckRepo,
-        UserMedDisciplineRepository $userMedDRepo,
-        UserMedicalCourseRepository $userMedCRepo,
-        UserSchemaContentRepository $userSchemaRepo,
-        UserVideoRepository $userVideoRepo
-    ): Response {
-        $categories = $categoryRepository->findAll();
-        $documentChecked = $userDocRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
-        $CheckListChecked = $userCheckRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
-        $medDChecked = $userMedDRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
-        $medCChecked = $userMedCRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
-        $schemaChecked = $userSchemaRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
-        $videoChecked = $userVideoRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+    #[Route('/{title}', name: 'app_category_show', methods: ['GET'])]
+    public function show(Category $category, CategoryService $categoryService): Response
+    {
+        $elementsChecked = $categoryService->elementChecked();
+
         return $this->render('category/show.html.twig', [
-            'categories' => $categories,
             'category' => $category,
-            'document' => $documentChecked,
-            'checklist' => $CheckListChecked,
-            'medicalD' => $medDChecked,
-            'medicalC' => $medCChecked,
-            'schema' => $schemaChecked,
-            'video' => $videoChecked
+            'categories' => $elementsChecked['categories'],
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
 
         ]);
     }

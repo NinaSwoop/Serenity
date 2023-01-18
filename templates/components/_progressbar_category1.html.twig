@@ -1,9 +1,9 @@
-{% set total = (app.user.userSchemaContents and app.user.userVideos)|length %}
+{% set total = (app.user.userSchemaContents)|length %}
 {% set isChecked = (schema)|length %}
 {% set percent = (isChecked / total)*100 %}
 
 
-<a href="{{ path("app_category_show" , { id: 6 }) }}" class="text-decoration-none">
+<a href="{{ path("app_category_show" , { title: "Comprendre mon opération"}) }}" class="text-decoration-none">
 	<div class="progress rounded-4 my-3 mx-4 category1-progress">
 		<div class="progress-bar rounded-4-start category1-progressbar" style="width: {{percent}}%" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10">
 			<div class="progress-title-cat px-3">Comprendre mon opération</div>
