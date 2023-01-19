@@ -10,11 +10,11 @@
 			{{userMedicalCourse.medicalCourse.step}}
 			:
 			{{userMedicalCourse.medicalCourse.title}}
-			<a href="#"><img class="empty-checked-relative" src="{{ asset('build/images/checked-empty.svg')}}" alt="..."></a>
+			{# <div class="background-check"></div> #}
+			<a href="{{ path("app_medicalCourse_check" , { id: userMedicalCourse.medicalCourse.id }) }}">
+				<i class="bi medical-course {{ userMedicalCourse.isChecked ? ' medical-course-bi-check-circle bi-check-circle' : ' medical-course-bi-circle bi-circle'}}"></i>
+			</a>
 		</p>
 		<img src="{{asset('build/images/' ~ userMedicalCourse.medicalCourse.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>
-		<p>
-			<a href="{{ path("app_medicalCourse_check" , { id: userMedicalCourse.medicalCourse.id }) }}">Marquer comme fait/vu</a>
-		</p>
 	{% endfor %}
 </div>
