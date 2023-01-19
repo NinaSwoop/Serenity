@@ -32,6 +32,7 @@ html,
 body {
     font-family: 'Work Sans', sans-serif;
     background: linear-gradient(360deg, #FEFEFF 0%, #FFFFFF 100%);
+    margin-bottom: 40px;
 }
 
 .navbar {
@@ -58,7 +59,7 @@ body {
     height: 110px;
 }
 
-.undefined-patient{
+.undefined-patient {
     max-width: 100px;
     max-height: 100px;
     background: url(/assets/images/bras-cassé.jpg) center/cover;
@@ -71,7 +72,6 @@ body {
 }
 
 .progress-title {
-    font-weight: bold;
     color: black;
     text-overflow: ellipsis;
     font-size: 1.1em;
@@ -83,7 +83,6 @@ body {
 }
 
 .progress-title-cat {
-    font-weight: bold;
     position: absolute;
     z-index: 1;
     font-size: 1.2em;
@@ -180,7 +179,6 @@ body {
     width: 12em;
 }
 
-
 .documentPicture {
     height: 130px;
 }
@@ -206,6 +204,53 @@ h5.card-title {
 .text-muted {
     font-size: 13px;
 }
+
+/* Checked button in _componentCategories */
+
+.bi-circle {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.bi-check-circle {
+    color: #0EAD69;
+    font-size: 1.5rem;
+}
+
+/* Specifics classes to absolute position of buttons check */
+
+.absolue-check {
+    position: absolue;
+}
+
+.absolue-check-circle {
+    position: absolute;
+    color: #0EAD69;
+    font-size: 1.5rem;
+    margin-left: 7px;
+    margin-top: 2.1px;
+}
+
+.absolue-circle {
+    position: absolute;
+    color: black;
+    font-size: 1.5rem;
+    margin-left: 7px;
+    margin-top: 2.1px;
+}
+
+.background-check {
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 7.2px;
+    margin-left: 7.2px;
+}
+
+/* End of specifics classes to absolute position of button check */
+/* End checked button in _componentCategories */
 
 /* End of Dashboard */
 
@@ -297,3 +342,10 @@ h5.card-title {
 }
 
 /* End of Arrows Modal in _ComponentCategory1 */
+
+/* Arrow style */
+
+.arrow-back {
+    width: 20px;
+    height: 20px;
+}
