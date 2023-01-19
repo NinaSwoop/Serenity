@@ -32,6 +32,7 @@ html,
 body {
     font-family: 'Work Sans', sans-serif;
     background: linear-gradient(360deg, #FEFEFF 0%, #FFFFFF 100%);
+    margin-bottom: 40px;
 }
 
 .navbar {
@@ -58,7 +59,7 @@ body {
     height: 110px;
 }
 
-.undefined-patient{
+.undefined-patient {
     max-width: 100px;
     max-height: 100px;
     background: url(/assets/images/bras-cassé.jpg) center/cover;
@@ -297,3 +298,10 @@ h5.card-title {
 }
 
 /* End of Arrows Modal in _ComponentCategory1 */
+
+/* Arrow style */
+
+.arrow-back {
+    width: 20px;
+    height: 20px;
+}
