@@ -1,32 +1,43 @@
 {% extends 'baseCategory.html.twig' %}
-
+{% set total = (app.user.userDocuments|length) + (app.user.userChecklists|length) + (app.user.userMedicalCourses|length) + (app.user.userSchemaContents|length) + (app.user.userVideos|length) + (app.user.userMedDisciplines|length) %}
+{% set totalchecked = document|length + checklist|length + medicalD|length + medicalC|length + schema|length + video|length %}
+{% set percent = ((totalchecked / total)*100)|round(0) %}
 {% block title %}Dashboard
 {% endblock %}
 
 {% block body %}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-		<section class="d-flex profil-dash m-3">
-			<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
-			<div class="d-flex flex-column ms-3 ">
+		<section class="d-flex profil-dash m-3 mx-4">
+			<div class="undefined-patient">
+				{% if app.user.picture is not null %}
+					<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+				{% endif %}
+			</div>
+			<div class="d-flex flex-column ms-3 w-100">
 				<div class=" my-2 fs-3">
 					{{app.user.firstname}}
 				</div>
 
-				<div class="progress globalProgressBar progress-index d-flex">
-					<div class="progress-bar rounded-5-start progbar-70 progressbar-index" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
-						<div class="progress-title p-2">
-							Préparation pour ma chirurgie
+				<div class="progress progress-index position-relative z-0">
+					<div class="progress-bar rounded-5-start progbar progressbar-index z-2" style="width: {{percent}}%" role=" progressbar" aria-label=" example with label" aria-valuenow=" 4" aria-valuemin=" 0" aria-valuemax=" 100">
+						<div class="progress-title p-2 position-absolute z-3 d-flex justify-content-between w-100">
+							<div>
+								Préparation pour ma chirurgie
+							</div>
+							<div>
+								{{percent}}%
+							</div>
 						</div>
 					</div>
-					<span class="progress-level align-self-center ms-auto p-2">70%</span>
 				</div>
 			</div>
 		</section>
 	{% endif %}
-	<div class="d-flex justify-content-end m-3">
+
+	<div class="d-flex justify-content-end m-3 mx-4">
 
 
-		<table class="">
+		<table>
 			<thead class="thead-rdv">
 				<tr>
 					<th class="px-3">DATE</th>

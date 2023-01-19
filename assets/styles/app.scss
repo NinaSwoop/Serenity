@@ -2,7 +2,7 @@ $category1empty : #D9B520;
 $category1full : #F5D23F;
 $category2empty : #079FA5;
 $category2full : #4FD5B8;
-$category3empty : #F85585;
+$category3empty : #C1486C;
 $category3full : #F85585;
 $category4empty : #44D660;
 $category4full : #C2EB64;
@@ -12,7 +12,21 @@ $card-border-color: none;
 $component-active-bg: #0EAD69;
 $border-radius: 16px;
 
+$value-min-global : valueMinGlobal;
+$value-max-global : valueMaxGlobal;
+$value-min1 : valueMin1;
+$value-max1 : valueMax1;
+$value-min2 : valueMin2;
+$value-max2 : valueMax2;
+$value-min3 : valueMin3;
+$value-max3 : valueMax3;
+$value-min4 : valueMin4;
+$value-max4 : valueMax4;
+$value-min5 : valueMin5;
+$value-max5 : valueMax5;
+
 @import "~bootstrap/scss/bootstrap";
+
 
 html,
 body {
@@ -40,41 +54,44 @@ body {
 }
 
 /* Dashboard */
-.step {
-    font-weight: bold;
-}
 
 .profil-dash {
     height: 110px;
 }
 
+.undefined-patient {
+    max-width: 100px;
+    max-height: 100px;
+    background: url(/assets/images/bras-cassé.jpg) center/cover;
+}
+
 .picture-patient {
-    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
     border-radius: 25%;
 }
 
-.globalProgressBar {
-    border-radius: 16px;
-}
-
 .progress-title {
+    font-weight: bold;
     color: black;
-    position: absolute;
-    z-index: 1;
-    font-size: 1em;
+    text-overflow: ellipsis;
+    font-size: 1.1em;
 }
 
 .progress-level {
-    font-size: 1em;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .progress-title-cat {
+    font-weight: bold;
     position: absolute;
     z-index: 1;
     font-size: 1.2em;
 }
 
 .progress-level-cat {
+    font-weight: bold;
     font-size: 1.3em;
 }
 
@@ -83,17 +100,11 @@ body {
 }
 
 .progress {
-    position: relative;
-}
-
-.progress {
-    position: relative;
     height: 10vh;
 }
 
 .progress-index {
     height: 6vh;
-    width: 55vw;
     background-color: #F4F6FA;
 }
 
@@ -111,49 +122,44 @@ body {
     font-size: 1.5em;
 }
 
-.arrow-back {
-    width: 20px;
-    height: 20px;
-}
-
 .category1-progress {
-    background-color: #D9B520;
+    background-color: $category1empty;
 }
 
 .category1-progressbar {
-    background-color: #F5D23F;
+    background-color: $category1full;
 }
 
 .category2-progress {
-    background-color: #079FA5;
+    background-color: $category2empty;
 }
 
 .category2-progressbar {
-    background-color: #4FD5B8;
+    background-color: $category2full;
 }
 
 .category3-progress {
-    background-color: #C1486C;
+    background-color: $category3empty;
 }
 
 .category3-progressbar {
-    background-color: #F85585;
+    background-color: $category3full;
 }
 
 .category4-progress {
-    background-color: #44D660;
+    background-color: $category4empty;
 }
 
 .category4-progressbar {
-    background-color: #C2EB64;
+    background-color: $category4full;
 }
 
 .category5-progress {
-    background-color: #040055;
+    background-color: $category5empty;
 }
 
 .category5-progressbar {
-    background-color: #6A65F6;
+    background-color: $category5full;
 }
 
 .schema-card {
@@ -338,3 +344,10 @@ h5.card-title {
 }
 
 /* End of Arrows Modal in _ComponentCategory1 */
+
+/* Arrow style */
+
+.arrow-back {
+    width: 20px;
+    height: 20px;
+}
