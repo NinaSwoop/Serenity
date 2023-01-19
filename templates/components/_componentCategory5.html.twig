@@ -6,8 +6,8 @@
 			<div class="card-body">
 				<div class="form-check" id="form">
 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck">
-					<label class="form-check-label" for="defaultCheck1">{{ userChecklist.checklist.name }}</label>
-					<p class="text-muted mb-0">{{ userChecklist.checklist.description }}</p>
+					<label class="{{ userChecklist.isChecked ? 'is-checked-checklist' : '' }}">{{ userChecklist.checklist.name }}</label>
+					<p class="text-muted mb-0 ">{{ userChecklist.checklist.description }}</p>
 					<p>
 						<a href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">Marquer comme fait/vu</a>
 					</p>
