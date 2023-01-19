@@ -6,7 +6,7 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
 					<span>{{ userChecklist.checklist.name }}</span>
-					<a href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">
+					<a class="checkRelativeButton" href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">
 						<i class="bi {{ userChecklist.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
 					</a>
 				</div>
