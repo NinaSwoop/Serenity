@@ -6,11 +6,38 @@
 {% block body %}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<section class="d-flex profil-dash m-3 mx-4">
-			<div class="undefined-patient">
-				{% if app.user.picture is not null %}
-					<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
-				{% endif %}
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profilePicture">
+				<div class="undefined-patient">
+					{% if app.user.picture is not null %}
+						<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+					{% endif %}
+				</div>
+			</button>
+			<div class="modal" id="profilePicture" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Ma photo de profil</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="undefined-patient">
+								{% if app.user.picture is not null %}
+									<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+								{% endif %}
+							</div>
+							<div>
+								{{ uploadPicture }}
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Modifier ma photo</button>
+						</div>
+					</div>
+				</div>
 			</div>
+
 			<div class="d-flex flex-column ms-3 w-100">
 				<div class=" my-2 fs-3">
 					{{app.user.firstname}}
