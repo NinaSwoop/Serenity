@@ -225,9 +225,18 @@ h5.card-title {
     margin-top: 2.1px;
 }
 
-.bi-video {
-    color: #040055;
-    font-size: 2rem;
+.video-check-circle {
+    color: #0EAD69;
+    font-size: 1.5rem;
+}
+
+.video-circle {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.video {
+    position: relative;
 }
 
 .background-check {
