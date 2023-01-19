@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Checklist{% endblock %}
+
+{% block body %}
+    <h1>Edit Checklist</h1>
+
+    {{ include('checklist/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_checklist_index') }}">back to list</a>
+
+    {{ include('checklist/_delete_form.html.twig') }}
+{% endblock %}
