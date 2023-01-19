@@ -201,27 +201,41 @@ h5.card-title {
     font-size: 13px;
 }
 
-.bi-check-circle-fill {
-    position: absolute;
-    color: #0EAD69;
-    font-size: 2rem;
-    margin-left: 7.2px;
+// .bi-check-circle-fill {
+//     position: absolute;
+//     color: #0EAD69;
+//     font-size: 1.5rem;
+//     margin-left: 7.2px;
 
+// }
+
+.bi-circle {
+    position: absolute;
+    color: black;
+    font-size: 1.5rem;
+    margin-left: 7px;
+    margin-top: 2.1px;
 }
 
 .bi-check-circle {
     position: absolute;
     color: #0EAD69;
+    font-size: 1.5rem;
+    margin-left: 7px;
+    margin-top: 2.1px;
+}
+
+.bi-video {
+    color: #040055;
     font-size: 2rem;
-    margin-left: 7.2px;
 }
 
 .background-check {
     background-color: white;
     border-radius: 50%;
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin-top: 7.2px;
     margin-left: 7.2px;
 }
