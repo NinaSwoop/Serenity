@@ -1,18 +1,15 @@
 {% include "/components/_progressbar_category3.html.twig" %}
 
 <div class="my-4 mx-4">
-
 	<p>Préparons nous à vivre la journée de l’intervention une première fois, histoire d’être en toute sérénité le jour J :</p>
 	{% for userMedicalCourse in userMedicalCourses %}
-
 		<p class="step my-4 d-flex justify-content-between align-items-center">
 			Étape
 			{{userMedicalCourse.medicalCourse.step}}
 			:
 			{{userMedicalCourse.medicalCourse.title}}
-			{# <div class="background-check"></div> #}
 			<a href="{{ path("app_medicalCourse_check" , { id: userMedicalCourse.medicalCourse.id }) }}">
-				<i class="bi medical-course {{ userMedicalCourse.isChecked ? ' medical-course-bi-check-circle bi-check-circle' : ' medical-course-bi-circle bi-circle'}}"></i>
+				<i class="bi {{ userMedicalCourse.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
 			</a>
 		</p>
 		<img src="{{asset('build/images/' ~ userMedicalCourse.medicalCourse.picture)}}" class="rounded mx-auto d-block" alt="Card image cap"/>

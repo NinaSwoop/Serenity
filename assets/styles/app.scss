@@ -201,23 +201,25 @@ h5.card-title {
     font-size: 13px;
 }
 
-// .bi-check-circle-fill {
-//     position: absolute;
-//     color: #0EAD69;
-//     font-size: 1.5rem;
-//     margin-left: 7.2px;
-
-// }
+/* Checked button in _componentCategories */
 
 .bi-circle {
-    position: absolute;
     color: black;
     font-size: 1.5rem;
-    margin-left: 7px;
-    margin-top: 2.1px;
 }
 
 .bi-check-circle {
+    color: #0EAD69;
+    font-size: 1.5rem;
+}
+
+/* Specifics classes to absolute position of buttons check */
+
+.absolue-check {
+    position: absolue;
+}
+
+.absolue-check-circle {
     position: absolute;
     color: #0EAD69;
     font-size: 1.5rem;
@@ -225,32 +227,12 @@ h5.card-title {
     margin-top: 2.1px;
 }
 
-.video-check-circle {
-    color: #0EAD69;
-    font-size: 1.5rem;
-}
-
-.video-circle {
+.absolue-circle {
+    position: absolute;
     color: black;
     font-size: 1.5rem;
-}
-
-.video {
-    position: relative;
-}
-
-.medical-course {
-    position: relative;
-}
-
-.medical-course-bi-check-circle {
-    color: #0EAD69;
-    font-size: 1.5rem;
-}
-
-medical-course-bi-circle {
-    color: black;
-    font-size: 1.5rem;
+    margin-left: 7px;
+    margin-top: 2.1px;
 }
 
 .background-check {
@@ -262,6 +244,9 @@ medical-course-bi-circle {
     margin-top: 7.2px;
     margin-left: 7.2px;
 }
+
+/* End of specifics classes to absolute position of button check */
+/* End checked button in _componentCategories */
 
 /* End of Dashboard */
 
