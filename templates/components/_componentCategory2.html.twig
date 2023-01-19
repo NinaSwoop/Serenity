@@ -16,9 +16,9 @@
 						{% endif %}
 					</p>
 					<p class="card-text card-subtitle text-muted">{{ userDocument.document.description}}</p>
-					<p>
-						<a href="{{ path("app_document_check" , { id: userDocument.document.id }) }}">Marquer comme fait/vu</a>
-					</p>
+					<a class="checkButton" href="{{ path("app_document_check" , { id: userDocument.document.id }) }}">
+						<i class="bi {{ userDocument.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
+					</a>
 				</div>
 			</div>
 		{% endfor %}
