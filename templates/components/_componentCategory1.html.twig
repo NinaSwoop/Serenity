@@ -9,7 +9,7 @@
 			class="card schema-card col-6 g-2 d-none" {% endif %} data-bs-target="#modal{{userSchema.schemaContent.id}}" data-bs-toggle="modal">
 			 <div class="background-check"></div> 
 			 <a href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}"> 
-			 <i class="bi {{ userSchema.isChecked ? 'bi-check-circle-fill' : 'bi-check-circle' }}"></i> 
+			 <i class="bi {{ userSchema.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
 			 </a> 
 			 <img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap"> 
 			 </div> 
