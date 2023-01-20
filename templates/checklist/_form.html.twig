@@ -1,4 +1,6 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="edit d-flex justify-content-center">
+	{{ form_start(form) }}
+	{{ form_row(form.name) }}
+	{{ form_row(form.description) }}
+	<button type="button" class="btn btn-success rounded-pill jusitify-content-center">{{ button_label|default('Enregistrer') }}</button>
+	{{ form_end(form) }}

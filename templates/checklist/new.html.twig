@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Checklist{% endblock %}
+{% block title %}New Checklist
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Checklist</h1>
+	<h1>Create new Checklist</h1>
 
-    {{ include('checklist/_form.html.twig') }}
+	{{ include('checklist/_form.html.twig') }}
 
-    <a href="{{ path('app_checklist_index') }}">back to list</a>
+	<a href="{{ path('app_checklist_index') }}">Retour à la liste</a>
 {% endblock %}
