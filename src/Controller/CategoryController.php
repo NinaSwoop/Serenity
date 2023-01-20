@@ -3,23 +3,43 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\UserDocument;
+use App\Entity\UserMedicalCourse;
+use App\Entity\User;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\UserChecklistRepository;
+use App\Repository\UserDocumentRepository;
+use App\Repository\UserMedDisciplineRepository;
+use App\Repository\UserMedicalCourseRepository;
+use App\Repository\UserSchemaContentRepository;
+use App\Repository\UserVideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\CategoryService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, CategoryService $categoryService): Response
     {
+        $elementsChecked = $categoryService->elementChecked();
         $categories = $categoryRepository->findAll();
 
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
+
         ]);
     }
 
@@ -42,12 +62,44 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
-    {
+    #[Route('/{title}', name: 'app_category_show', methods: ['GET'])]
+    public function show(
+        Category $category,
+        UserDocumentRepository $userDocRepository,
+        UserSchemaContentRepository $userSchemaRepository,
+        UserChecklistRepository $userCheckRepository,
+        UserVideoRepository $userVideoRepository,
+        UserMedicalCourseRepository $userCourseRepository,
+        UserMedDisciplineRepository $userDiscRepository,
+        CategoryService $categoryService
+    ): Response {
+
+        $elementsChecked = $categoryService->elementChecked();
+
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        $userDocuments = $userDocRepository->findDocumentByUser($user->getId());
+        $userSchemas = $userSchemaRepository->findSchemaByUser($user->getId());
+        $userVideos = $userVideoRepository->findVideoByUser($user->getId());
+        $userMedicalCourses = $userCourseRepository->findMedicalCourseByUser($user->getId());
+        $userMedDisciplines = $userDiscRepository->findMedicalDisciplineByUser($user->getId());
+        $userChecklists = $userCheckRepository->findChecklistByUser($user->getId());
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
-
+            'userDocuments' => $userDocuments,
+            'userChecklists' => $userChecklists,
+            'userSchemas' => $userSchemas,
+            'userVideos' => $userVideos,
+            'userMedicalCourses' => $userMedicalCourses,
+            'userMedicalDisciplines' => $userMedDisciplines,
+            'categories' => $elementsChecked['categories'],
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked']
         ]);
     }
 

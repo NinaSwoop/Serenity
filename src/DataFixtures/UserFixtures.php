@@ -15,12 +15,11 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'firstname' => 'Jean-Michel',
             'lastname' => 'Admin',
             'phonenumber' => '0620202020',
-            'email' => 'jeanmicheladmin@gmail.com',
-            'role' => ['ROLE_ADMIN'],
-            'password' => 'jeanmicheladmin',
+            'email' => 'jeanmichel@gmail.com',
+            'role' => ['ROLE_USER'],
+            'password' => 'jeanmichel',
             'picture' => 'adminpicture.jpg',
             'secretariat' => 'secretariat_neurologie',
-
         ],
         [
             'firstname' => 'Ibrahim',
@@ -42,6 +41,16 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'picture' => 'ninapicture.jpeg',
             'secretariat' => 'secretariat_maternité',
         ],
+        [
+            'firstname' => 'Thomas',
+            'lastname' => 'Aldaitz',
+            'phonenumber' => '0637489135',
+            'email' => 'toto@gmail.com',
+            'role' => ['ROLE_ADMIN'],
+            'password' => 'toto123',
+            'picture' => 'thomas-aldaitz.jpg',
+            'secretariat' => 'secretariat_neurologie',
+        ],
     ];
 
     private UserPasswordHasherInterface $passwordHasher;
@@ -62,10 +71,11 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setPhonenumber($values['phonenumber']);
             $user->setPicture($values['picture']);
             $user->setSecretariat($this->getReference($values['secretariat']));
-            $this->addReference('user_' . $key, $user);
             $hash = $this->passwordHasher->hashPassword($user, $values['password']);
             $user->setPassword($hash);
             $manager->persist($user);
+            $key++;
+            $this->addReference('user_' . $key, $user);
         }
         $manager->flush();
     }

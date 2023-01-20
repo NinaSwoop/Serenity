@@ -10,3 +10,4 @@ import './styles/app.scss';
 require('bootstrap');
 // start the Stimulus application
 import './bootstrap';
+import '../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css';

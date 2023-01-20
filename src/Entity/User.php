@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -47,6 +49,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'user')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Secretariat $secretariat = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserDocument::class)]
+    private Collection $userDocuments;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserChecklist::class)]
+    private Collection $userChecklists;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserMedicalCourse::class)]
+    private Collection $userMedicalCourses;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserSchemaContent::class)]
+    private Collection $userSchemaContents;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserVideo::class)]
+    private Collection $userVideos;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserMedDiscipline::class)]
+    private Collection $userMedDisciplines;
+
+    #[ORM\ManyToMany(targetEntity: Welfare::class, mappedBy: 'user')]
+    private Collection $welfares;
+
+    public function __construct()
+    {
+        $this->userDocuments = new ArrayCollection();
+        $this->userChecklists = new ArrayCollection();
+        $this->userMedicalCourses = new ArrayCollection();
+        $this->userSchemaContents = new ArrayCollection();
+        $this->userVideos = new ArrayCollection();
+        $this->userMedDisciplines = new ArrayCollection();
+        $this->welfares = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -185,6 +219,213 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSecretariat(?Secretariat $secretariat): self
     {
         $this->secretariat = $secretariat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserDocument>
+     */
+    public function getUserDocuments(): Collection
+    {
+        return $this->userDocuments;
+    }
+
+    public function addUserDocument(UserDocument $userDocument): self
+    {
+        if (!$this->userDocuments->contains($userDocument)) {
+            $this->userDocuments->add($userDocument);
+            $userDocument->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserDocument(UserDocument $userDocument): self
+    {
+        if ($this->userDocuments->removeElement($userDocument)) {
+            // set the owning side to null (unless already changed)
+            if ($userDocument->getUser() === $this) {
+                $userDocument->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserChecklist>
+     */
+    public function getUserChecklists(): Collection
+    {
+        return $this->userChecklists;
+    }
+
+    public function addUserChecklist(UserChecklist $userChecklist): self
+    {
+        if (!$this->userChecklists->contains($userChecklist)) {
+            $this->userChecklists->add($userChecklist);
+            $userChecklist->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserChecklist(UserChecklist $userChecklist): self
+    {
+        if ($this->userChecklists->removeElement($userChecklist)) {
+            // set the owning side to null (unless already changed)
+            if ($userChecklist->getUser() === $this) {
+                $userChecklist->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserMedicalCourse>
+     */
+    public function getUserMedicalCourses(): Collection
+    {
+        return $this->userMedicalCourses;
+    }
+
+    public function addUserMedicalCourse(UserMedicalCourse $userMedicalCourse): self
+    {
+        if (!$this->userMedicalCourses->contains($userMedicalCourse)) {
+            $this->userMedicalCourses->add($userMedicalCourse);
+            $userMedicalCourse->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserMedicalCourse(UserMedicalCourse $userMedicalCourse): self
+    {
+        if ($this->userMedicalCourses->removeElement($userMedicalCourse)) {
+            // set the owning side to null (unless already changed)
+            if ($userMedicalCourse->getUser() === $this) {
+                $userMedicalCourse->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserSchemaContent>
+     */
+    public function getUserSchemaContents(): Collection
+    {
+        return $this->userSchemaContents;
+    }
+
+    public function addUserSchemaContent(UserSchemaContent $userSchemaContent): self
+    {
+        if (!$this->userSchemaContents->contains($userSchemaContent)) {
+            $this->userSchemaContents->add($userSchemaContent);
+            $userSchemaContent->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserSchemaContent(UserSchemaContent $userSchemaContent): self
+    {
+        if ($this->userSchemaContents->removeElement($userSchemaContent)) {
+            // set the owning side to null (unless already changed)
+            if ($userSchemaContent->getUser() === $this) {
+                $userSchemaContent->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserVideo>
+     */
+    public function getUserVideos(): Collection
+    {
+        return $this->userVideos;
+    }
+
+    public function addUserVideo(UserVideo $userVideo): self
+    {
+        if (!$this->userVideos->contains($userVideo)) {
+            $this->userVideos->add($userVideo);
+            $userVideo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserVideo(UserVideo $userVideo): self
+    {
+        if ($this->userVideos->removeElement($userVideo)) {
+            // set the owning side to null (unless already changed)
+            if ($userVideo->getUser() === $this) {
+                $userVideo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserMedDiscipline>
+     */
+    public function getUserMedDisciplines(): Collection
+    {
+        return $this->userMedDisciplines;
+    }
+
+    public function addUserMedDiscipline(UserMedDiscipline $userMedDiscipline): self
+    {
+        if (!$this->userMedDisciplines->contains($userMedDiscipline)) {
+            $this->userMedDisciplines->add($userMedDiscipline);
+            $userMedDiscipline->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserMedDiscipline(UserMedDiscipline $userMedDiscipline): self
+    {
+        if ($this->userMedDisciplines->removeElement($userMedDiscipline)) {
+            // set the owning side to null (unless already changed)
+            if ($userMedDiscipline->getUser() === $this) {
+                $userMedDiscipline->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Welfare>
+     */
+    public function getWelfares(): Collection
+    {
+        return $this->welfares;
+    }
+
+    public function addWelfare(Welfare $welfare): self
+    {
+        if (!$this->welfares->contains($welfare)) {
+            $this->welfares->add($welfare);
+            $welfare->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWelfare(Welfare $welfare): self
+    {
+        if ($this->welfares->removeElement($welfare)) {
+            $welfare->removeUser($this);
+        }
 
         return $this;
     }

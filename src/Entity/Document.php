@@ -34,9 +34,13 @@ class Document
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'document')]
     private Collection $secretariats;
 
+    #[ORM\OneToMany(mappedBy: 'document', targetEntity: UserDocument::class)]
+    private Collection $userDocuments;
+
     public function __construct()
     {
         $this->secretariats = new ArrayCollection();
+        $this->userDocuments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +113,36 @@ class Document
         if (!$this->secretariats->contains($secretariat)) {
             $this->secretariats->add($secretariat);
             $secretariat->addDocument($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserDocument>
+     */
+    public function getUserDocuments(): Collection
+    {
+        return $this->userDocuments;
+    }
+
+    public function addUserDocument(UserDocument $userDocument): self
+    {
+        if (!$this->userDocuments->contains($userDocument)) {
+            $this->userDocuments->add($userDocument);
+            $userDocument->setDocument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserDocument(UserDocument $userDocument): self
+    {
+        if ($this->userDocuments->removeElement($userDocument)) {
+            // set the owning side to null (unless already changed)
+            if ($userDocument->getDocument() === $this) {
+                $userDocument->setDocument(null);
+            }
         }
 
         return $this;
