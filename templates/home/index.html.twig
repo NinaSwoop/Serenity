@@ -4,17 +4,22 @@
 {% endblock %}
 
 {% block body %}
-	<div class="connexionPageBody">
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img class="d-block w-100 carrousel-picture" src="{{asset('build/images/reassuringDoctor.png')}}" alt="First slide">
+	<body class="connexionPageBody">
+		<div class="background-home bg-white">
+			<div class="reassuringDoctor d-flex align-items-end">
+				<div class="text-center w-100">
+					<h1 class="fw-bold mb-0 title-serenity py-2">Bienvenue sur Serenity</h1>
 				</div>
 			</div>
 		</div>
 
-		<div class="connexionPageBottom d-flex p-2 justify-content-around align-items-center">
-			<a class="btn btn-light registrationBtn p-3 col-5 me-3" href="{{ path("app_login") }}" role="button">Se connecter</a>
+		<div class="connexionPageBottom d-flex p-2 align-items-center flex-column my-4 mx-3">
+			<div class=" w-60">
+				<h3 class="fw-bold text-white">L'application qui vous accompagne tout au long de votre parcours d'hospitalisation.
+				</h3>
+			</div>
+
+			<a class="btn btn-light registrationBtn p-3 mt-5 w-40 fs-4" href="{{ path("app_login") }}" role="button">Se connecter</a>
 		</div>
-	</div>
-{% endblock %}
+	</body>
+</div>{% endblock %}
