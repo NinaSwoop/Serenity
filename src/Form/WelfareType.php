@@ -17,9 +17,9 @@ class WelfareType extends AbstractType
             // score = propriété de l'entité, ChoiceType::class = class de formulaire
             ->add('score', ChoiceType::class, array (
                 'choices' => array (
-                    'mal' => 3,
-                    'moyen' => 2,
-                    'bien' => 1,
+                    'Mal' => 3,
+                    'Moyen' => 2,
+                    'Bien' => 1,
                 ),
                     'expanded' => true,
                     'multiple' => false,
