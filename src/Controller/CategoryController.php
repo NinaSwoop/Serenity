@@ -38,6 +38,7 @@ class CategoryController extends AbstractController
         $user = $this->getUser();
         $elementsChecked = $categoryService->elementChecked();
         $categories = $categoryRepository->findAll();
+
         $form = $this->createForm(ProfilePictureType::class, $user);
         $form->handleRequest($request);
 
@@ -45,7 +46,7 @@ class CategoryController extends AbstractController
             $userRepository->save($user, true);
         }
 
-        return $this->render('category/index.html.twig', [
+        return $this->renderForm('category/index.html.twig', [
             'categories' => $categories,
             'document' => $elementsChecked['documentChecked'],
             'checklist' => $elementsChecked['CheckListChecked'],
@@ -53,9 +54,7 @@ class CategoryController extends AbstractController
             'medicalC' => $elementsChecked['medCChecked'],
             'schema' => $elementsChecked['schemaChecked'],
             'video' => $elementsChecked['videoChecked'],
-            'uploadPicture' => $this->renderForm('components/upload_profile_picture.html.twig', [
-                'form' => $form
-            ])
+            'form' => $form
         ]);
     }
 

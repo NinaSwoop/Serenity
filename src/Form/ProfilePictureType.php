@@ -13,15 +13,10 @@ class ProfilePictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('updatedAt')
             ->add('profilePicture', VichFileType::class, [
-
                 'required'      => false,
-
                 'allow_delete'  => true, // not mandatory, default is true
-
                 'download_uri' => true, // not mandatory, default is true
-
             ]);
     }
 
