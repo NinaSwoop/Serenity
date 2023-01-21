@@ -396,3 +396,28 @@ h5.card-title {
     text-decoration: line-through;
     color: grey;
 }
+.check-mood {
+    border: solid 1px black;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.middle-mood {
+    width: 80px;
+}
+
+.happy {
+    width: 80px;
+}
+
+.unhappy {
+    width: 80px;
+}
+
+.smiley-mood {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px black;
+}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
+
+{% block title %}Questionnaire{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <main class= "container">
+            <div class = row>
+                <div class="col">
+                    <p>Passer</p>
+                </div>
+            </div>
+
+<div class="row">
+    <div class="col">
+            <span>BIEN-ÊTRE</span>
+            <p>{{app.user.firstname}}</p>
+            <h1>Comment vous sentez-vous aujourd'hui ?</h1>
+            <p>Je me sens :</p>
+    </div>
+</div>
+            <div class="smiley-mood">
+            <img class="unhappy" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="right arrow">
+            <img class="middle-mood" src="{{asset('build/images/WelfareForm-middleMood.svg')}}" alt="right arrow">
+            <img class="happy" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="right arrow">
+            </div>
+
+                        {{ form_start(form) }}
+                        {{ form_row(form.score) }}
+
+                <div class="row">
+                    <div class="col align-content-center">
+
+            <button class="btn align-self-center">{{ button_label|default('Validation') }}</button>
+
+            {{ form_end(form) }}
+                </div>
+                </div>
+
+</main>
+    {% endif %}
+{% endblock %}
