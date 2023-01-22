@@ -6,6 +6,7 @@
 {% block body %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <main class= "container container-welfare-form">
+
             <div class = "row">
                 <div class="col">
                     <p class = "p-title text-end">Passer</p>
@@ -20,9 +21,9 @@
     </div>
 </div>
             <div class="smiley-mood">
-            <img class="unhappy" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="right arrow">
-            <img class="middle-mood" src="{{asset('build/images/WelfareForm-middleMood.svg')}}" alt="right arrow">
-            <img class="happy" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="right arrow">
+                <img class="unhappy" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="right arrow">
+                <img class="middle-mood" src="{{asset('build/images/WelfareForm-middleMood.svg')}}" alt="right arrow">
+                <img class="happy" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="right arrow">
             </div>
 
                         {{ form_start(form) }}
@@ -30,13 +31,11 @@
 
                 <div class="row">
                     <div class="col align-content-center d-flex justify-content-center">
-
-            <button class="btn btn-welfare-form">{{ button_label|default('Valider') }}</button>
-
-            {{ form_end(form) }}
-                </div>
+                        <button class="btn btn-primary btn-welfare-form">{{ button_label|default('Valider') }}</button>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
 
-</main>
+        </main>
     {% endif %}
 {% endblock %}

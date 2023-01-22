@@ -25,8 +25,6 @@ class WelfareType extends AbstractType
                     'multiple' => false,
                     'label' => false,
                     'attr' => ['class' => 'check-mood']
-//            ->add('responseAt')
-//            ->add('user')
             ));
     }
 

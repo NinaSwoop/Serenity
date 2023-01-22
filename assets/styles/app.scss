@@ -28,6 +28,8 @@ $value-max4 : valueMax4;
 $value-min5 : valueMin5;
 $value-max5 : valueMax5;
 
+$purple : #7265E3;
+
 @import "~bootstrap/scss/bootstrap";
 
 
@@ -452,14 +454,31 @@ h5.card-title {
 }
 
 .btn-welfare-form {
-    border: solid 1px #7265E3;
-    background-color: #7265E3;
+    //border: solid 1px #7265E3;
+    //background-color: #7265E3;
     font-size: 16px;
     color: white;
     border-radius: 16px;
     width: 250px;
     height: 56px;
     margin-top:182px;
+}
+
+.btn-primary {
+    color: #fff;
+    background: #7265E3;
+    border-color: #7265E3;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #7265E3;
+    --bs-btn-hover-border-color: #7265E3;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #7265E3;
+    --bs-btn-active-border-color: #7265E3;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #7265E3;
+    --bs-btn-disabled-border-color: #7265E3;
 }
 
 .h1-wellness {
@@ -492,10 +511,6 @@ h5.card-title {
 .form-check-input {
     border: 1.5px solid #7265E3;
 }
-
-//.container-welfare-form {
-//    width: 100%;
-//}
 
 /* End WelfareForm */
 
