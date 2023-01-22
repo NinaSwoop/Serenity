@@ -26,11 +26,13 @@ function checkAbsoluteItem(e) {
                     checkIcon.classList.add("absolue-circle");
                     checkIcon.classList.add("bi-circle");
                 }
+                dynamicProgressBar();
             });
     } catch (err) {
         alert('Action non valide !');
     }
 }
+
 
 // Check buttons with Relative position
 let checkRelativeButtons = document.getElementsByClassName('checkRelativeButton');
@@ -56,6 +58,7 @@ function checkRelativeItem(e) {
                     checkIcon.classList.remove("bi-check-circle");
                     checkIcon.classList.add("bi-circle");
                 }
+                dynamicProgressBar();
             });
     } catch (err) {
         alert('Action non valide !');
@@ -91,8 +94,24 @@ function checkChecklistItem(e) {
                     checkIcon.classList.remove("is-checked-checklist");
                     checkList.classList.add("is-not-checked-checklist");
                 }
+                dynamicProgressBar();
             });
     } catch (err) {
         alert('Action non valide !');
+    }
+}
+
+// Dynamic ProgressBar
+
+function dynamicProgressBar() {
+    let totalCheckButtons = document.getElementsByClassName('bi')
+    let progressBar = document.getElementsByClassName('progress-bar');
+    let checkedButtons = document.getElementsByClassName('bi-check-circle')
+    let numberCheckedDiv = document.getElementsByClassName('numberChecked');
+    let percentOfCheckedBtn = Math.round((checkedButtons.length / totalCheckButtons.length) * 100);
+
+    for (let i = 0; i < progressBar.length; i++) {
+        progressBar[i].style.width = percentOfCheckedBtn + '%';
+        numberCheckedDiv[i].innerHTML = checkedButtons.length + "/" + totalCheckButtons.length;
     }
 }
