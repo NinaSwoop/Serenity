@@ -58,7 +58,7 @@ class WelfareFixtures extends Fixture implements DependentFixtureInterface
                 $welfare->setScore($faker->numberBetween(1, 3));
                 $welfare->setResponseAt(\DateTimeImmutable::createFromFormat('Y-m-d', self::WELFARES[$i][$j]));
                 $userNb = $i + 1;
-                $welfare->addUser($this->getReference('user_' . $userNb));
+                $welfare->setUser($this->getReference('user_' . $userNb));
                 $manager->persist($welfare);
             }
         }
