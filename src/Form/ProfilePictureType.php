@@ -14,9 +14,16 @@ class ProfilePictureType extends AbstractType
     {
         $builder
             ->add('profilePicture', VichFileType::class, [
+                'label' => false,
                 'required'      => false,
+                'delete_label' => 'Supprimer ma photo',
                 'allow_delete'  => true, // not mandatory, default is true
+                'download_label' => 'Télécharger ma photo',
                 'download_uri' => true, // not mandatory, default is true
+                'attr' => [
+                    'class' => 'form-control',
+                    'data-browse' => 'Parcourir',
+                ],
             ]);
     }
 

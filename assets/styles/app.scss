@@ -59,14 +59,16 @@ body {
 }
 
 .undefined-patient{
-    max-width: 100px;
-    max-height: 100px;
+    width: 110px;
+    height: 110px;
     background: url(/assets/images/bras-cassé.jpg) center/cover;
+    border-radius: 25%;
 }
 
 .picture-patient {
-    max-width: 100px;
-    max-height: 100px;
+    width: 120px;
+    height: 120px;
+    padding: 0;
     border-radius: 25%;
 }
 

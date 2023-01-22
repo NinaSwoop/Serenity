@@ -15,12 +15,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use DateTimeImmutable;
+use Serializable;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[Vich\Uploadable]
 #[ORM\HasLifecycleCallbacks]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -85,6 +86,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isUploadedPicture = null;
 
     public function __construct()
     {
@@ -422,6 +426,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->profilePicture = $image;
         if ($image) {
             $this->updatedAt = new DateTime('now');
+            $this->isUploadedPicture = true;
         }
         return $this;
     }
@@ -440,6 +445,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUpdatedAt(): self
     {
         $this->updatedAt = new DateTime();
+
+        return $this;
+    }
+
+    public function isIsUploadedPicture(): ?bool
+    {
+        return $this->isUploadedPicture;
+    }
+
+    public function setIsUploadedPicture(?bool $isUploadedPicture): self
+    {
+        $this->isUploadedPicture = $isUploadedPicture;
+
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize([
+            'id' => $this->getId(),
+            'password' => $this->getPassword(),
+            'email' => $this->getEmail(),
+            'userLastname' => $this->getLastname(),
+            'userFirstname' => $this->getFirstname(),
+            'roles' => $this->getRoles(),
+        ]);
+    }
+
+    public function unserialize($data)
+    {
+        $unserialized = unserialize($data);
+
+        $this
+            ->setId($unserialized['id'])
+            ->setPassword($unserialized['password'])
+            ->setEmail($unserialized['email'])
+            ->setLastname($unserialized['userLastname'])
+            ->setFirstname($unserialized['userFirstname'])
+            ->setRoles($unserialized['roles']);
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
 
         return $this;
     }
