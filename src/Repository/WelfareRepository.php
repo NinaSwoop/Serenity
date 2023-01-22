@@ -46,17 +46,12 @@ class WelfareRepository extends ServiceEntityRepository
             ->select('u.id, w.score, w.responseAt')
             ->join('w.user', 'u')
             ->where('w.user = :userId')
-            ->andWhere('w.responseAt = :responseAat')
+            ->andWhere('w.responseAt = :responseAt')
             ->setParameters([
                 'userId' => $userId,
                 'responseAt' => $today
             ])
             ->getQuery();
-
-        // Select u.id, w.score, w.response_at from welfare as w
-        // join welfare_user as wu ON wu.welfare_id = w.id
-        // join user as u ON u.id = wu.user_id
-        // where wu.user_id = 176 AND w.response_at = '2023-01-02';
 
         return $queryBuilder->getResult();
     }

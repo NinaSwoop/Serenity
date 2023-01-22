@@ -40,17 +40,15 @@ class LoginController extends AbstractController
         if ($this->isGranted('ROLE_USER')) {
             /** @var \App\Entity\User */
             $user = $this->getUser();
-            $userId = $user->getId();
-            var_dump($userId);
-
             $date = new DateTime();
-            $today = $date->format('Y-m-d');
-            var_dump($today);
 
-            $request = $welfareRepository->findWelfareByUserByDate($userId, $today);
-            var_dump($request);
+            $todayWelfare = $welfareRepository->findWelfareByUserByDate($user->getId(), $date->format('Y-m-d'));
 
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            if ($todayWelfare) {
+                return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            } else {
+                return $this->redirectToRoute('app_welfare', [], Response::HTTP_SEE_OTHER);
+            };
         }
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }
