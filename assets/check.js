@@ -27,6 +27,7 @@ function checkAbsoluteItem(e) {
                     checkIcon.classList.add("bi-circle");
                 }
                 dynamicProgressBar();
+                finishProgressBar();
             });
     } catch (err) {
         alert('Action non valide !');
@@ -59,6 +60,7 @@ function checkRelativeItem(e) {
                     checkIcon.classList.add("bi-circle");
                 }
                 dynamicProgressBar();
+                finishProgressBar();
             });
     } catch (err) {
         alert('Action non valide !');
@@ -95,6 +97,7 @@ function checkChecklistItem(e) {
                     checkList.classList.add("is-not-checked-checklist");
                 }
                 dynamicProgressBar();
+                finishProgressBar();
             });
     } catch (err) {
         alert('Action non valide !');
@@ -113,5 +116,28 @@ function dynamicProgressBar() {
     for (let i = 0; i < progressBar.length; i++) {
         progressBar[i].style.width = percentOfCheckedBtn + '%';
         numberCheckedDiv[i].innerHTML = checkedButtons.length + "/" + totalCheckButtons.length;
+    }
+}
+
+
+// Finish ProgressBar
+
+function finishProgressBar() {
+    let totalCheckButtons = document.getElementsByClassName('bi');
+    let checkedButtons = document.getElementsByClassName('bi-check-circle');
+    let titlebar = document.getElementsByClassName('titlebar');
+    let titlefinish = document.getElementsByClassName('titlefinish');
+    let buttonfinish = document.getElementsByClassName('finishbutton');
+
+    for (let i = 0; i < titlebar.length; i++) {
+        if (totalCheckButtons.length === checkedButtons.length) {
+            titlebar[i].classList.add("text-decoration-line-through");
+            titlefinish[i].classList.remove("d-none");
+            buttonfinish[i].classList.remove("d-none");
+        } else {
+            titlebar[i].classList.remove("text-decoration-line-through");
+            titlefinish[i].classList.add("d-none");
+            buttonfinish[i].classList.add("d-none");
+        }
     }
 }
