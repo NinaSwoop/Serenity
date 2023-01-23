@@ -28,7 +28,7 @@ class Checklist
     #[ORM\ManyToMany(targetEntity: Secretariat::class, mappedBy: 'checklist')]
     private Collection $secretariats;
 
-    #[ORM\OneToMany(mappedBy: 'checklist', targetEntity: UserDocument::class)]
+    #[ORM\OneToMany(mappedBy: 'checklist', targetEntity: UserChecklist::class)]
     private Collection $userChecklists;
 
     public function __construct()

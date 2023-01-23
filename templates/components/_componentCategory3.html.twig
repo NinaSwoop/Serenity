@@ -8,7 +8,7 @@
 			{{userMedicalCourse.medicalCourse.step}}
 			:
 			{{userMedicalCourse.medicalCourse.title}}
-			<a href="{{ path("app_medicalCourse_check" , { id: userMedicalCourse.medicalCourse.id }) }}">
+			<a class="checkRelativeButton" href="{{ path("app_medicalCourse_check" , { id: userMedicalCourse.medicalCourse.id }) }}">
 				<i class="bi {{ userMedicalCourse.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
 			</a>
 		</p>
