@@ -6,13 +6,13 @@
 {% block body %}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<section class="d-flex profil-dash m-3 mx-4">
-			<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#profilePicture">
+			<button type="button" class="btn picture-patient" data-bs-toggle="modal" data-bs-target="#profilePicture">
 				<div class="undefined-patient">
 					{% if app.user.picture is not null %}
 						{% if app.user.isUploadedPicture != true %}
-							<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+							<img class="picture-profile-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
 						{% else %}
-							<img class="picture-patient" src="{{ vich_uploader_asset(app.user) }}" alt="{{ app.user.firstname }}">
+							<img class="picture-profile-patient" src="{{ vich_uploader_asset(app.user) }}" alt="{{ app.user.firstname }}">
 						{% endif %}
 					{% endif %}
 				</div>
@@ -34,12 +34,11 @@
 									{% endif %}
 								{% endif %}
 							</div>
-							<div></div>
 						</div>
 						<div class="modal-footer">
 							{% include "components/upload_profile_picture.html.twig" %}
 							{# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																					<button type="button" class="btn btn-primary">Modifier ma photo</button> #}
+																																																																						<button type="button" class="btn btn-primary">Modifier ma photo</button> #}
 						</div>
 					</div>
 				</div>

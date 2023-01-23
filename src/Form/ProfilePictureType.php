@@ -22,7 +22,6 @@ class ProfilePictureType extends AbstractType
                 'download_uri' => true, // not mandatory, default is true
                 'attr' => [
                     'class' => 'form-control',
-                    'data-browse' => 'Parcourir',
                 ],
             ]);
     }
