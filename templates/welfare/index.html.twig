@@ -4,7 +4,6 @@
 {% block title %}Questionnaire{% endblock %}
 
 {% block body %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <main class= "container container-welfare-form">
 
             <div class = "row">
@@ -37,5 +36,4 @@
                 </div>
 
         </main>
-    {% endif %}
 {% endblock %}
