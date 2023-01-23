@@ -115,3 +115,24 @@ function dynamicProgressBar() {
         numberCheckedDiv[i].innerHTML = checkedButtons.length + "/" + totalCheckButtons.length;
     }
 }
+
+let totalCheckButtons = document.getElementsByClassName('bi');
+let checkedButtons = document.getElementsByClassName('bi-check-circle');
+let titlebar = document.getElementsByClassName('titlebar');
+let titlefinish = document.getElementsByClassName('titlefinish');
+let buttonfinish = document.getElementsByClassName('finishbutton');
+
+
+function noFinishProgressBar() {
+
+    for (let i = 0; i < titlebar.length; i++) {
+        titlefinish.remove();
+        buttonfinish.remove();
+    }
+}
+
+
+
+if (totalCheckButtons.length === checkedButtons.length) {
+    titlebar.classList.add("text-decoration-line-through");
+}
