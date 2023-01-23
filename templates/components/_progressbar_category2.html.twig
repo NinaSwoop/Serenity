@@ -4,10 +4,16 @@
 
 
 <a href="{{ path("app_category_show" , { title: "Finir les démarches administratives" }) }}" class="text-decoration-none">
-	<div class="progress rounded-4 my-3 mx-4 category2-progress">
-		<div class="progress-bar rounded-4-start category2-progressbar" style="width: {{percent}}%" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10">
-			<div class="progress-title-cat px-3">Finir les démarches administratives</div>
+	<div class="progress rounded-4 my-3 mx-4 category2-progress position-relative z-0">
+		<div class="progress-bar rounded-4-start category2-progressbar z-2" style="width: {{percent}}%" role="progressbar" aria-label="Example with label" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10">
+			<div class="progress-title-cat px-3 position-absolute z-3 d-flex justify-content-between w-100">
+				<div>
+					Finir les démarches administratives
+				</div>
+				<div class="numberChecked">
+					{{isChecked}}/{{total}}
+				</div>
+			</div>
 		</div>
-		<span class="progress-level-cat align-self-center text-white ms-auto p-2">{{isChecked}}/{{total}}</span>
 	</div>
 </a>

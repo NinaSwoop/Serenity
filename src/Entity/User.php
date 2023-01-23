@@ -90,6 +90,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     #[ORM\Column(nullable: true)]
     private ?bool $isUploadedPicture = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Welfare::class)]
+    private Collection $welfares;
+
     public function __construct()
     {
         $this->userDocuments = new ArrayCollection();
@@ -98,6 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
         $this->userSchemaContents = new ArrayCollection();
         $this->userVideos = new ArrayCollection();
         $this->userMedDisciplines = new ArrayCollection();
+        $this->welfares = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -489,6 +493,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Welfare>
+     */
+    public function getWelfares(): Collection
+    {
+        return $this->welfares;
+    }
+
+    public function addWelfare(Welfare $welfare): self
+    {
+        if (!$this->welfares->contains($welfare)) {
+            $this->welfares->add($welfare);
+            $welfare->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWelfare(Welfare $welfare): self
+    {
+        if ($this->welfares->removeElement($welfare)) {
+            // set the owning side to null (unless already changed)
+            if ($welfare->getUser() === $this) {
+                $welfare->setUser(null);
+            }
+        }
 
         return $this;
     }

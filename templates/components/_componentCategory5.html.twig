@@ -4,14 +4,13 @@
 	{% for userChecklist in userChecklists %}
 		<div class="card shadow-sm bg-body rounded mb-4">
 			<div class="card-body">
-				<div class="form-check" id="form">
-					<input class="form-check-input" type="checkbox" value="" id="defaultCheck">
-					<label class="form-check-label" for="defaultCheck1">{{ userChecklist.checklist.name }}</label>
-					<p class="text-muted mb-0">{{ userChecklist.checklist.description }}</p>
-					<p>
-						<a href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">Marquer comme fait/vu</a>
-					</p>
+				<div class="d-flex justify-content-between align-items-center">
+					<span class="{{ userChecklist.isChecked ? 'is-checked-checklist' : 'is-not-checked-checklist'}}">{{ userChecklist.checklist.name }}</span>
+					<a class="checkChecklistButton" href="{{ path("app_checklist_check" , { id: userChecklist.checklist.id }) }}">
+						<i class="bi {{ userChecklist.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
+					</a>
 				</div>
+				<p class="text-muted mb-0">{{ userChecklist.checklist.description }}</p>
 			</div>
 		</div>
 	{% endfor %}
