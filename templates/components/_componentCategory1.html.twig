@@ -5,21 +5,21 @@
 	<div class="row mx-4">
 		{% for userSchema in userSchemas %}
 
-			<div type="button" {% if loop.index0 < 4 %} class="card schema-card col-6 g-2" {% else %} 
+			<div type="button" {% if loop.index0 < 4 %} class="card schema-card col-6 g-2" {% else %}
 			class="card schema-card col-6 g-2 d-none" {% endif %} data-bs-target="#modal{{userSchema.schemaContent.id}}" data-bs-toggle="modal">
-			 <div class="background-check"></div> 
-			 <a class="checkAbsoluteButton" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}"> 
+			 <div class="background-check"></div>
+			 <a class="checkAbsoluteButton" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}">
 			 <i class="bi absolue-check {{ userSchema.isChecked ? ' absolue-check-circle bi-check-circle' : ' absolue-circle bi-circle'}}"></i>
-			 </a> 
-			 <img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap"> 
-			 </div> 
-			 
-			 <div class="modal fade" id="modal{{userSchema.schemaContent.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1"> 
-			 <div class="modal-dialog modal-dialog-centered"> 
-			 <div class="modal-content"> 
-			 <div class="modal-header"> 
-			 <h1 class="modal-title fs-5" id="modalLabel"> 
-			 {{userSchema.schemaContent.title}}</h1> 
+			 </a>
+			 <img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap">
+			 </div>
+
+			 <div class="modal fade" id="modal{{userSchema.schemaContent.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">
+			 <div class="modal-dialog modal-dialog-centered">
+			 <div class="modal-content">
+			 <div class="modal-header">
+			 <h1 class="modal-title fs-5" id="modalLabel">
+			 {{userSchema.schemaContent.title}}</h1>
 			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			 </div>
 
@@ -64,10 +64,10 @@
 				</p>
 				</div>
 				<div class="pe-3">
-			<a class="checkRelativeButton" href="{{ path("app_video_check" , { id: userVideo.video.id}) }}"> 
+			<a class="checkRelativeButton" href="{{ path("app_video_check" , { id: userVideo.video.id}) }}">
 				<i class="bi {{ userVideo.isChecked ? 'bi-check-circle' : 'bi-circle'}}"></i>
-			</a> 
-				
+			</a>
+
 				</div>
 
 			</div>
