@@ -15,9 +15,8 @@
 					<span class="titlebar d-flex justify-content-start {% if total == isChecked %}text-decoration-line-through{% endif %}">
 						Comprendre mon opération</span>
 
-					<div class="titlefinish d-flex justify-content-end mt-4 me-2">
-						{% if total == isChecked %}Terminé
-						{% endif %}
+					<div class="titlefinish d-flex justify-content-end mt-4 me-2{% if total != isChecked %} d-none {% endif %}">
+						Terminé
 					</div>
 
 				</div>
@@ -25,9 +24,9 @@
 					<div class="numberChecked">
 						{{isChecked}}/{{total}}
 					</div>
-					{% if total == isChecked %}
-						<i class="finishbutton bi-check2-circle d-flex mt-4"></i>
-					{% endif %}
+					<span class="finishbutton{% if total != isChecked %} d-none {% endif %}">
+						<i class="bi-check2-circle d-flex mt-4"></i>
+					</span>
 				</div>
 			</div>
 		</div>
