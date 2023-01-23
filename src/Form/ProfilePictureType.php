@@ -21,7 +21,7 @@ class ProfilePictureType extends AbstractType
                 'download_label' => 'Télécharger ma photo',
                 'download_uri' => true, // not mandatory, default is true
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control upload-form-picture'
                 ],
             ]);
     }

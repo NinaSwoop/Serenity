@@ -74,7 +74,48 @@ body {
 
 .picture-profile-patient{
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25%;
+}
+
+div.modal-footer>form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+#profile_picture {
+    width: 100%;
+
+}
+
+div#profile-picture>fieldset>div.vich-file{
+    display: flex;
+    justify-content: center;
+
+}
+div.vich-file>div.mb-3{
+display: flex;
+justify-content: center;
+}
+
+div.vich-file>div.mb-3>div.form-check{
+    display: flex;
+    justify-content:center;
+    width: 60%;
+}
+
+#profile_picture_profilePicture_delete{
+    margin-right: 1em;
+}
+
+
+.upload-form-picture{
+margin-bottom: 2em;
 }
 
 .progress-title {
