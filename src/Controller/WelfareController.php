@@ -32,19 +32,15 @@ class WelfareController extends AbstractController
 
             match ($welfare->getScore()) {
                 1 => $this->addFlash(
-                    'success',
+                    'info',
                     "Merci pour votre réponse"
                 ),
-                2, 3 => $this->addFlash(
+                2, 3, 4 => $this->addFlash(
                     'info',
-                    "Merci pour votre réponse. N'hésitez pas à nous contacter en cas de besoin"
-                ),
-                4 => $this->addFlash(
-                    'danger',
-                    "Merci pour votre réponse. Nous vous contacterons dans les plus brefs délais"
+                    "Merci pour votre réponse. Nous vous contacterons dans les plus brefs délais."
                 ),
                 default => $this->addFlash(
-                    'warning',
+                    'info',
                     "Merci pour votre réponse."
                 )
             };
