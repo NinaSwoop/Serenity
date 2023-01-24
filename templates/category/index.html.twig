@@ -6,57 +6,69 @@
 {% endblock %}
 
 {% block body %}
-	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-		<section class="d-flex profil-dash m-3 mx-4">
-			<div class="undefined-patient">
-				{% if app.user.picture is not null %}
-					<img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
-				{% endif %}
-			</div>
-			<div class="d-flex flex-column ms-3 w-100">
-				<div class=" my-2 fs-3">
-					{{app.user.firstname}}
-				</div>
 
-				<div class="progress progress-index position-relative z-0">
-					<div class="progress-bar rounded-5-start progbar progressbar-index z-2" style="width: {{percent}}%" role=" progressbar" aria-label=" example with label" aria-valuenow=" 4" aria-valuemin=" 0" aria-valuemax=" 100">
-						<div class="progress-title p-2 position-absolute z-3 d-flex justify-content-between w-100">
-							<div>
-								Ma préparation
-							</div>
-							<div>
-								{{percent}}%
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	{% endif %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <section class="d-flex profil-dash m-3 mx-4">
+            <div class="undefined-patient">
+                {% if app.user.picture is not null %}
+                    <img class="picture-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
+                {% endif %}
+            </div>
+            <div class="d-flex flex-column ms-3 w-100">
+                <div class=" my-2 fs-3">
+                    {{app.user.firstname}}
+                </div>
 
-	<div class="d-flex justify-content-end m-3 mx-4">
+                <div class="progress progress-index position-relative z-0">
+                    <div class="progress-bar rounded-5-start progbar progressbar-index z-2" style="width: {{percent}}%" role=" progressbar" aria-label=" example with label" aria-valuenow=" 4" aria-valuemin=" 0" aria-valuemax=" 100">
+                        <div class="progress-title p-2 position-absolute z-3 d-flex justify-content-between w-100">
+                            <div>
+                                Ma préparation
+                            </div>
+                            <div>
+                                {{percent}}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <div class="d-flex justify-content-end m-3 mx-4">
 
 
-		<table>
-			<thead class="thead-rdv">
-				<tr>
-					<th class="px-3">DATE</th>
+        <table>
+            <thead class="thead-rdv">
+            <tr>
+                <th class="px-3">DATE</th>
 
-					<th>HEURE</th>
-				</tr>
-			</thead>
-			<tbody class="tbody-rdv">
-				<tr>
-					<td class="px-3">{{ "now"|date("d/m/Y") }}</td>
+                <th>HEURE</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-rdv">
+            <tr>
+                <td class="px-3">{{ "now"|date("d/m/Y") }}</td>
 
-					<td>{{ "now-1"|date("H:i") }}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	{% include "/components/_progressbar_category1.html.twig" %}
-	{% include "/components/_progressbar_category2.html.twig" %}
-	{% include "/components/_progressbar_category3.html.twig" %}
-	{% include "/components/_progressbar_category4.html.twig" %}
-	{% include "/components/_progressbar_category5.html.twig" %}
+                <td>{{ "now-1"|date("H:i") }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <div id="flashMessage" class="alert alert-{{ category }} alert-dismissible fade show mx-4" role="alert">
+                {{ message }}
+                <button id="btnFlashMessage" type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% include "/components/_progressbar_category1.html.twig" %}
+    {% include "/components/_progressbar_category2.html.twig" %}
+    {% include "/components/_progressbar_category3.html.twig" %}
+    {% include "/components/_progressbar_category4.html.twig" %}
+    {% include "/components/_progressbar_category5.html.twig" %}
 {% endblock %}

@@ -3,8 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\WelfareRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +24,10 @@ class Welfare
     #[ORM\ManyToOne(inversedBy: 'welfares')]
     private ?User $user = null;
 
+    public function __construct()
+    {
+        $this->responseAt = new dateTimeImmutable();
+    }
     public function getId(): ?int
     {
         return $this->id;

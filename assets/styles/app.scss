@@ -401,8 +401,6 @@ h5.card-title {
     text-decoration: line-through;
     color: grey;
 }
-
-<<<<<<< HEAD
 /* End _componentCategory5 */
 
 /* WelfareForm */
@@ -427,18 +425,13 @@ h5.card-title {
 }
 
 .form-check-label {
-    font-size:12px;
+    font-size:14px;
     color: #4C5980;
 }
 
-.middle-mood {
-    width: 80px;
-}
-
-.happy {
-    width: 80px;
-}
-
+.tired-mood,
+.stress-mood,
+.happy,
 .unhappy {
     width: 80px;
 }
@@ -455,9 +448,8 @@ h5.card-title {
 }
 
 .btn-welfare-form {
-    //border: solid 1px #7265E3;
-    //background-color: #7265E3;
     font-size: 16px;
+    font-weight: 500;
     color: white;
     border-radius: 16px;
     width: 250px;
@@ -489,22 +481,27 @@ h5.card-title {
     margin-bottom:50px;
 }
 
-.p-title{
+.p-title {
     color:#7265E3;
-    font-size:14px;
+    font-size:16px;
+    font-weight: 500;
     margin-top:55px;
     margin-right:34px;
     margin-bottom:43px;
 }
 
+.a-path {
+    text-decoration: none;
+}
+
 .p-wellness {
     color:#7265E3;
-    font-size:12px;
+    font-size:16px;
     margin-bottom:65px;
 }
 
 .p-feeling {
-    font-size:16px;
+    font-size:18px;
     color:#4C5980;
     margin-bottom:50px;
 }
@@ -515,9 +512,8 @@ h5.card-title {
 
 /* End WelfareForm */
 
-=======
 .is-not-checked-checklist {
     text-decoration: initial;
     color: black;
 }
->>>>>>> dev
+
