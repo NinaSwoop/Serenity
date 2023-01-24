@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block body %}
-
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <section class="d-flex profil-dash m-3 mx-4">
             <div class="undefined-patient">
@@ -37,21 +36,20 @@
 
     <div class="d-flex justify-content-end m-3 mx-4">
 
+		<table>
+			<thead class="thead-rdv">
+				<tr>
+					<th class="px-3">DATE</th>
 
-        <table>
-            <thead class="thead-rdv">
-            <tr>
-                <th class="px-3">DATE</th>
-
-                <th>HEURE</th>
-            </tr>
+                    <th>HEURE</th>
+                </tr>
             </thead>
             <tbody class="tbody-rdv">
-            <tr>
-                <td class="px-3">{{ "now"|date("d/m/Y") }}</td>
+                <tr>
+                    <td class="px-3">{{ "now"|date("d/m/Y") }}</td>
 
-                <td>{{ "now-1"|date("H:i") }}</td>
-            </tr>
+                    <td>{{ "now-1"|date("H:i") }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
