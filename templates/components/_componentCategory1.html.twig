@@ -11,7 +11,7 @@
 			{% else %} class="card schema-card col-6 g-2 d-none" 
 			{% endif %} data-bs-target="#modal{{userSchema.schemaContent.id}}" data-bs-toggle="modal">
 				<div class="background-check"></div>
-				<a class="checkAbsoluteButton" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}">
+				<a class="checkAbsoluteButton arrow{{userSchema.schemaContent.id}}" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}">
 					<i class="bi absolue-check {{ userSchema.isChecked ? ' absolue-check-circle bi-check-circle' : ' absolue-circle bi-circle'}}"></i>
 					<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap">
 				</a>
@@ -31,10 +31,10 @@
 						</div>
 
 						<div class="modal-footer">
-							<a data-bs-target="#modal{{userSchema.schemaContent.id - 1}}" data-bs-toggle="modal">
+							<a id="arrow{{userSchema.schemaContent.id - 1}}" class="modalArrowLink" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id - 1}) }}" data-bs-target="#modal{{userSchema.schemaContent.id - 1}}" data-bs-toggle="modal">
 								<img class="arrow-modal" src="{{asset('build/images/left-arrow.svg')}}" alt="left arrow">
 							</a>
-							<a data-bs-target="#modal{{userSchema.schemaContent.id + 1}}" data-bs-toggle="modal">
+							<a id="arrow{{userSchema.schemaContent.id + 1}}"class="modalArrowLink" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id + 1}) }}" data-bs-target="#modal{{userSchema.schemaContent.id + 1}}" data-bs-toggle="modal">
 								<img class="arrow-modal" src="{{asset('build/images/right-arrow.svg')}}" alt="right arrow">
 							</a>
 						</div>

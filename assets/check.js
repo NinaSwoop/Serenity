@@ -10,6 +10,7 @@ function checkAbsoluteItem(e) {
 
     const checkLink = e.currentTarget;
     const link = checkLink.href;
+
     try {
         fetch(link)
             .then(res => res.json())
@@ -33,6 +34,62 @@ function checkAbsoluteItem(e) {
         alert('Action non valide !');
     }
 }
+
+// Modal arrow fetch
+
+let modalArrowLinks = document.getElementsByClassName('modalArrowLink');
+
+for (let i = 0; i < modalArrowLinks.length; i++) {
+    modalArrowLinks[i].addEventListener('click', checkAbsoluteItemFromModal);
+}
+
+function checkAbsoluteItemFromModal(e) {
+    e.preventDefault();
+
+    const checkLink = e.currentTarget;
+    const link = checkLink.href;
+
+    try {
+        fetch(link)
+            .then(res => res.json())
+            .then(data => {
+                let checkLinkId = checkLink.getAttribute("id");
+                let checkIconDiv = document.getElementsByClassName(checkLinkId)[0];
+                let checkIcon = checkIconDiv.firstElementChild;
+                if (data.isChecked) {
+                    checkIcon.classList.remove("absolue-circle");
+                    checkIcon.classList.remove("bi-circle");
+                    checkIcon.classList.add("absolue-check-circle");
+                    checkIcon.classList.add("bi-check-circle");
+                } else {
+                    // checkIcon.classList.remove("absolue-check-circle");
+                    // checkIcon.classList.remove("bi-check-circle");
+                    // checkIcon.classList.add("absolue-circle");
+                    // checkIcon.classList.add("bi-circle");
+                }
+                dynamicProgressBar();
+                finishProgressBar();
+            }
+            );
+    } catch (err) {
+        alert('Action non valide !');
+    }
+}
+
+// function checkAbsoluteIcon() {
+//     let checkAbsoluteIcons = document.getElementsByClassName('checkAbsoluteIcon');
+
+//     for (let i = 0; i < checkAbsoluteIcons.length; i++) {
+//         console.log(checkAbsoluteIcons[i]);
+//         console.log(checkAbsoluteIcons[i].firstElementChild);
+//         checkAbsoluteIcons[i].firstElementChild.classList.toggle("absolue-circle");
+//         checkAbsoluteIcons[i].firstElementChild.classList.toggle("bi-circle");
+//         checkAbsoluteIcons[i].firstElementChild.classList.toggle("absolue-check-circle");
+//         checkAbsoluteIcons[i].firstElementChild.classList.toggle("bi-check-circle");
+//         console.log('coucou')
+//         console.log(checkAbsoluteIcons[i].firstElementChild);
+//     }
+// }
 
 
 // Check buttons with Relative position
