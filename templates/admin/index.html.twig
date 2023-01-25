@@ -50,7 +50,9 @@
 								{% if welfare.isCallBack == false %}
 									<a href="{{ path("app_welfare_isCallBack" , { id: welfare.id }) }}" class=" btn btn-primary position-absolute bottom-0 end-0 m-2">Rappeler ce patient</a>
 								{% else %}
-									<a href="{{ path("app_welfare_isCallBack" , { id: welfare.id }) }}" class="btn btn-primary position-absolute bottom-0 end-0 m-2">Patient rappelé</a>
+									<a href="{{ path("app_welfare_isCallBack" , { id: welfare.id }) }}" class="btn btn-primary position-absolute bottom-0 end-0 m-2">Patient rappelé
+										<i class="bi bi-check2-circle"></i>
+									</a>
 								{% endif %}
 							</div>
 						</div>
