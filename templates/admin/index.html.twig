@@ -9,7 +9,7 @@
 			{% include "admin/_layout.html.twig" %}
 		</div>
 		<div class="col-9">
-			<h1 class="text-center">Les réponses du jour</h1>
+			<h1 class="text-center m-3">Les réponses du jour</h1>
 			{% for welfare in welfares|sort ((a, b) => b.score <=> a.score) %}
 				<div class="">
 					<div class="card border border-2 w-50 mx-auto m-5">
