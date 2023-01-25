@@ -330,6 +330,12 @@ h5.card-title {
     margin-bottom: 0px;
 }
 
+.p-login {
+    font-weight: lighter;
+    font-size: 16px;
+    margin-top: 25px;
+}
+
 .reassuringDoctor {
     height: 100%;
     width: auto;
@@ -391,7 +397,7 @@ h5.card-title {
     box-shadow: 0px 10px 20px #12B2B3;
     font-style: normal;
     font-weight: 550;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 18px;
 }
 
@@ -425,6 +431,7 @@ h5.card-title {
     background: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 8px;
+    height: 56px;
 }
 
 .connexionInput:focus {
