@@ -24,6 +24,9 @@ class Welfare
     #[ORM\ManyToOne(inversedBy: 'welfares')]
     private ?User $user = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $isCallBack = null;
+
     public function __construct()
     {
         $this->responseAt = new dateTimeImmutable();
@@ -65,6 +68,18 @@ class Welfare
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function isIsCallBack(): ?bool
+    {
+        return $this->isCallBack;
+    }
+
+    public function setIsCallBack(?bool $isCallBack): self
+    {
+        $this->isCallBack = $isCallBack;
 
         return $this;
     }
