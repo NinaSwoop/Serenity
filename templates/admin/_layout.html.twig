@@ -1,0 +1,86 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+	<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+		<svg class="bi me-2" width="40" height="32">
+			<use xlink:href="#bootstrap"></use>
+		</svg>
+		<span class="fs-4">Dashboard</span>
+	</a>
+	<hr>
+	<ul class="nav nav-pills flex-column mb-auto">
+		<li class="nav-item">
+			<a href="#" class="nav-link active" aria-current="page">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#home"></use>
+				</svg>
+				Alertes du jour
+			</a>
+		</li>
+		<li>
+			<a href="{{ path('app_user_index')}}" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="{{ path('app_user_index')}}"></use>
+				</svg>
+				<i class="bi bi-people-fill m-2"></i>Utilisateurs
+			</a>
+		</li>
+		<li>
+			<a href="#" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#table"></use>
+				</svg>
+				<i class="bi bi-file-earmark m-2"></i>Documents
+			</a>
+		</li>
+		<li>
+			<a href="#" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#grid"></use>
+				</svg>
+				<i class="bi bi-list-check m-2"></i>Checklist
+			</a>
+		</li>
+		<li>
+			<a href="#" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#people-circle"></use>
+				</svg>
+				<i class="bi bi-hospital m-2"></i>
+				Professionels de santé
+			</a>
+		</li>
+		<li>
+			<a href="#" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#people-circle"></use>
+				</svg>
+				<i class="bi bi-calendar2-check-fill m-2"></i>
+				Préparation de l'arrivée
+			</a>
+		</li>
+		<li>
+			<a href="#" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#people-circle"></use>
+				</svg>
+				<i class="bi bi-diagram-3-fill m-2"></i>
+				Schémas
+			</a>
+		</li>
+		<li>
+			<a href="#" class="nav-link link-dark">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#people-circle"></use>
+				</svg>
+				<i class="bi bi-film m-2"></i>
+				Vidéos
+			</a>
+		</li>
+	</ul>
+	<hr>
+	<div class="dropdown">
+		<a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2">
+			<img src="{{asset('build/images/exit.svg')}}">
+			<strong>Déconnexion</strong>
+		</a>
+	</div>
+</div>
