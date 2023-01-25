@@ -12,8 +12,8 @@ $card-border-color: none;
 $component-active-bg: #0EAD69;
 $border-radius: 16px;
 $form-check-input-checked-bg-color: #7265E3;
-$form-check-input-checked-border-color:#7265E3;
-$form-check-input-focus-box-shadow:none;
+$form-check-input-checked-border-color: #7265E3;
+$form-check-input-focus-box-shadow: none;
 
 $value-min-global : valueMinGlobal;
 $value-max-global : valueMaxGlobal;
@@ -483,14 +483,14 @@ h5.card-title {
     padding: 0;
 }
 
-.form-check  .form-check-input {
-    margin-left:0;
+.form-check .form-check-input {
+    margin-left: 0;
     margin-bottom: 3px;
-    font-size:28px;
+    font-size: 28px;
 }
 
 .form-check-label {
-    font-size:14px;
+    font-size: 14px;
     color: #4C5980;
 }
 
@@ -519,7 +519,7 @@ h5.card-title {
     border-radius: 16px;
     width: 250px;
     height: 56px;
-    margin-top:182px;
+    margin-top: 182px;
 }
 
 .btn-primary {
@@ -541,18 +541,18 @@ h5.card-title {
 
 .h1-wellness {
     font-size: 24px;
-    color:#2D3142;
+    color: #2D3142;
     font-weight: 500;
-    margin-bottom:50px;
+    margin-bottom: 50px;
 }
 
 .p-title {
-    color:#7265E3;
-    font-size:16px;
+    color: #7265E3;
+    font-size: 16px;
     font-weight: 500;
-    margin-top:55px;
-    margin-right:34px;
-    margin-bottom:43px;
+    margin-top: 55px;
+    margin-right: 34px;
+    margin-bottom: 43px;
 }
 
 .a-path {
@@ -560,15 +560,15 @@ h5.card-title {
 }
 
 .p-wellness {
-    color:#7265E3;
-    font-size:16px;
-    margin-bottom:65px;
+    color: #7265E3;
+    font-size: 16px;
+    margin-bottom: 65px;
 }
 
 .p-feeling {
-    font-size:18px;
-    color:#4C5980;
-    margin-bottom:50px;
+    font-size: 18px;
+    color: #4C5980;
+    margin-bottom: 50px;
 }
 
 .form-check-input {
@@ -576,3 +576,8 @@ h5.card-title {
 }
 
 /* End WelfareForm */
+/* Start Dashboard Admin */
+
+.emojidashboard {
+    width: 50px;
+}

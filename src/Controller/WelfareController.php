@@ -52,4 +52,27 @@ class WelfareController extends AbstractController
 
         ]);
     }
+
+    #[Route('/{id}/welfare/isCallBack', name: 'app_welfare_isCallBack')]
+    public function callBack(
+        Welfare $welfare,
+        WelfareRepository $welfareRepository
+    ): void {
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        $callBack = $welfareRepository->findOneBy(
+            [
+                'isCallBack' => $welfare->getId(),
+                'user' => $user->getId()
+            ]
+        );
+
+        if ($callBack->isIsCallBack()) {
+            $callBack->setIsCallBack(false);
+        } else {
+            $callBack->setIsCallBack(true);
+        }
+
+        $welfareRepository->save($callBack, true);
+    }
 }
