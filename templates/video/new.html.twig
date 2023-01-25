@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_form.html.twig' %}
 
-{% block title %}New Video{% endblock %}
+{% block title %}New Video
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Video</h1>
+	{% block h1 %}Ajouter une vidéo depuis Youtube
+	{% endblock %}
 
-    {{ include('video/_form.html.twig') }}
+	{{ include('video/_form.html.twig') }}
 
-    <a href="{{ path('app_video_index') }}">back to list</a>
+	<a href="{{ path('app_video_index') }}">back to list</a>
 {% endblock %}

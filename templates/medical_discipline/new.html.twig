@@ -1,11 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_form.html.twig' %}
 
-{% block title %}New MedicalDiscipline{% endblock %}
+{% block title %}New MedicalDiscipline
+{% endblock %}
 
 {% block body %}
-    <h1>Create new MedicalDiscipline</h1>
 
-    {{ include('medical_discipline/_form.html.twig') }}
+	{% block h1 %}Ajouter une profession de santé
+	{% endblock %}
 
-    <a href="{{ path('app_medical_discipline_index') }}">back to list</a>
+	{{ include('medical_discipline/_form.html.twig') }}
+
+	<a href="{{ path('app_medical_discipline_index') }}">back to list</a>
 {% endblock %}

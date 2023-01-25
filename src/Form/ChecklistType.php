@@ -3,25 +3,31 @@
 namespace App\Form;
 
 use App\Entity\Checklist;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ChecklistType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', null, [
+            ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'CNI'
+                    'placeholder' => 'Ex : Carte Vitale'
                 ],
                 'required' => true,
-                'label' => 'Nom de l\'élement à checker :',
+                'label' => 'À ne pas oublier avant l\'hospitalisation:',
             ])
-            ->add('description', null, [
-                'label' => 'Description :'
+            ->add('description', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ex : Obligatoire'
+                ],
+                'required' => true,
+                'label' => 'Précisions :',
+                'empty_data' => "Facultatif"
             ]);
     }
 

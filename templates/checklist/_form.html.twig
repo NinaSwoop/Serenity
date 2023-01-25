@@ -1,6 +1,7 @@
-<div class="edit d-flex justify-content-center">
+{% extends "crud_form_layout.html.twig" %}
+{% block form %}
 	{{ form_start(form) }}
-	{{ form_row(form.name) }}
-	{{ form_row(form.description) }}
+	{{ form_widget(form) }}
 	<button type="button" class="btn btn-success rounded-pill jusitify-content-center">{{ button_label|default('Enregistrer') }}</button>
 	{{ form_end(form) }}
+{% endblock %}

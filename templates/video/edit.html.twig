@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_form.html.twig' %}
 
-{% block title %}Edit Video{% endblock %}
+{% block title %}Edit Video
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Video</h1>
+	{% block h1 %}Ajouter une vidéo depuis Youtube
+	{% endblock %}
 
-    {{ include('video/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('video/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_video_index') }}">back to list</a>
+	<a href="{{ path('app_video_index') }}">back to list</a>
 
-    {{ include('video/_delete_form.html.twig') }}
+	{{ include('video/_delete_form.html.twig') }}
 {% endblock %}

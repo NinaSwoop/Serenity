@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_form.html.twig' %}
 
-{% block title %}New SchemaContent{% endblock %}
+{% block title %}New SchemaContent
+{% endblock %}
 
 {% block body %}
-    <h1>Create new SchemaContent</h1>
+	{% block h1 %}Ajouter un Schéma
+	{% endblock %}
 
-    {{ include('schema_content/_form.html.twig') }}
+	{{ include('schema_content/_form.html.twig') }}
 
-    <a href="{{ path('app_schema_content_index') }}">back to list</a>
+	<a href="{{ path('app_schema_content_index') }}">back to list</a>
 {% endblock %}
