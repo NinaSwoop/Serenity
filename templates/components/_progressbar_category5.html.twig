@@ -11,7 +11,7 @@
 					<span class="titlebar d-flex justify-content-start {% if total == isChecked %}text-decoration-line-through{% endif %}">
 						Ma check-list avant le départ à la clinique</span>
 
-					<div class="titlefinish d-flex justify-content-end mt-4 me-2{% if total != isChecked %}d-none {% endif %}">
+					<div class="titlefinish d-flex justify-content-end mt-4 me-2{% if total != isChecked %} d-none {% endif %}">
 						Terminé
 					</div>
 
@@ -20,7 +20,9 @@
 					<div class="numberChecked">
 						{{isChecked}}/{{total}}
 					</div>
-					<i class="finishbutton {% if total != isChecked %}d-none {% else %}bi-check2-circle{% endif %} d-flex mt-4" id="finishbutton"></i>
+					<span class="finishbutton{% if total != isChecked %} d-none {% endif %}">
+						<i class="bi-check2-circle d-flex mt-4"></i>
+					</span>
 				</div>
 			</div>
 		</div>
