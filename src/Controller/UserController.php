@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Repository\WelfareRepository;
+use DateTime;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,11 +16,23 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'app_user_index', methods: ['GET'])]
+    #[Route('/index', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'welfares' => $userRepository->findAll(),
+
+        ]);
+    }
+
+    #[Route('/', name: 'app_user_welfare', methods: ['GET'])]
+    public function indexForToday(WelfareRepository $welfareRepository): Response
+    {
+        $today = new DateTimeImmutable();
+
+        return $this->render('admin/index.html.twig', [
+            'welfares' => $welfareRepository->findBy(['responseAt' => $today]),
+
         ]);
     }
 

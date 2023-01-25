@@ -32,7 +32,7 @@ class LoginController extends AbstractController
     public function redirectAfterLogin(): Response
     {
         if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_welfare', [], Response::HTTP_SEE_OTHER);
         }
         if (in_array('ROLE_USER', $this->getUser()->getRoles())) {
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);

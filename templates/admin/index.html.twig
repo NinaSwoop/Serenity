@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les réponses du jour
+{% endblock %}
+
+{% block body %}
+
+	<h1>Les réponses du jour</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Email</th>
+				<th>Secretariat</th>
+				<th>Indicateur de stress</th>
+				<th>Date</th>
+				<th>Téléphone</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for welfare in welfares %}
+				<tr>
+					<td>{{ welfare.user.lastname }}</td>
+					<td>{{ welfare.user.firstname }}</td>
+					<td>{{ welfare.user.email }}</td>
+					<td>{{welfare.user.secretariat.name}}</td>
+					<td>{{ welfare.score}}</td>
+					<td>{{ welfare.responseAt|date("d/m/Y")}}</td>
+					<td>{{ welfare.user.phonenumber }}</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="10">Pas de réponse aujourd'hui</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

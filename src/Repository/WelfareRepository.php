@@ -55,6 +55,19 @@ class WelfareRepository extends ServiceEntityRepository
         return $queryBuilder->getResult();
     }
 
+    public function findAllWithWelfare(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('w')
+            ->select('u.id, u.firstname, u.lastname, u.email, w.score, w.response_at, s.name')
+            ->join('w.user', 'u')
+            ->join('u.secretariat', 's')
+            ->where('(w.user, w.response_at) IN (SELECT user_id, MAX(response_at) FROM welfare GROUP BY user_id)')
+            ->orderBy('w.response_at', 'DESC')
+            ->getQuery();
+
+
+        return $queryBuilder->getResult();
+    }
     //    /**
     //     * @return Welfare[] Returns an array of Welfare objects
     //     */
