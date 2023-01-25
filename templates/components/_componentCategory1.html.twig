@@ -13,8 +13,8 @@
 				<div class="background-check"></div>
 				<a class="checkAbsoluteButton" href="{{ path("app_schema_content_check" , { id: userSchema.schemaContent.id }) }}">
 					<i class="bi absolue-check {{ userSchema.isChecked ? ' absolue-check-circle bi-check-circle' : ' absolue-circle bi-circle'}}"></i>
+					<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap">
 				</a>
-				<img class="rounded-4 schema-picture h-100" src="{{asset('build/images/' ~ userSchema.schemaContent.picture)}}" alt="Card image cap">
 			</div>
 
 			<div class="modal fade" id="modal{{userSchema.schemaContent.id}}" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">

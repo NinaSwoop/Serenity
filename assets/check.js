@@ -119,8 +119,6 @@ function dynamicProgressBar() {
     }
 }
 
-let modals = document.getElementsByClassName('modal')
-
 // Finish ProgressBar
 
 function finishProgressBar() {
@@ -129,10 +127,6 @@ function finishProgressBar() {
     let titlebar = document.getElementsByClassName('titlebar');
     let titlefinish = document.getElementsByClassName('titlefinish');
     let buttonfinish = document.getElementsByClassName('finishbutton');
-
-    // Sélectionne les élèment de la modale
-    let modals = document.getElementsByClassName('modal');
-    let modalBackdrops = document.getElementsByClassName('modal-backdrop');
 
     for (let i = 0; i < titlebar.length; i++) {
         if (totalCheckButtons.length === checkedButtons.length) {
@@ -144,35 +138,5 @@ function finishProgressBar() {
             titlefinish[i].classList.add("d-none");
             buttonfinish[i].classList.add("d-none");
         }
-        modals[i].classList.toggle('d-none');
-        modalBackdrops[i].classList.toggle('modal-backdrop-initial');
-        // Pbm: Fait clignoter le backdrop, et modal plus fonctionnel après premier clique...
     }
 }
-
-// let modalBtn = document.getElementsByClassName('modalBtn');
-
-// console.log(modalBtn);
-// console.log(modalBtn[0]);
-
-// for (let i = 0; i < modalBtn.length; i++) {
-//     modalBtn[i].addEventListener('click', addModalBackdrop);
-// }
-
-// function addModalBackdrop() {
-//     console.log('Entrée dans la fonction');
-//     let modalBackdrops = document.getElementsByClassName('modal-backdrop')
-
-//     for (let i = 0; i < modalBackdrops.length; i++) {
-//         modalBackdrops[i].classList.add("modal-backdrop-initial");
-//     }
-//     console.log('Après fonction dans la fonction');
-// }
-
-// Ecouter la fermeture de la modale
-
-// let modals = document.getElementsByClassName('modal')
-// modals.addEventListener("hidden.bs.modal", function () {
-//     alert("La modale a été fermée");
-// });
-
