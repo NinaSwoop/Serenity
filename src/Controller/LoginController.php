@@ -33,8 +33,8 @@ class LoginController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function redirectAfterLogin(WelfareRepository $welfareRepository): Response
     {
-        if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
+        if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            return $this->redirectToRoute('app_user_welfare', [], Response::HTTP_SEE_OTHER);
         }
 
         if ($this->isGranted('ROLE_USER')) {
