@@ -2,19 +2,23 @@
 
 namespace App\Service;
 
-use App\Repository\CategoryRepository;
-use App\Repository\UserChecklistRepository;
+use App\Entity\User;
+use App\Form\ProfilePictureType;
+use App\Repository\UserRepository;
+use App\Repository\UserVideoRepository;
 use App\Repository\UserDocumentRepository;
+use App\Repository\UserChecklistRepository;
+use Symfony\Component\HttpFoundation\Request;
 use App\Repository\UserMedDisciplineRepository;
 use App\Repository\UserMedicalCourseRepository;
 use App\Repository\UserSchemaContentRepository;
-use App\Repository\UserVideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoryService extends AbstractController
 {
     private UserDocumentRepository $userDocRepo;
-    private CategoryRepository $categoryRepository;
+    private userRepository $userRepository;
     private UserChecklistRepository $userCheckRepo;
     private UserMedDisciplineRepository $userMedDRepo;
     private UserMedicalCourseRepository $userMedCRepo;
@@ -23,7 +27,7 @@ class CategoryService extends AbstractController
 
     public function __construct(
         UserDocumentRepository $userDocRepo,
-        CategoryRepository $categoryRepository,
+        userRepository $userRepository,
         UserChecklistRepository $userCheckRepo,
         UserMedDisciplineRepository $userMedDRepo,
         UserMedicalCourseRepository $userMedCRepo,
@@ -32,7 +36,7 @@ class CategoryService extends AbstractController
     ) {
 
         $this->userDocRepo = $userDocRepo;
-        $this->categoryRepository = $categoryRepository;
+        $this->userRepository = $userRepository;
         $this->userCheckRepo = $userCheckRepo;
         $this->userDocRepo = $userDocRepo;
         $this->userMedDRepo = $userMedDRepo;
@@ -45,7 +49,7 @@ class CategoryService extends AbstractController
     {
         $elementsChecked = [];
         $elementsChecked['categories'] =
-            $this->categoryRepository->findAll();
+            $this->userRepository->findAll();
         $elementsChecked['documentChecked'] =
             $this->userDocRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
         $elementsChecked['CheckListChecked'] =
@@ -60,5 +64,19 @@ class CategoryService extends AbstractController
             $this->userVideoRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
 
         return $elementsChecked;
+    }
+
+    public function changeProfilePicture(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        $form = $this->createForm(ProfilePictureType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userRepository->save($user, true);
+        }
+
+        return $this->renderForm('components/upload_profile_picture.html.twig', [
+            'form' => $form,
+        ]);
     }
 }
