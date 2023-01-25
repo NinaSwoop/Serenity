@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}New Checklist
+{% block title %}Ajouter élément checklist
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Ajouter un élément à la checklist
-	{% endblock %}
+	<h1 class="crud-title">Ajouter un élément à la checklist</h1>
 
 	{{ include('checklist/_form.html.twig') }}
 

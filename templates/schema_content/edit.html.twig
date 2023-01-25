@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Edit SchemaContent
+{% block title %}Modifier schéma
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Modifier un Schéma
-	{% endblock %}
+	<h1 class="crud-title">Modifier le schéma</h1>
 
 	{{ include('schema_content/_form.html.twig', {'button_label': 'Update'}) }}
 

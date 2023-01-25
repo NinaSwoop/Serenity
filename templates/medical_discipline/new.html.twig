@@ -1,12 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}New MedicalDiscipline
+{% block title %}Ajouter Profession
 {% endblock %}
 
 {% block body %}
-
-	{% block h1 %}Ajouter une profession de santé
-	{% endblock %}
+	<h1 class="crud-title">Ajouter une profession de santé</h1>
 
 	{{ include('medical_discipline/_form.html.twig') }}
 

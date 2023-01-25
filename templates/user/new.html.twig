@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}New User
+{% block title %}Ajouter utilisateur
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Ajouter un nouvel utilisateur
-	{% endblock %}
+	<h1 class="crud-title">Ajouter un nouvel utilisateur</h1>
 
 	{{ include('user/_form.html.twig') }}
 

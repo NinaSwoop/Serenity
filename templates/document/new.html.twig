@@ -1,12 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}New Document
+{% block title %}Ajouter document
 {% endblock %}
 
 {% block body %}
-
-	{% block h1 %}Ajouter un nouveau document
-	{% endblock %}
+	<h1 class="crud-title">Ajouter un nouveau document</h1>
 
 	{{ include('document/_form.html.twig') }}
 

@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Edit Document
+{% block title %}Modifier document
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Modifier un document
-	{% endblock %}
+	<h1 class="crud-title">Modifier un document</h1>
 
 	{{ include('document/_form.html.twig', {'button_label': 'Update'}) }}
 

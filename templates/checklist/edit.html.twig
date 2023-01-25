@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Edit Checklist
+{% block title %}Modifier élement checklist
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Modifier un élement de la checklist
-	{% endblock %}
+	<h1 class="crud-title">Modifier un élement de la checklist</h1>
 
 	{{ include('checklist/_form.html.twig', {'button_label': 'Update'}) }}
 

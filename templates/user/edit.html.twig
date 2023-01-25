@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Edit User
+{% block title %}Modifier utilisateur
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Modifier un utilisateur
-	{% endblock %}
+	<h1 class="crud-title">Modifier un utilisateur</h1>
 
 	{{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 

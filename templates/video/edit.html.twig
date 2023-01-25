@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Edit Video
+{% block title %}Changer la vidéo
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Ajouter une vidéo depuis Youtube
-	{% endblock %}
+	<h1 class="crud-title">Changer la vidéo depuis Youtube</h1>
 
 	{{ include('video/_form.html.twig', {'button_label': 'Update'}) }}
 

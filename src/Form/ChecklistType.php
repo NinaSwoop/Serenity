@@ -23,7 +23,8 @@ class ChecklistType extends AbstractType
             ])
             ->add('description', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Obligatoire'
+                    'placeholder' => 'Ex : Obligatoire',
+                    'class' => 'form-control',
                 ],
                 'required' => true,
                 'label' => 'Précisions :',

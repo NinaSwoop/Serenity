@@ -1,11 +1,10 @@
-{% extends 'base_form.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}New SchemaContent
+{% block title %}Ajouter schéma
 {% endblock %}
 
 {% block body %}
-	{% block h1 %}Ajouter un Schéma
-	{% endblock %}
+	<h1 class="crud-title">Ajouter un schéma</h1>
 
 	{{ include('schema_content/_form.html.twig') }}
 
