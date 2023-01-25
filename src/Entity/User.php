@@ -68,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserMedDiscipline::class)]
     private Collection $userMedDisciplines;
 
-    #[ORM\ManyToMany(targetEntity: Welfare::class, mappedBy: 'user')]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Welfare::class)]
     private Collection $welfares;
 
     public function __construct()
@@ -415,7 +415,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->welfares->contains($welfare)) {
             $this->welfares->add($welfare);
-            $welfare->addUser($this);
+            $welfare->setUser($this);
         }
 
         return $this;
@@ -424,7 +424,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeWelfare(Welfare $welfare): self
     {
         if ($this->welfares->removeElement($welfare)) {
-            $welfare->removeUser($this);
+            // set the owning side to null (unless already changed)
+            if ($welfare->getUser() === $this) {
+                $welfare->setUser(null);
+            }
         }
 
         return $this;

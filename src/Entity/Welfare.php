@@ -3,8 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\WelfareRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,14 +21,13 @@ class Welfare
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $responseAt = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'welfares')]
-    private Collection $user;
+    #[ORM\ManyToOne(inversedBy: 'welfares')]
+    private ?User $user = null;
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->responseAt = new dateTimeImmutable();
     }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -59,26 +57,14 @@ class Welfare
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUser(): Collection
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function addUser(User $user): self
+    public function setUser(?User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        $this->user->removeElement($user);
+        $this->user = $user;
 
         return $this;
     }
