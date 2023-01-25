@@ -33,12 +33,14 @@
 					</td>
 				</tr>
 			{% else %}
-				<tr>
+				<table>
+                <tbody>
+                <tr>
 					<td colspan="10">no records found</td>
 				</tr>
 			{% endfor %}
-		</tbody>
-	</table>
+     </tbody>
+     </table>
 
 	<a href="{{ path('app_user_new') }}">Create new</a>
 {% endblock %}
