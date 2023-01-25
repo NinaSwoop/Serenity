@@ -414,3 +414,12 @@ h5.card-title {
     text-decoration: initial;
     color: black;
 }
+
+/* Afficher/Cacher le Backdrop de la modal */ 
+.modal-backdrop {
+    display: initial;
+}
+
+.modal-backdrop-initial {
+    display: none;
+}
