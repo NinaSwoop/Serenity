@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Welfare;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Repository\WelfareRepository;
@@ -56,10 +57,13 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, WelfareRepository $welfareRepository): Response
     {
-        return $this->render('admin/show.html.twig', [
+        $userWelfares = $welfareRepository->findBy(['user' => $user->getId()]);
+
+        return $this->render('user/show.html.twig', [
             'user' => $user,
+            'userWelfares' => $userWelfares
         ]);
     }
 

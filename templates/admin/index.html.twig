@@ -49,11 +49,10 @@
 							<a href="{{ path("app_welfare_isCallBack" , { id: welfare.id }) }}" class="btn btn-primary position-absolute bottom-0 end-0 m-2">Ce patient a été rappelé</a>
 						{% endif %}
 					</div>
+					<a href="{{ path("app_user_show" , { id: welfare.user.id }) }}">ICI</a>
 				</div>
 			</div>
 		</div>
-		<p>coucou</p>
-		<a href="{{ path("app_user_show" , { id: welfare.user.id }) }}">ICI</a>
 	{% else %}
 		<table>
 			<tbody>

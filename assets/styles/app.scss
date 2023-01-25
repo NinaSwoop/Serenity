@@ -69,7 +69,7 @@ body {
     height: 110px;
 }
 
-.undefined-patient{
+.undefined-patient {
     width: 110px;
     height: 110px;
     background: url(/assets/images/bras-cassé.jpg) center/cover;
@@ -83,7 +83,7 @@ body {
     border-radius: 25%;
 }
 
-.picture-profile-patient{
+.picture-profile-patient {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -104,29 +104,30 @@ div.modal-footer>form {
 
 }
 
-div#profile-picture>fieldset>div.vich-file{
+div#profile-picture>fieldset>div.vich-file {
     display: flex;
     justify-content: center;
 
 }
-div.vich-file>div.mb-3{
-display: flex;
-justify-content: center;
+
+div.vich-file>div.mb-3 {
+    display: flex;
+    justify-content: center;
 }
 
-div.vich-file>div.mb-3>div.form-check{
+div.vich-file>div.mb-3>div.form-check {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     width: 60%;
 }
 
-#profile_picture_profilePicture_delete{
+#profile_picture_profilePicture_delete {
     margin-right: 1em;
 }
 
 
-.upload-form-picture{
-margin-bottom: 2em;
+.upload-form-picture {
+    margin-bottom: 2em;
 }
 
 .progress-title {
@@ -580,4 +581,12 @@ h5.card-title {
 
 .emojidashboard {
     width: 50px;
+}
+
+.patient-picture {
+    height: 200px;
+}
+
+.patientInfo {
+    width: 400px;
 }

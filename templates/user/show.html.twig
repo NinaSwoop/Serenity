@@ -4,52 +4,103 @@
 {% endblock %}
 
 {% block body %}
-	<h1>User</h1>
+	<div class="m-5">
+		<h1>Informations patient</h1>
+		<div class="d-flex flex-row mt-4 mb-5">
+			<div class="patient-picture me-3">
+				<img class="rounded img-thumbnail picture-profile-patient" src="{{asset('build/images/' ~ user.picture)}}">
+			</div>
+			<div class="patientInfo">
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ user.id }}</td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td>{{ user.email }}</td>
-			</tr>
-			<tr>
-				<th>Roles</th>
-				<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-			</tr>
-			<tr>
-				<th>Password</th>
-				<td>{{ user.password }}</td>
-			</tr>
-			<tr>
-				<th>IsVerified</th>
-				<td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-			</tr>
-			<tr>
-				<th>Firstname</th>
-				<td>{{ user.firstname }}</td>
-			</tr>
-			<tr>
-				<th>Lastname</th>
-				<td>{{ user.lastname }}</td>
-			</tr>
-			<tr>
-				<th>Picture</th>
-				<td>{{ user.picture }}</td>
-			</tr>
-			<tr>
-				<th>Phonenumber</th>
-				<td>{{ user.phonenumber }}</td>
-			</tr>
-		</tbody>
-	</table>
+				<table class="table">
+					<tbody>
+						<tr class="table-light">
+							<th colspan="2">
+								<h3>{{ user.firstname ~ " " ~ user.lastname}}
+								</h3>
+							</th>
+						</tr>
+						<tr>
+							<th>Patient #:
+							</th>
+							<td>{{ user.id }}</td>
+						</tr>
+						<tr>
+							<th>Email:
+							</th>
+							<td>{{ user.email }}</td>
+						</tr>
+						<tr>
+							<th>Téléphone</th>
+							<td>{{ user.phonenumber }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pt-3">
+			<h1>Historique - Suivi du bien-être du patient</h1>
 
-	<a href="{{ path('app_user_index') }}">back to list</a>
+			<table class="table table-sm table-hover mt-4 align-middle">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Date de réponse</th>
+						<th>Etat du patient</th>
+						<th colspan="2">Score</th>
+						<th>Patient rappelé</th>
+					</tr>
+				</thead>
 
-	<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+				<tbody>
+					{% for userWelfare in userWelfares |sort ((a, b) => b.responseAt <=> a.responseAt)%}
 
-	{{ include('user/_delete_form.html.twig') }}
-{% endblock %}
+						<tr class="{% if userWelfare.score == 1 %} table-success {% elseif userWelfare.score == 2 %} table-info {% elseif userWelfare.score == 3 %} table-warning {% else %} table-danger {% endif %}">
+							<td>{{userWelfare.id}}</td>
+							<td>{{userWelfare.responseAt | format_date(pattern='dd/MM/yyyy', locale='fr') }}
+								-
+								{{userWelfare.responseAt | format_date(pattern='eeee', locale='fr') |capitalize}}
+							</td>
+							<td>
+								{% if userWelfare.score == 1 %}
+									Bien
+								{% elseif userWelfare.score == 2 %}
+									Stressé.e
+								{% elseif userWelfare.score == 3 %}
+									Fatigué.e
+								{% else %}
+									Mal
+								{% endif %}
+							</td>
+							<td>{{userWelfare.score}}</td>
+							<td>
+								{% if userWelfare.score == 1 %}
+									<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="home">
+								{% elseif userWelfare.score == 2 %}
+									<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-tired.svg')}}" alt="home">
+								{% elseif userWelfare.score == 3 %}
+									<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-stress.svg')}}" alt="home">
+								{% else %}
+									<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="home">
+								{% endif %}
+							</td>
+							<td>
+								{% if userWelfare.score != 1 %}
+									{% if userWelfare.isCallBack == 1 %}
+										Oui
+									{% else %}
+										Non
+									{% endif %}
+								{% else %}
+									RAS
+								{% endif %}
+							</td>
+						</tr>
+					</td>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{{path('app_user_index')}}">back to list</a>
+		<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+		{{ include('user/_delete_form.html.twig') }}
+	{% endblock %}
