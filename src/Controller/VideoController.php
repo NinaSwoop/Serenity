@@ -32,8 +32,9 @@ class VideoController extends AbstractController
         $video->setCategory($categoryRepository->findOneBy(['title' => 'Comprendre mon opération']));
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $url = $video->getPicture();
+            $video->setPicture(substr_replace($url, "embed/", 24, 8));
             $videoRepository->save($video, true);
 
             return $this->redirectToRoute('app_video_index', [], Response::HTTP_SEE_OTHER);
@@ -60,6 +61,8 @@ class VideoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $url = $video->getPicture();
+            $video->setPicture(substr_replace($url, "embed/", 24, 8));
             $videoRepository->save($video, true);
 
             return $this->redirectToRoute('app_video_index', [], Response::HTTP_SEE_OTHER);

@@ -6,7 +6,7 @@
 {% block body %}
 	<h1 class="crud-title">Modifier un utilisateur</h1>
 
-	{{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('user/_form.html.twig') }}
 
 	<a href="{{ path('app_user_index') }}">back to list</a>
 

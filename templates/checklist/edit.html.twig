@@ -6,7 +6,7 @@
 {% block body %}
 	<h1 class="crud-title">Modifier un élement de la checklist</h1>
 
-	{{ include('checklist/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('checklist/_form.html.twig') }}
 
 	<a href="{{ path('app_checklist_index') }}">back to list</a>
 
