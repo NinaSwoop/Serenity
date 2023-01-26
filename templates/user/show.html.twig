@@ -4,12 +4,13 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}User
+{% block title %}
+	Résumé Patient
 {% endblock %}
 
 {% block body %}
 	<div class="container-fluid d-md-flex p-0">
-		<div class="col-3 me-0">
+		<div class="col-2">
 			{% include "admin/_layout.html.twig" %}
 		</div>
 		<div class="m-3 w-75">
@@ -51,6 +52,10 @@
 							</table>
 						</div>
 					</div>
+
+				</div>
+				<div class="m-auto">
+					<img class="logo-image-admin" src="{{asset('build/images/logo-title.svg')}}" alt="logo">
 					<div class="mb-5">
 						<div class="progress progress-index position-relative z-0">
 							<div class="progress-bar rounded-5-start progbar progressbar-index z-2" style="width: {{percent}}%" role=" progressbar" aria-label=" example with label" aria-valuenow=" 4" aria-valuemin=" 0" aria-valuemax=" 100">
@@ -73,20 +78,17 @@
 						</div>
 					</div>
 				</div>
-				<div class="m-auto">
-					<img class="logo-image-admin" src="{{asset('build/images/logo-title.svg')}}" alt="logo">
-				</div>
 			</div>
 
-			<div class="pt-3">
-				<h1>Historique - Suivi du bien-être du patient</h1>
+			<div>
+				<h1 class="mt-5">Historique - Suivi du bien-être du patient</h1>
 
 				<table class="table table-sm table-hover mt-4 me-4 align-middle">
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Date de réponse</th>
-							<th>Etat du patient</th>
+							<th class="text-center">#</th>
+							<th class="text-center">Date de réponse</th>
+							<th class="text-center" colspan="2">Etat du patient</th>
 							<th class="text-center">Score</th>
 							<th class="text-center">Patient rappelé</th>
 						</tr>
@@ -96,21 +98,28 @@
 						{% for userWelfare in userWelfares |sort ((a, b) => b.responseAt <=> a.responseAt)%}
 
 							<tr class="{% if userWelfare.score == 1 %} table-success {% elseif userWelfare.score == 2 %} table-info {% elseif userWelfare.score == 3 %} table-warning {% else %} table-danger {% endif %}">
-								<td>{{userWelfare.id}}</td>
-								<td>{{userWelfare.responseAt | format_date(pattern='dd/MM/yyyy', locale='fr') }}
+								<td class="text-center">{{userWelfare.id}}</td>
+								<td class="text-center">{{userWelfare.responseAt | format_date(pattern='dd/MM/yyyy', locale='fr') }}
 								</td>
-								<td>
+								<td class="text-end">
 									{% if userWelfare.score == 1 %}
 										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="home">
-										- Bien
 									{% elseif userWelfare.score == 2 %}
 										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-tired.svg')}}" alt="home">
-										- Stressé.e
 									{% elseif userWelfare.score == 3 %}
 										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-stress.svg')}}" alt="home">
-										- Fatigué.e
 									{% else %}
 										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="home">
+									{% endif %}
+								</td>
+								<td class="text-start">
+									{% if userWelfare.score == 1 %}
+										- Bien
+									{% elseif userWelfare.score == 2 %}
+										- Stressé.e
+									{% elseif userWelfare.score == 3 %}
+										- Fatigué.e
+									{% else %}
 										- Mal
 									{% endif %}
 								</td>
