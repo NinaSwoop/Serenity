@@ -366,6 +366,11 @@ h5.card-title {
         background-color: white;
         width: auto;
     }
+
+    .connexionPageForm {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .carrousel-picture {
@@ -418,6 +423,7 @@ h5.card-title {
     background: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 8px;
+    height: 56px;
 }
 
 .connexionInput:focus {
@@ -569,6 +575,36 @@ h5.card-title {
 }
 
 /* End WelfareForm */
+
+/* CRUD Form */
+
+.crud-title {
+    font-weight: bold;
+    text-align: center;
+    margin: 2em;
+}
+
+.crud-label {
+    font-weight: bold;
+    margin: 1em;
+}
+
+.crud-input {
+    margin-bottom: 1.7em;
+}
+
+.crud-input:focus {
+    font-weight: bold;
+}
+
+.crud-button {
+    font-weight: bold;
+
+    display: block;
+    margin: auto;
+}
+
+/* End CRUD Form */
 /* Start Dashboard Admin */
 
 .emojidashboard {

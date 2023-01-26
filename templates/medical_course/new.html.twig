@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New MedicalCourse{% endblock %}
+{% block title %}Ajouter étape hospitalisation
+{% endblock %}
 
 {% block body %}
-    <h1>Create new MedicalCourse</h1>
+	<h1 class="crud-title">Ajouter une étape de l'hospitalisation</h1>
 
-    {{ include('medical_course/_form.html.twig') }}
+	{{ include('medical_course/_form.html.twig') }}
 
-    <a href="{{ path('app_medical_course_index') }}">back to list</a>
+	<a href="{{ path('app_medical_course_index') }}">back to list</a>
 {% endblock %}
