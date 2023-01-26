@@ -36,12 +36,12 @@ class WelfareFixtures extends Fixture implements DependentFixtureInterface
             '2023-01-20',
         ],
         [
-            '2022-01-21',
-            '2022-01-22',
-            '2022-01-23',
-            '2022-01-26',
-            '2022-01-27',
-            '2022-01-30',
+            '2022-12-21',
+            '2022-12-22',
+            '2022-12-23',
+            '2022-12-26',
+            '2022-12-27',
+            '2022-12-30',
             '2023-01-02',
             '2023-01-03',
             '2023-01-05',
@@ -52,13 +52,17 @@ class WelfareFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        for ($i = 0; $i < 3; $i++) {
+        $startDate = '2023-01-26';
+        $endDate = '2023-02-09';
+        for ($i = 0; $i < 8; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 $welfare = new Welfare();
                 $welfare->setScore($faker->numberBetween(1, 4));
-                $welfare->setResponseAt(\DateTimeImmutable::createFromFormat('Y-m-d', self::WELFARES[$i][$j]));
                 $userNb = $i + 1;
                 $welfare->setUser($this->getReference('user_' . $userNb));
+                $randomDate = $faker->dateTimeBetween($startDate, $endDate)->format('Y-m-d H:i:s');
+                $welfare->setResponseAt(\DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $randomDate));
+                $welfare->setIsCallBack($faker->boolean());
                 $manager->persist($welfare);
             }
         }
