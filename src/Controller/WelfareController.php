@@ -57,8 +57,7 @@ class WelfareController extends AbstractController
     public function callBack(
         Welfare $welfare,
         WelfareRepository $welfareRepository
-    ): Response
-    {
+    ): Response {
         $callBack = $welfareRepository->findOneBy(
             [
                 'id' => $welfare->getId(),
@@ -75,5 +74,4 @@ class WelfareController extends AbstractController
 
         return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
     }
-
 }
