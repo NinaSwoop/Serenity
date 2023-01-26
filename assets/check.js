@@ -10,6 +10,7 @@ function checkAbsoluteItem(e) {
 
     const checkLink = e.currentTarget;
     const link = checkLink.href;
+
     try {
         fetch(link)
             .then(res => res.json())
@@ -34,6 +35,41 @@ function checkAbsoluteItem(e) {
     }
 }
 
+// Modal arrow fetch
+
+let modalArrowLinks = document.getElementsByClassName('modalArrowLink');
+
+for (let i = 0; i < modalArrowLinks.length; i++) {
+    modalArrowLinks[i].addEventListener('click', checkAbsoluteItemFromModal);
+}
+
+function checkAbsoluteItemFromModal(e) {
+    e.preventDefault();
+
+    const checkLink = e.currentTarget;
+    const link = checkLink.href;
+
+    try {
+        fetch(link)
+            .then(res => res.json())
+            .then(data => {
+                let checkLinkId = checkLink.getAttribute("id");
+                let checkIconDiv = document.getElementsByClassName(checkLinkId)[0];
+                let checkIcon = checkIconDiv.firstElementChild;
+                if (data.isChecked) {
+                    checkIcon.classList.remove("absolue-circle");
+                    checkIcon.classList.remove("bi-circle");
+                    checkIcon.classList.add("absolue-check-circle");
+                    checkIcon.classList.add("bi-check-circle");
+                }
+                dynamicProgressBar();
+                finishProgressBar();
+            }
+            );
+    } catch (err) {
+        alert('Action non valide !');
+    }
+}
 
 // Check buttons with Relative position
 let checkRelativeButtons = document.getElementsByClassName('checkRelativeButton');
@@ -118,7 +154,6 @@ function dynamicProgressBar() {
         numberCheckedDiv[i].innerHTML = checkedButtons.length + "/" + totalCheckButtons.length;
     }
 }
-
 
 // Finish ProgressBar
 
