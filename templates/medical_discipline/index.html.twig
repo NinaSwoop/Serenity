@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MedicalDiscipline index{% endblock %}
+{% block title %}MedicalDiscipline index
+{% endblock %}
 
 {% block body %}
-    <h1>MedicalDiscipline index</h1>
+	<div class="container-fluid d-md-flex p-0">
+		<div class="col-3">
+			{% include "admin/_layout.html.twig" %}
+		</div>
+		<div class="col-9">
+			<h1>MedicalDiscipline index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for medical_discipline in medical_disciplines %}
-            <tr>
-                <td>{{ medical_discipline.id }}</td>
-                <td>{{ medical_discipline.name }}</td>
-                <td>
-                    <a href="{{ path('app_medical_discipline_show', {'id': medical_discipline.id}) }}">show</a>
-                    <a href="{{ path('app_medical_discipline_edit', {'id': medical_discipline.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for medical_discipline in medical_disciplines %}
+						<tr>
+							<td>{{ medical_discipline.id }}</td>
+							<td>{{ medical_discipline.name }}</td>
+							<td>
+								<a href="{{ path('app_medical_discipline_show', {'id': medical_discipline.id}) }}">show</a>
+								<a href="{{ path('app_medical_discipline_edit', {'id': medical_discipline.id}) }}">edit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="3">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 
-    <a href="{{ path('app_medical_discipline_new') }}">Create new</a>
+			<a href="{{ path('app_medical_discipline_new') }}">Create new</a>
+		</div>
+	</div>
 {% endblock %}
