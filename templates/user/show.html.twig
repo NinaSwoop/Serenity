@@ -12,7 +12,7 @@
 			</div>
 			<div class="patientInfo">
 
-				<table class="table">
+				<table class="table table-sm">
 					<tbody>
 						<tr class="table-light">
 							<th colspan="2">
@@ -34,6 +34,10 @@
 							<th>Téléphone</th>
 							<td>{{ user.phonenumber }}</td>
 						</tr>
+						<tr>
+							<th>Secrétariat</th>
+							<td>{{ user.secretariat.name |capitalize }}</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -47,7 +51,8 @@
 						<th>#</th>
 						<th>Date de réponse</th>
 						<th>Etat du patient</th>
-						<th colspan="2">Score</th>
+						<th>Score</th>
+						<th></th>
 						<th>Patient rappelé</th>
 					</tr>
 				</thead>
@@ -58,8 +63,6 @@
 						<tr class="{% if userWelfare.score == 1 %} table-success {% elseif userWelfare.score == 2 %} table-info {% elseif userWelfare.score == 3 %} table-warning {% else %} table-danger {% endif %}">
 							<td>{{userWelfare.id}}</td>
 							<td>{{userWelfare.responseAt | format_date(pattern='dd/MM/yyyy', locale='fr') }}
-								-
-								{{userWelfare.responseAt | format_date(pattern='eeee', locale='fr') |capitalize}}
 							</td>
 							<td>
 								{% if userWelfare.score == 1 %}
