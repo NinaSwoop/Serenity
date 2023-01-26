@@ -579,11 +579,23 @@ h5.card-title {
 }
 
 .crud-label {
-
+    font-weight: bold;
+    margin: 1em;
 }
 
 .crud-input {
+    margin-bottom: 1.7em;
+}
 
+.crud-input:focus {
+    font-weight: bold;
+}
+
+.crud-button {
+    font-weight: bold;
+
+    display: block;
+    margin: auto;
 }
 
 /* End CRUD Form */
