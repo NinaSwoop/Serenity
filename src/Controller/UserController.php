@@ -3,16 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Welfare;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Repository\WelfareRepository;
-use DateTime;
-use DateTimeImmutable;
+use App\Service\CategoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+
+use function PHPUnit\Framework\throwException;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -46,13 +47,31 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user, WelfareRepository $welfareRepository): Response
-    {
-        $userWelfares = $welfareRepository->findBy(['user' => $user->getId()]);
+    public function show(
+        User $user,
+        WelfareRepository $welfareRepository,
+        CategoryService $categoryService,
+    ): Response {
+        $userId = $user->getId();
+
+        if ((in_array("ROLE_ADMIN", $user->getRoles()))) {
+            throw new NotFoundHttpException();
+        }
+
+        $elementsChecked = $categoryService->elementChecked($user);
+        $totalElementsByUser = $categoryService->totalElementByUser($user);
+        $userWelfares = $welfareRepository->findBy(['user' => $userId]);
 
         return $this->render('user/show.html.twig', [
             'user' => $user,
-            'userWelfares' => $userWelfares
+            'userWelfares' => $userWelfares,
+            'document' => $elementsChecked['documentChecked'],
+            'checklist' => $elementsChecked['CheckListChecked'],
+            'medicalD' => $elementsChecked['medDChecked'],
+            'medicalC' => $elementsChecked['medCChecked'],
+            'schema' => $elementsChecked['schemaChecked'],
+            'video' => $elementsChecked['videoChecked'],
+            'totalElementsByUser' => $totalElementsByUser
         ]);
     }
 

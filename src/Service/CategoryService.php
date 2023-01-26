@@ -14,6 +14,7 @@ use App\Repository\UserMedicalCourseRepository;
 use App\Repository\UserSchemaContentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\Length;
 
 class CategoryService extends AbstractController
 {
@@ -45,25 +46,45 @@ class CategoryService extends AbstractController
         $this->userVideoRepo = $userVideoRepo;
     }
 
-    public function elementChecked(): array
+    public function elementChecked(User $user): array
     {
         $elementsChecked = [];
         $elementsChecked['categories'] =
             $this->userRepository->findAll();
         $elementsChecked['documentChecked'] =
-            $this->userDocRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+            $this->userDocRepo->findBy(['user' => $user, 'isChecked' => true]);
         $elementsChecked['CheckListChecked'] =
-            $this->userCheckRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+            $this->userCheckRepo->findBy(['user' => $user, 'isChecked' => true]);
         $elementsChecked['medDChecked'] =
-            $this->userMedDRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+            $this->userMedDRepo->findBy(['user' => $user, 'isChecked' => true]);
         $elementsChecked['medCChecked'] =
-            $this->userMedCRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+            $this->userMedCRepo->findBy(['user' => $user, 'isChecked' => true]);
         $elementsChecked['schemaChecked'] =
-            $this->userSchemaRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+            $this->userSchemaRepo->findBy(['user' => $user, 'isChecked' => true]);
         $elementsChecked['videoChecked'] =
-            $this->userVideoRepo->findBy(['user' => $this->getUser(), 'isChecked' => true]);
+            $this->userVideoRepo->findBy(['user' => $user, 'isChecked' => true]);
 
         return $elementsChecked;
+    }
+
+    public function totalElementByUser(User $user): int
+    {
+        $totalDocument = $this->userDocRepo->findBy(['user' => $user]);
+        $totalChecklist = $this->userCheckRepo->findBy(['user' => $user]);
+        $totalMedD = $this->userMedDRepo->findBy(['user' => $user]);
+        $totalMedC = $this->userMedCRepo->findBy(['user' => $user]);
+        $totalSchema = $this->userSchemaRepo->findBy(['user' => $user]);
+        $totalVideo = $this->userVideoRepo->findBy(['user' => $user]);
+
+        $totalElementsByUser =
+            count($totalDocument) +
+            count($totalChecklist) +
+            count($totalMedD) +
+            count($totalMedC) +
+            count($totalSchema) +
+            count($totalVideo);
+
+        return $totalElementsByUser;
     }
 
     public function changeProfilePicture(Request $request, User $user, UserRepository $userRepository): Response

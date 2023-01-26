@@ -24,36 +24,24 @@
 				</thead>
 				<tbody>
 					{% for user in users %}
-						<tr>
-							<td>{{ user.lastname }}</td>
-							<td>{{ user.firstname }}</td>
-							<td>{{ user.email }}</td>
-
-							<td></td>
-							<td>{{ user.phonenumber }}</td>
-							<td>
-								<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-								<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="10">no records found</td>
-						</tr>
+						{% if user.id != app.user.id %}
+							<tr>
+								<td>{{ user.lastname }}</td>
+								<td>{{ user.firstname }}</td>
+								<td>{{ user.email }}</td>
+								<td>{{ user.email }}</td>
+								<td>{{ user.phonenumber }}</td>
+								<td>
+									<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+									<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+								</td>
+							</tr>
+						{% endif %}
 					{% endfor %}
 				</tbody>
 			</table>
 
-			<td></td>
-			<td>{{ user.phonenumber }}</td>
-			<td>
-				<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-				<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-			</td>
-		</tr>
-	{% else %}
-		<tr>
-			<td colspan="10">no records found</td>
-		</tr>
-	{% endfor %}
-</tbody></table><a href="{{ path('app_user_new') }}">Create new</a>{% endblock %}
+			<a href="{{ path('app_user_new') }}">Create new</a>
+		</div>
+	</div>
+{% endblock %}

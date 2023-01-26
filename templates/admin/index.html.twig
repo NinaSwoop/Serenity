@@ -8,8 +8,9 @@
 		<div class="col-3">
 			{% include "admin/_layout.html.twig" %}
 		</div>
-		<div class="col-9">
+		<div class="col-9 mt-5">
 			<h1 class="text-center m-3">Les réponses du jour</h1>
+			<h2 class="text-center m-3">{{ "now"|date("d/m/Y") }}</h2>
 			{% for welfare in welfares|sort ((a, b) => b.score <=> a.score) %}
 				<div class="">
 					<div class="card border border-2 w-50 mx-auto m-5">
