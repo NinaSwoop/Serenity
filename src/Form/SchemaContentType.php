@@ -14,7 +14,18 @@ class SchemaContentType extends AbstractType
     {
         $builder
             ->add('picture')
-            ->add('title', TextType::class, []);
+            ->add('title', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ex : Système digestif',
+                    'maxlength' => 255,
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
+                ],
+                'required' => true,
+                'label' => 'Schéma médical :',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -14,8 +14,31 @@ class MedicalCourseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('step', IntegerType::class, [])
-            ->add('title', TextType::class, [])
+            ->add('step', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 1,
+                    'min' => 1,
+                    'max' => 20,
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
+                ],
+                'required' => true,
+                'label' => 'Numéro d\'étape de l\'hospitalisation :',
+            ])
+            ->add('title', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ex : Consultation pré-opératoire',
+                    'maxlength' => 255,
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
+                ],
+                'required' => true,
+                'label' => 'Nom de l\'étape :',
+            ])
             ->add('picture');
     }
 

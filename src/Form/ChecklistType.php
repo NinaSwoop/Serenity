@@ -16,19 +16,28 @@ class ChecklistType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Carte Vitale'
+                    'placeholder' => 'Ex : Carte Vitale',
+                    'maxlength' => 255,
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
                 ],
                 'required' => true,
-                'label' => 'À ne pas oublier avant l\'hospitalisation:',
+                'label' => 'À ne pas oublier avant l\'hospitalisation :',
             ])
             ->add('description', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Ex : Obligatoire',
-                    'class' => 'form-control',
+                    'maxlength' => 255,
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
                 ],
                 'required' => true,
                 'label' => 'Précisions :',
-                'empty_data' => "Facultatif"
+                'empty_data' => "Important"
             ]);
     }
 

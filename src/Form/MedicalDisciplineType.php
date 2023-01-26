@@ -15,7 +15,12 @@ class MedicalDisciplineType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Kinésithérapeute'
+                    'placeholder' => 'Ex : Kinésithérapeute',
+                    'maxlength' => 255,
+                    'class' => 'crud-input',
+                ],
+                'label_attr' => [
+                    'class' => 'crud-label',
                 ],
                 'required' => true,
                 'label' => 'Ajouter un profesionnel de santé :',
