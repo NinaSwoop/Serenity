@@ -621,8 +621,13 @@ h5.card-title {
 
 .sidebar {
     height: 100vh;
+    max-width: fit-content;
 }
 
 .nav-pills {
     --bs-nav-pills-link-active-bg: #7265E3;
+}
+
+.logo-image-admin {
+    width: 500px;
 }

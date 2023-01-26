@@ -8,126 +8,132 @@
 {% endblock %}
 
 {% block body %}
-	<div class="d-flex flex-row">
-		<div>
-			<h1>Informations patient</h1>
-			<div class="d-flex flex-row mt-4 mb-2">
-				<div class="patient-picture me-3">
-					<img class="rounded img-thumbnail picture-profile-patient" src="{{asset('build/images/' ~ user.picture)}}">
-				</div>
-				<div class="patientInfo">
-					<table class="table">
-						<tbody>
-							<tr class="table-light">
-								<th colspan="2">
-									<h3>{{ user.firstname ~ " " ~ user.lastname}}
-									</h3>
-								</th>
-							</tr>
-							<tr>
-								<th>Patient #:
-								</th>
-								<td>{{ user.id }}</td>
-							</tr>
-							<tr>
-								<th>Email:
-								</th>
-								<td>{{ user.email }}</td>
-							</tr>
-							<tr>
-								<th>Téléphone</th>
-								<td>{{ user.phonenumber }}</td>
-							</tr>
-							<tr>
-								<th>Secrétariat</th>
-								<td>{{ user.secretariat.name |capitalize }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="mb-5">
-				<div class="progress progress-index position-relative z-0">
-					<div class="progress-bar rounded-5-start progbar progressbar-index z-2" style="width: {{percent}}%" role=" progressbar" aria-label=" example with label" aria-valuenow=" 4" aria-valuemin=" 0" aria-valuemax=" 100">
-						<div class="progress-title p-2 position-absolute z-3 d-flex justify-content-between w-100 p-3">
-							{% if totalElementsByUser == totalchecked %}
-								<div class="d-flex align-items-center">
+	<div class="container-fluid d-md-flex p-0">
+		<div class="col-3 me-0">
+			{% include "admin/_layout.html.twig" %}
+		</div>
+		<div class="m-3 w-75">
+			<div class="d-flex flex-row">
+				<div>
+					<h1>Informations patient</h1>
+					<div class="d-flex flex-row mt-4 mb-2">
+						<div class="patient-picture me-3">
+							<img class="rounded img-thumbnail picture-profile-patient" src="{{asset('build/images/' ~ user.picture)}}">
+						</div>
+						<div class="patientInfo">
+							<table class="table">
+								<tbody>
+									<tr class="table-light">
+										<th colspan="2">
+											<h3>{{ user.firstname ~ " " ~ user.lastname}}
+											</h3>
+										</th>
+									</tr>
+									<tr>
+										<th>Patient #:
+										</th>
+										<td>{{ user.id }}</td>
+									</tr>
+									<tr>
+										<th>Email:
+										</th>
+										<td>{{ user.email }}</td>
+									</tr>
+									<tr>
+										<th>Téléphone</th>
+										<td>{{ user.phonenumber }}</td>
+									</tr>
+									<tr>
+										<th>Secrétariat</th>
+										<td>{{ user.secretariat.name |capitalize }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="mb-5">
+						<div class="progress progress-index position-relative z-0">
+							<div class="progress-bar rounded-5-start progbar progressbar-index z-2" style="width: {{percent}}%" role=" progressbar" aria-label=" example with label" aria-valuenow=" 4" aria-valuemin=" 0" aria-valuemax=" 100">
+								<div class="progress-title p-2 position-absolute z-3 d-flex justify-content-between w-100 p-3">
+									{% if totalElementsByUser == totalchecked %}
+										<div class="d-flex align-items-center">
+											<div class="d-flex align-items-center">
+												<i class=" finishbutton bi-check2-circle me-2"></i>
+												Le patient est prêt !
+											</div>
+										</div>
+									{% else %}
+										<div>Préparation du patient</div>
+									{% endif %}
 									<div class="d-flex align-items-center">
-										<i class=" finishbutton bi-check2-circle me-2"></i>
-										Le patient est prêt !
+										{{percent}}%
 									</div>
 								</div>
-							{% else %}
-								<div>Préparation du patient</div>
-							{% endif %}
-							<div class="d-flex align-items-center">
-								{{percent}}%
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="m-auto">
+					<img class="logo-image-admin" src="{{asset('build/images/logo-title.svg')}}" alt="logo">
+				</div>
 			</div>
-		</div>
-		<div></div>
 
-	</div>
+			<div class="pt-3">
+				<h1>Historique - Suivi du bien-être du patient</h1>
 
-	<div class="pt-3">
-		<h1>Historique - Suivi du bien-être du patient</h1>
+				<table class="table table-sm table-hover mt-4 me-4 align-middle">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Date de réponse</th>
+							<th>Etat du patient</th>
+							<th class="text-center">Score</th>
+							<th class="text-center">Patient rappelé</th>
+						</tr>
+					</thead>
 
-		<table class="table table-sm table-hover mt-4 align-middle">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Date de réponse</th>
-					<th>Etat du patient</th>
-					<th class="text-center">Score</th>
-					<th class="text-center">Patient rappelé</th>
-				</tr>
-			</thead>
+					<tbody>
+						{% for userWelfare in userWelfares |sort ((a, b) => b.responseAt <=> a.responseAt)%}
 
-			<tbody>
-				{% for userWelfare in userWelfares |sort ((a, b) => b.responseAt <=> a.responseAt)%}
-
-					<tr class="{% if userWelfare.score == 1 %} table-success {% elseif userWelfare.score == 2 %} table-info {% elseif userWelfare.score == 3 %} table-warning {% else %} table-danger {% endif %}">
-						<td>{{userWelfare.id}}</td>
-						<td>{{userWelfare.responseAt | format_date(pattern='dd/MM/yyyy', locale='fr') }}
-						</td>
-						<td>
-							{% if userWelfare.score == 1 %}
-								<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="home">
-								- Bien
-							{% elseif userWelfare.score == 2 %}
-								<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-tired.svg')}}" alt="home">
-								- Stressé.e
-							{% elseif userWelfare.score == 3 %}
-								<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-stress.svg')}}" alt="home">
-								- Fatigué.e
-							{% else %}
-								<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="home">
-								- Mal
-							{% endif %}
-						</td>
-						<td class="text-center">{{userWelfare.score}}</td>
-						<td class="text-center">
-							{% if userWelfare.score != 1 %}
-								{% if userWelfare.isCallBack == false %}
-									<a href="{{ path("app_welfare_isCallBack" , { id: userWelfare.id }) }}" class=" btn btn-primary bottom-0 end-0 m-2">Rappeler ce patient</a>
-								{% else %}
-									<a href="{{ path("app_welfare_isCallBack" , { id: userWelfare.id }) }}" class="btn btn-primary bottom-0 end-0 m-2">Patient rappelé
-										<i class="bi bi-check2-circle"></i>
-									</a>
+							<tr class="{% if userWelfare.score == 1 %} table-success {% elseif userWelfare.score == 2 %} table-info {% elseif userWelfare.score == 3 %} table-warning {% else %} table-danger {% endif %}">
+								<td>{{userWelfare.id}}</td>
+								<td>{{userWelfare.responseAt | format_date(pattern='dd/MM/yyyy', locale='fr') }}
+								</td>
+								<td>
+									{% if userWelfare.score == 1 %}
+										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-happy.svg')}}" alt="home">
+										- Bien
+									{% elseif userWelfare.score == 2 %}
+										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-tired.svg')}}" alt="home">
+										- Stressé.e
+									{% elseif userWelfare.score == 3 %}
+										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-stress.svg')}}" alt="home">
+										- Fatigué.e
+									{% else %}
+										<img class="img-fluid emojidashboard" src="{{asset('build/images/WelfareForm-unhappy.svg')}}" alt="home">
+										- Mal
+									{% endif %}
+								</td>
+								<td class="text-center">{{userWelfare.score}}</td>
+								<td class="text-center">
+									{% if userWelfare.score != 1 %}
+										{% if userWelfare.isCallBack == false %}
+											Non
+										{% else %}
+											Oui
+											<i class="bi bi-check2-circle"></i>
+										</a>
+									{% endif %}
+									{% else %}
 								{% endif %}
-							{% else %}
-								RAS
-							{% endif %}
+							</tr>
 						</td>
-					</tr>
-				</td>
-			{% endfor %}
-		</tbody>
-	</table>
-	<a href="{{path('app_user_index')}}">back to list</a>
-	<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-	{{ include('user/_delete_form.html.twig') }}
-{% endblock %}
+					</tbody>
+				</tr>
+			</td>
+		{% endfor %}
+	</tbody>
+</table>
+<a href="{{path('app_user_index')}}">back to list</a>
+<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+{{ include('user/_delete_form.html.twig') }}</div></div>{% endblock %}
