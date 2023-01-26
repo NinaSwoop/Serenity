@@ -24,7 +24,7 @@
 					<td>{{ user.email }}</td>
 					<td>{{ user.phonenumber }}</td>
 					<td>
-						{{ user.secretariat.name}}</td>
+						{{ user.secretariat.name|capitalize}}</td>
 					<td>
 						<a class="btn btn-primary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
 					</td>

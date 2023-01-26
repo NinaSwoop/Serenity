@@ -10,6 +10,7 @@
 		<thead>
 			<tr>
 				<th>Professionnel</th>
+				<th>Secretariat(s)</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -17,6 +18,12 @@
 			{% for medical_discipline in medical_disciplines %}
 				<tr>
 					<td>{{ medical_discipline.name }}</td>
+					<td class="flex-column">
+						{% for secretariat in medical_discipline.secretariats %}
+							<p>
+								{{ secretariat.name|capitalize }}</p>
+						{% endfor %}
+					</td>
 					<td>
 						<a class="btn btn-primary" href="{{ path('app_medical_discipline_edit', {'id': medical_discipline.id}) }}">Modifier</a>
 					</td>

@@ -9,9 +9,10 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th class="text-center">Step</th>
-				<th>Title</th>
-				<th class="text-center">Picture</th>
+				<th class="text-center">Etape</th>
+				<th>Titre</th>
+				<th class="text-center">Image</th>
+				<th>Secretariat(s)</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -21,6 +22,11 @@
 					<td class="text-center">{{ medical_course.step }}</td>
 					<td>{{ medical_course.title }}</td>
 					<td class="text-center"><img class="rounded w-50" src="{{asset('build/images/' ~ medical_course.picture)}}"></td>
+					<td class="flex-column">
+						{% for secretariat in medical_course.secretariats %}
+							<p>{{ secretariat.name|capitalize }}</p>
+						{% endfor %}
+					</td>
 					<td>
 						<a class="btn btn-primary" href="{{ path('app_medical_course_edit', {'id': medical_course.id}) }}">Modifier</a>
 					</td>

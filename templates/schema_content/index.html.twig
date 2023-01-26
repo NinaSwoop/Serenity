@@ -11,7 +11,7 @@
 			<tr>
 				<th>Titre</th>
 				<th class="text-center">Image</th>
-
+				<th>Secretariat(s)</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -21,6 +21,12 @@
 					<td>
 						{{schema_content.title}}</td>
 					<td class="text-center"><img class="rounded w-50" src="{{asset('build/images/' ~ schema_content.picture)}}"></td>
+					<td class="flex-column">
+						{% for secretariat in schema_content.secretariats %}
+							<p>
+								{{ secretariat.name|capitalize }}</p>
+						{% endfor %}
+					</td>
 					<td>
 						<a class="btn btn-primary" href="{{ path('app_schema_content_edit', {'id': schema_content.id}) }}">Modifier</a>
 					</td>

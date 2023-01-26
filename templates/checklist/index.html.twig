@@ -1,16 +1,17 @@
 {% extends 'admin/baseAdmin.html.twig' %}
 
-{% block title %}Les checklists
+{% block title %}La check-list
 {% endblock %}
 
 {% block body %}
-	<h1 class="text-center m-3">Les checklists</h1>
+	<h1 class="text-center m-3">La check-list</h1>
 
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Nom du document</th>
 				<th>Description</th>
+				<th>Secretariat(s)</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -19,6 +20,13 @@
 				<tr>
 					<td>{{ checklist.name }}</td>
 					<td>{{ checklist.description }}</td>
+					<td class="flex-column">
+						{% for secretariat in checklist.secretariats %}
+							<p>
+								{{ secretariat.name|capitalize }}</p>
+						{% endfor %}
+					</td>
+
 					<td>
 						<a class="btn btn-primary" href="{{ path('app_checklist_edit', {'id': checklist.id}) }}">Modifier</a>
 					</td>
