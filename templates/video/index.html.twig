@@ -4,7 +4,9 @@
 
 {% block body %}
 	<h1 class="text-center m-3">Les vidéos</h1>
-
+	<div class="d-flex justify-content-center m-3">
+		<a class="btn btn-primary m-2" href="{{ path('app_video_new') }}">Ajouter une nouvelle vidéo</a>
+	</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -39,6 +41,4 @@
 			{% endfor %}
 		</tbody>
 	</table>
-
-	<a class="btn btn-primary m-2" href="{{ path('app_video_new') }}">Ajouter une nouvelle vidéo</a>
 {% endblock %}
