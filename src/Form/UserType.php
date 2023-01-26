@@ -48,7 +48,6 @@ class UserType extends AbstractType
                 'label_attr' => [
                     'class' => 'crud-label',
                 ],
-                'data' => 'chuBDX2023',
                 'required' => true,
                 'label' => 'Mot de passe :',
             ])
