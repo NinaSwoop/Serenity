@@ -6,11 +6,13 @@ use App\Entity\Document;
 use App\Form\DocumentType;
 use App\Repository\CategoryRepository;
 use App\Repository\DocumentRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/document')]
 class DocumentController extends AbstractController
 {

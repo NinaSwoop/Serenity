@@ -6,11 +6,13 @@ use App\Entity\Checklist;
 use App\Form\ChecklistType;
 use App\Repository\CategoryRepository;
 use App\Repository\ChecklistRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/checklist')]
 class ChecklistController extends AbstractController
 {

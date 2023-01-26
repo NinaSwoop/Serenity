@@ -6,11 +6,13 @@ use App\Entity\MedicalDiscipline;
 use App\Form\MedicalDisciplineType;
 use App\Repository\CategoryRepository;
 use App\Repository\MedicalDisciplineRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/medical/discipline')]
 class MedicalDisciplineController extends AbstractController
 {
