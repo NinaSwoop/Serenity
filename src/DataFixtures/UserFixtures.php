@@ -45,7 +45,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'firstname' => 'Thomas',
             'lastname' => 'Aldaitz',
             'phonenumber' => '0637489135',
-            'email' => 'toto@gmail.com',
+            'email' => 'admin@chu-bordeaux.com',
             'role' => ['ROLE_ADMIN'],
             'password' => 'toto123',
             'picture' => 'thomas-aldaitz.jpg',

@@ -123,7 +123,7 @@ class UserDocumentFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'user_id' => '8',
-            'document_id' => '5',
+            'document_id' => '4',
         ],
         [
             'user_id' => '8',
