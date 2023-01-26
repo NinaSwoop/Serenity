@@ -41,6 +41,15 @@ body {
     margin-bottom: 70px;
 }
 
+.bodyadmin {
+    margin-bottom: 0;
+    //   height: 100%;
+}
+
+.divbody {
+    //    height: 100%;
+}
+
 .navbar {
     border-radius: 15% 15% 0 0;
     background-color: rgb(249, 249, 249);
@@ -576,7 +585,7 @@ h5.card-title {
 }
 
 .sidebar {
-    height: 100vh;
+    height: 100%;
 }
 
 .nav-pills {

@@ -1,47 +1,37 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Video index
+{% extends 'admin/baseAdmin.html.twig' %}
+{% block title %}Les Vidéos
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid d-md-flex p-0">
-		<div class="col-3">
-			{% include "admin/_layout.html.twig" %}
-		</div>
-		<div class="col-9">
-			<h1>Video index</h1>
+	<h1 class="text-center m-3">Les vidéos</h1>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Title</th>
-						<th>Picture</th>
-						<th>Duration</th>
-						<th>actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for video in videos %}
-						<tr>
-							<td>{{ video.id }}</td>
-							<td>{{ video.title }}</td>
-							<td>{{ video.picture }}</td>
-							<td>{{ video.duration }}</td>
-							<td>
-								<a href="{{ path('app_video_show', {'id': video.id}) }}">show</a>
-								<a href="{{ path('app_video_edit', {'id': video.id}) }}">edit</a>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="5">no records found</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Lien de la vidéo</th>
+				<th>Durée</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for video in videos %}
+				<tr>
+					<td>{{ video.title }}</td>
+					<td>{{ video.picture }}</td>
+					<td>{{ video.duration }}
+						min</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_video_edit', {'id': video.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-			<a href="{{ path('app_video_new') }}">Create new</a>
-		</div>
-	</div>
+	<a class="btn btn-primary m-2" href="{{ path('app_video_new') }}">Ajouter une nouvelle vidéo</a>
 {% endblock %}

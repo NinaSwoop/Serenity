@@ -1,50 +1,41 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/baseAdmin.html.twig' %}
 
-{% block title %}User index
+{% block title %}Les patients
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid d-md-flex p-0">
-		<div class="col-3">
-			{% include "admin/_layout.html.twig" %}
-		</div>
-		<div class="col-9">
-			<h1>User index</h1>
+	<h1 class="text-center m-3">Les patients</h1>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Nom</th>
-						<th>Prénom</th>
-						<th>Email</th>
-						<th>Indicateur de stress</th>
-						<th>Téléphone</th>
-						<th>actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for user in users %}
-						<tr>
-							<td>{{ user.lastname }}</td>
-							<td>{{ user.firstname }}</td>
-							<td>{{ user.email }}</td>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Email</th>
+				<th>Téléphone</th>
+				<th>Secretariat</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr>
+					<td>{{ user.lastname }}</td>
+					<td>{{ user.firstname }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.phonenumber }}</td>
+					<td>
+						{{ user.secretariat.name}}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="10">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-							<td></td>
-							<td>{{ user.phonenumber }}</td>
-							<td>
-								<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-								<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="10">no records found</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-
-			<a href="{{ path('app_user_new') }}">Create new</a>
-		</div>
-	</div>
+	<a class="btn btn-primary m-2" href="{{ path('app_user_new') }}">Ajouter un patient</a>
 {% endblock %}

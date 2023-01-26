@@ -1,43 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/baseAdmin.html.twig' %}
 
-{% block title %}Checklist index
+{% block title %}Les checklists
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid d-md-flex p-0">
-		<div class="col-3">
-			{% include "admin/_layout.html.twig" %}
-		</div>
-		<div class="col-9">
-			<h1>Checklist index</h1>
+	<h1 class="text-center m-3">Les checklists</h1>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Nom du document</th>
-						<th>Description</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for checklist in checklists %}
-						<tr>
-							<td>{{ checklist.name }}</td>
-							<td>{{ checklist.description }}</td>
-							<td>
-								<a href="{{ path('app_checklist_show', {'id': checklist.id}) }}">Détail</a>
-								<a href="{{ path('app_checklist_edit', {'id': checklist.id}) }}">Modifier</a>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="4">no records found</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nom du document</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for checklist in checklists %}
+				<tr>
+					<td>{{ checklist.name }}</td>
+					<td>{{ checklist.description }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_checklist_edit', {'id': checklist.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-			<a href="{{ path('app_checklist_new') }}">Créer un nouveau document</a>
-		</div>
-	</div>
+	<a class="btn btn-primary m-2" href="{{ path('app_checklist_new') }}">Créer un nouveau document</a>
 {% endblock %}

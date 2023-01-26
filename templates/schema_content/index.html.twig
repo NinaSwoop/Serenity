@@ -1,45 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/baseAdmin.html.twig' %}
 
-{% block title %}SchemaContent index
+{% block title %}Les schémas
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid d-md-flex p-0">
-		<div class="col-3">
-			{% include "admin/_layout.html.twig" %}
-		</div>
-		<div class="col-9">
-			<h1>SchemaContent index</h1>
+	<h1 class="text-center m-3">Les schémas</h1>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Picture</th>
-						<th>Title</th>
-						<th>actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for schema_content in schema_contents %}
-						<tr>
-							<td>{{ schema_content.id }}</td>
-							<td>{{ schema_content.picture }}</td>
-							<td>{{ schema_content.title }}</td>
-							<td>
-								<a href="{{ path('app_schema_content_show', {'id': schema_content.id}) }}">show</a>
-								<a href="{{ path('app_schema_content_edit', {'id': schema_content.id}) }}">edit</a>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="4">no records found</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+	<table class="table w-75">
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th class="text-center">Image</th>
 
-			<a href="{{ path('app_schema_content_new') }}">Create new</a>
-		</div>
-	</div>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for schema_content in schema_contents %}
+				<tr>
+					<td>
+						{{schema_content.title}}</td>
+					<td class="text-center"><img class="rounded w-50" src="{{asset('build/images/' ~ schema_content.picture)}}"></td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_schema_content_edit', {'id': schema_content.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary m-2" href="{{ path('app_schema_content_new') }}">Ajouter un schéma</a>
 {% endblock %}
