@@ -41,7 +41,7 @@ class UserType extends AbstractType
             ])
             ->add('password', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : pénom + date de naissance',
+                    'placeholder' => 'Ex : prénom + date de naissance',
                     'maxlength' => 255,
                     'class' => 'crud-input',
                 ],
