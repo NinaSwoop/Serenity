@@ -375,6 +375,11 @@ h5.card-title {
         background-color: white;
         width: auto;
     }
+
+    .connexionPageForm {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .carrousel-picture {
@@ -427,6 +432,7 @@ h5.card-title {
     background: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 8px;
+    height: 56px;
 }
 
 .connexionInput:focus {
