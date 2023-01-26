@@ -21,18 +21,7 @@ class UserController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('user/index.html.twig', [
-            'welfares' => $userRepository->findAll(),
-
-        ]);
-    }
-
-    #[Route('/', name: 'app_user_welfare', methods: ['GET'])]
-    public function indexForToday(WelfareRepository $welfareRepository): Response
-    {
-        $today = new DateTimeImmutable();
-
-        return $this->render('admin/index.html.twig', [
-            'welfares' => $welfareRepository->findBy(['responseAt' => $today]),
+            'users' => $userRepository->findAll(),
 
         ]);
     }
