@@ -302,7 +302,7 @@ h5.card-title {
 
 .absolue-circle {
     position: absolute;
-    color: black;
+    color : #4C5980;
     font-size: 1.5rem;
     margin-left: 7px;
     margin-top: 2.1px;
@@ -463,7 +463,7 @@ h5.card-title {
 
 .is-not-checked-checklist {
     text-decoration: initial;
-    color: black;
+    color: #004F8B;
 }
 
 /* End _componentCategory5 */
@@ -618,4 +618,12 @@ h5.card-title {
 
 .nav-pills {
     --bs-nav-pills-link-active-bg: #7265E3;
+}
+
+#show-more-schemas {
+    color: #004F8B;
+}
+
+.step {
+    font-weight: bold;
 }
