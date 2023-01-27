@@ -14,7 +14,6 @@ use App\Repository\UserMedicalCourseRepository;
 use App\Repository\UserSchemaContentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\Length;
 
 class CategoryService extends AbstractController
 {
