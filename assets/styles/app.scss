@@ -41,6 +41,10 @@ body {
     margin-bottom: 70px;
 }
 
+.bodyadmin {
+    margin-bottom: 0;
+}
+
 .navbar {
     border-radius: 15% 15% 0 0;
     background-color: rgb(249, 249, 249);
@@ -581,7 +585,7 @@ h5.card-title {
 .crud-title {
     font-weight: bold;
     text-align: center;
-    margin: 2em;
+    margin: 16px;
 }
 
 .crud-label {
@@ -611,10 +615,22 @@ h5.card-title {
     width: 50px;
 }
 
+.patient-picture {
+    height: 200px;
+}
+
+.patientInfo {
+    width: 400px;
+}
+
 .sidebar {
-    height: 100vh;
+    height: 100%;
 }
 
 .nav-pills {
     --bs-nav-pills-link-active-bg: #7265E3;
+}
+
+.logo-image-admin {
+    width: 400px;
 }

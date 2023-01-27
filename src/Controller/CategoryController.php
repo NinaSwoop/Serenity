@@ -36,7 +36,7 @@ class CategoryController extends AbstractController
     ): Response {
         /** @var \App\Entity\User */
         $user = $this->getUser();
-        $elementsChecked = $categoryService->elementChecked();
+        $elementsChecked = $categoryService->elementChecked($user);
         $categories = $categoryRepository->findAll();
 
         $form = $this->createForm(ProfilePictureType::class, $user);
@@ -91,7 +91,6 @@ class CategoryController extends AbstractController
         CategoryService $categoryService
     ): Response {
 
-        $elementsChecked = $categoryService->elementChecked();
 
         /** @var \App\Entity\User */
         $user = $this->getUser();
@@ -101,6 +100,9 @@ class CategoryController extends AbstractController
         $userMedicalCourses = $userCourseRepository->findMedicalCourseByUser($user->getId());
         $userMedDisciplines = $userDiscRepository->findMedicalDisciplineByUser($user->getId());
         $userChecklists = $userCheckRepository->findChecklistByUser($user->getId());
+
+        $elementsChecked = $categoryService->elementChecked($user);
+
 
         return $this->render('category/show.html.twig', [
             'category' => $category,
