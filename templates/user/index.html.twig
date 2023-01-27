@@ -5,10 +5,7 @@
 
 {% block body %}
 	<h1 class="text-center m-3">Les patients</h1>
-	<div class="d-flex justify-content-center m-3">
-		<a class="btn btn-primary m-2" href="{{ path('app_user_new') }}">Ajouter un patient</a>
-	</div>
-	<table class="table">
+	<table class="table align-middle mt-5">
 		<thead>
 			<tr>
 				<th>Nom</th>
@@ -16,6 +13,7 @@
 				<th>Email</th>
 				<th>Téléphone</th>
 				<th>Secretariat</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
