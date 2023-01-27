@@ -89,6 +89,14 @@ class Checklist
     }
 
     /**
+     * @return Collection<int, Secretariat>
+     */
+    public function getSecretariats(): Collection
+    {
+        return $this->secretariats;
+    }
+
+    /**
      * @return Collection<int, UserChecklist>
      */
     public function getUserDocuments(): Collection

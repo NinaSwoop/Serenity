@@ -5,46 +5,46 @@
 	<hr>
 	<ul class="nav nav-pills flex-column mb-auto">
 		<li class="nav-item">
-			<a href="{{ path('app_admin')}}" class="nav-link {% if app.request.pathinfo == '/admin' %} active {% else %} link-dark {% endif %}" aria-current=" page">
+			<a href="{{ path('app_admin')}}" class="nav-link {% if app.request.pathinfo starts with '/admin' %} active {% else %} link-dark {% endif %}" aria-current=" page">
 				<i class="bi bi-bell-fill m-2"></i>
 				Alertes du jour
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_user_index')}}" class="nav-link {% if app.request.pathinfo == '/user/index' %} active {% else %} link-dark {% endif %}">
-				<i class="bi bi-people-fill m-2"></i>Utilisateurs
+			<a href="{{ path('app_user_index')}}" class="nav-link {% if app.request.pathinfo starts with '/user/index' %} active {% else %} link-dark {% endif %}">
+				<i class="bi bi-people-fill m-2"></i>Patients
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_document_index')}}" class="nav-link {% if app.request.pathinfo == '/document/' %} active {% else %} link-dark {% endif %}">
+			<a href="{{ path('app_document_index')}}" class="nav-link {% if app.request.pathinfo starts with '/document/' %} active {% else %} link-dark {% endif %}">
 				<i class="bi bi-file-earmark m-2"></i>Documents
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_checklist_index')}}" class="nav-link {% if app.request.pathinfo == '/checklist/' %} active {% else %} link-dark {% endif %}">
+			<a href="{{ path('app_checklist_index')}}" class="nav-link {% if app.request.pathinfo starts with '/checklist/' %} active {% else %} link-dark {% endif %}">
 				<i class="bi bi-list-check m-2"></i>Checklist
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_medical_discipline_index')}}" class="nav-link {% if app.request.pathinfo == '/medical/discipline/' %} active {% else %} link-dark {% endif %}">
+			<a href="{{ path('app_medical_discipline_index')}}" class="nav-link {% if app.request.pathinfo starts with '/medical/discipline/' %} active {% else %} link-dark {% endif %}">
 				<i class="bi bi-hospital m-2"></i>
 				Professionels de santé
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_medical_course_index')}}" class="nav-link {% if app.request.pathinfo == '/medical/course/' %} active {% else %} link-dark {% endif %}">
+			<a href="{{ path('app_medical_course_index')}}" class="nav-link {% if app.request.pathinfo starts with '/medical/course/' %} active {% else %} link-dark {% endif %}">
 				<i class="bi bi-calendar2-check-fill m-2"></i>
 				Préparer l'arrivée
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_schema_content_index')}}" class="nav-link {% if app.request.pathinfo == '/schema/content/' %} active {% else %} link-dark {% endif %}">
+			<a href="{{ path('app_schema_content_index')}}" class="nav-link {% if app.request.pathinfo starts with '/schema/content/' %} active {% else %} link-dark {% endif %}">
 				<i class="bi bi-diagram-3-fill m-2"></i>
 				Schémas
 			</a>
 		</li>
 		<li>
-			<a href="{{ path('app_video_index')}}" class="nav-link {% if app.request.pathinfo == '/video/' %} active {% else %} link-dark {% endif %}">
+			<a href="{{ path('app_video_index')}}" class="nav-link {% if app.request.pathinfo starts with '/video/' %} active {% else %} link-dark {% endif %}">
 				<i class="bi bi-film m-2"></i>
 				Vidéos
 			</a>
