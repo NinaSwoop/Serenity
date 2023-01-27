@@ -47,7 +47,7 @@ class LoginController extends AbstractController
             if ($todayWelfare) {
                 return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
             } else {
-                return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_welfare', [], Response::HTTP_SEE_OTHER);
             };
         }
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
