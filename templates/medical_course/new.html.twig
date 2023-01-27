@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/baseAdmin.html.twig' %}
 
 {% block title %}Ajouter étape hospitalisation
 {% endblock %}
@@ -8,5 +8,5 @@
 
 	{{ include('medical_course/_form.html.twig') }}
 
-	<a href="{{ path('app_medical_course_index') }}">back to list</a>
+	<a class="btn btn-primary m-2" href="{{ path('app_medical_course_index') }}">Retour à la liste</a>
 {% endblock %}
