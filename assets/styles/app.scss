@@ -615,10 +615,22 @@ h5.card-title {
     width: 50px;
 }
 
+.patient-picture {
+    height: 200px;
+}
+
+.patientInfo {
+    width: 400px;
+}
+
 .sidebar {
     height: 100%;
 }
 
 .nav-pills {
     --bs-nav-pills-link-active-bg: #7265E3;
+}
+
+.logo-image-admin {
+    width: 400px;
 }
