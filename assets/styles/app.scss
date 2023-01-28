@@ -614,6 +614,14 @@ h5.card-title {
     display: none;
 }
 
+.descriptionHomeTextResponsive {
+    display: none;
+}
+
+.desktopHomeDivLogoText {
+    display: none;
+}
+
 @media screen and (min-width: 768px) {
 
     .doctor-image {
@@ -622,18 +630,40 @@ h5.card-title {
 
     .doctor-desktop {
         display: initial;
-        height: 66vh;
+        height: 75vh;
         width: auto;
+        border-radius: 0px 0px 0px 40px;
     }
 
     .logo-image {
         position: relative;
-        width: 800px;
+        width: 700px;
         margin: auto;
     }
 
+    .desktopHomeDivLogoText {
+        display: initial;
+        color: #004F8B;
+    }
+
+    .logo-image-mobile {
+        display: none;
+    }
+
+    .descriptionHomeText {
+        display: none;
+    }
+
+    .descriptionHomeTextResponsive {
+        display: initial;
+    }
+
+    .descriptionHomeTextMobile {
+        display: none;
+    }
+
     .bg-desktop {
-        height: 66vh;
+        height: 75vh;
         border-radius: 0px 0px 0px 40px;
         background-color: white;
     }
@@ -646,5 +676,13 @@ h5.card-title {
     .connexionPageForm {
         display: flex;
         justify-content: center;
+    }
+
+    .registrationBtn {
+        padding-top: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 100px;
+        height: 55px;
     }
 }
