@@ -40,7 +40,11 @@ class VideoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $url = $video->getPicture();
-            $video->setPicture(substr_replace($url, "embed/", 24, 8));
+            if (str_contains($url, "embed/")) {
+                $video->setPicture($url);
+            } else {
+                $video->setPicture(substr_replace($url, "embed/", 24, 8));
+            }
             $videoRepository->save($video, true);
 
             return $this->redirectToRoute('app_video_index', [], Response::HTTP_SEE_OTHER);
