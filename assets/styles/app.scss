@@ -82,17 +82,10 @@ body {
     border-radius: 25%;
 }
 
-.picture-patient {
-    width: 120px;
-    height: 120px;
-    padding: 0;
-    border-radius: 25%;
-}
-
 .picture-profile-patient {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 110px;
+    height: 110px;
+    object-fit: center/cover;
     border-radius: 25%;
 }
 
