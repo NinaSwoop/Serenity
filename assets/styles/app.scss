@@ -347,31 +347,6 @@ h5.card-title {
     border-radius: 0px 0px 0px 40px;
 }
 
-@media screen and (min-width: 768px) {
-    .reassuringDoctor {
-        height: 100%;
-        width: auto;
-        background: none;
-    }
-
-    .background-home {
-        height: 66vh;
-        width: 100%;
-        border-radius: 0px 0px 0px 40px;
-        background: url(/assets/images/desktop-doctor.jpg) center/contain no-repeat;
-    }
-
-    .title-serenity {
-        background-color: white;
-        width: auto;
-    }
-
-    .connexionPageForm {
-        display: flex;
-        justify-content: center;
-    }
-}
-
 .carrousel-picture {
     border-radius: 0px 0px 0px 40px;
     height: 66vh;
@@ -637,4 +612,81 @@ h5.card-title {
 
 .logo-image-admin {
     width: 400px;
+}
+
+.doctor-desktop {
+    display: none;
+}
+
+.descriptionHomeTextResponsive {
+    display: none;
+}
+
+.desktopHomeDivLogoText {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+    .doctor-image {
+        display: none;
+    }
+
+    .doctor-desktop {
+        display: initial;
+        height: 75vh;
+        width: auto;
+        border-radius: 0px 0px 0px 40px;
+    }
+
+    .logo-image {
+        position: relative;
+        width: 700px;
+        margin: auto;
+    }
+
+    .desktopHomeDivLogoText {
+        display: initial;
+        color: #004F8B;
+    }
+
+    .logo-image-mobile {
+        display: none;
+    }
+
+    .descriptionHomeText {
+        display: none;
+    }
+
+    .descriptionHomeTextResponsive {
+        display: initial;
+    }
+
+    .descriptionHomeTextMobile {
+        display: none;
+    }
+
+    .bg-desktop {
+        height: 75vh;
+        border-radius: 0px 0px 0px 40px;
+        background-color: white;
+    }
+
+    .title-serenity {
+        background-color: white;
+        width: auto;
+    }
+
+    .connexionPageForm {
+        display: flex;
+        justify-content: center;
+    }
+
+    .registrationBtn {
+        padding-top: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 100px;
+        height: 55px;
+    }
 }

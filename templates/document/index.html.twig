@@ -21,7 +21,14 @@
 				<tr>
 					<td>{{ document.title }}</td>
 					<td class="text-center"><img class="rounded w-50" src="{{asset('build/images/' ~ document.picture)}}"></td>
-					<td class="text-center">{{ document.readTime }}'</td>
+					<td class="text-center">
+						{% if document.readTime == 0 %}
+							Non concerné.e
+						{% else %}
+							{{ document.readTime }}
+							min
+						{% endif %}
+					</td>
 					<td class="flex-column">
 						{% for secretariat in document.secretariats %}
 							<p>
