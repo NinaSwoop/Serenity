@@ -8,6 +8,7 @@
 {% block body %}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 		<section class="d-flex profil-dash m-3 mx-4">
+        
         <div class="undefined-patient">
 			<img class="picture-profile-patient" src="{{asset('build/images/' ~ app.user.picture)}}">
         </div>
