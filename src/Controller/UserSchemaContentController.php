@@ -23,7 +23,6 @@ class UserSchemaContentController extends AbstractController
     public function checkSchemaContent(
         SchemaContent $schemaContent,
         UserSchemaContentRepository $userSchemaRepository,
-        CategoryRepository $categoryRepository
     ): Response {
         /** @var \App\Entity\User */
         $user = $this->getUser();
