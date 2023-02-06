@@ -47,4 +47,30 @@ class UserSchemaContentController extends AbstractController
             'isChecked' => $isChecked
         ]);
     }
+
+    #[Route('/{id}/check/schema/content/modal', name: 'app_schema_content_check_modal')]
+    public function checkSchemaContentModal(
+        SchemaContent $schemaContent,
+        UserSchemaContentRepository $userSchemaRepository,
+    ): Response {
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        $userSchemaContent = $userSchemaRepository->findOneby(
+            [
+                'schemaContent' => $schemaContent->getId(),
+                'user' => $user->getId()
+            ]
+        );
+        if (!$userSchemaContent->isIsChecked()) {
+            $userSchemaContent->setIsChecked(true);
+        }
+
+        $userSchemaRepository->save($userSchemaContent, true);
+
+        $isChecked = $userSchemaContent->isIsChecked();
+
+        return $this->json([
+            'isChecked' => $isChecked
+        ]);
+    }
 }
