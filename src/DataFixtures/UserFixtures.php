@@ -48,7 +48,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'email' => 'admin@chu-bordeaux.com',
             'role' => ['ROLE_ADMIN'],
             'password' => 'adminCHU1234+',
-            'picture' => 'thomas-aldaitz.jpg',
+            'picture' => '',
             'secretariat' => 'secretariat_neurologie',
         ],
         [
