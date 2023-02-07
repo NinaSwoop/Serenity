@@ -18,23 +18,24 @@
 		</thead>
 		<tbody>
 			{% for user in users %}
-				<tr>
-					<td>{{ user.lastname }}</td>
-					<td>{{ user.firstname }}</td>
-					<td>{{ user.email }}</td>
-					<td>{{ user.phonenumber }}</td>
-					<td>
-						{{ user.secretariat.name|capitalize}}</td>
-					<td>
-						<a class="btn btn-primary" href="{{ path('app_user_show', {'id': user.id}) }}">Détail</a>
-					</td>
-				</tr>
+				{% if user.roles.0 == 'ROLE_USER' %}
+					<tr>
+						<td>{{ user.lastname }}</td>
+						<td>{{ user.firstname }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.phonenumber }}</td>
+						<td>
+							{{ user.secretariat.name|capitalize}}</td>
+						<td>
+							<a class="btn btn-primary" href="{{ path('app_user_show', {'id': user.id}) }}">Détail</a>
+						</td>
+					</tr>
+				{% endif %}
 			{% else %}
 				<tr>
 					<td colspan="10">no records found</td>
 				</tr>
 			{% endfor %}
 		</tbody>
-	</table>
-
-{% endblock %}
+	</tbody>
+</table>{% endblock %}
