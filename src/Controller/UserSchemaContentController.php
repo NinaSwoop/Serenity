@@ -23,7 +23,6 @@ class UserSchemaContentController extends AbstractController
     public function checkSchemaContent(
         SchemaContent $schemaContent,
         UserSchemaContentRepository $userSchemaRepository,
-        CategoryRepository $categoryRepository
     ): Response {
         /** @var \App\Entity\User */
         $user = $this->getUser();
@@ -41,12 +40,36 @@ class UserSchemaContentController extends AbstractController
 
         $userSchemaRepository->save($userSchemaContent, true);
 
-        $category = $categoryRepository->findOneBy(['title' => 'Comprendre mon opération']);
+        $isChecked = $userSchemaContent->isIsChecked();
 
-        return $this->redirectToRoute(
-            'app_category_show',
-            ['title' => $category->getTitle()],
-            Response::HTTP_SEE_OTHER
+        return $this->json([
+            'isChecked' => $isChecked
+        ]);
+    }
+
+    #[Route('/{id}/check/schema/content/modal', name: 'app_schema_content_check_modal')]
+    public function checkSchemaContentModal(
+        SchemaContent $schemaContent,
+        UserSchemaContentRepository $userSchemaRepository,
+    ): Response {
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        $userSchemaContent = $userSchemaRepository->findOneby(
+            [
+                'schemaContent' => $schemaContent->getId(),
+                'user' => $user->getId()
+            ]
         );
+        if (!$userSchemaContent->isIsChecked()) {
+            $userSchemaContent->setIsChecked(true);
+        }
+
+        $userSchemaRepository->save($userSchemaContent, true);
+
+        $isChecked = $userSchemaContent->isIsChecked();
+
+        return $this->json([
+            'isChecked' => $isChecked
+        ]);
     }
 }

@@ -1,0 +1,41 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+{% block title %}Les Vidéos
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center m-3">Les vidéos</h1>
+
+	<table class="table align-middle mt-5">
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Vidéo explicative</th>
+				<th>Durée</th>
+				<th>Secretariat(s)</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for video in videos %}
+				<tr>
+					<td>{{ video.title }}</td>
+					<td><iframe src="{{video.picture}}" class="w-100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+					<td>{{ video.duration }}
+						min</td>
+					<td class="flex-column">
+						{% for secretariat in video.secretariats %}
+							{{ secretariat.name|capitalize }}
+						{% endfor %}
+					</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_video_edit', {'id': video.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

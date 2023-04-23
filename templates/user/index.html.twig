@@ -1,0 +1,41 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Les patients
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center m-3">Les patients</h1>
+	<table class="table align-middle mt-5">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Email</th>
+				<th>Téléphone</th>
+				<th>Secretariat</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				{% if user.roles.0 == 'ROLE_USER' %}
+					<tr>
+						<td>{{ user.lastname }}</td>
+						<td>{{ user.firstname }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.phonenumber }}</td>
+						<td>
+							{{ user.secretariat.name|capitalize}}</td>
+						<td>
+							<a class="btn btn-primary" href="{{ path('app_user_show', {'id': user.id}) }}">Détail</a>
+						</td>
+					</tr>
+				{% endif %}
+			{% else %}
+				<tr>
+					<td colspan="10">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
