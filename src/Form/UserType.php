@@ -21,7 +21,7 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : dr.noailles@gmail.com',
+                    'placeholder' => 'Ex : jean-paul.dupont@gmail.com',
                     'maxlength' => 255,
                     'class' => 'crud-input',
                 ],
@@ -31,13 +31,17 @@ class UserType extends AbstractType
                 'required' => true,
                 'label' => 'Adresse email :',
             ])
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Administrateur' => 'ROLE_ADMIN',
+            ->add('roles', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'crud-input',
                 ],
-                'multiple' => true,
-                'expanded' => false,
+                'label_attr' => [
+                    'class' => 'crud-label',
+                ],
+                'required' => true,
+                'label' => 'Rôle :',
             ])
             ->add('password', TextType::class, [
                 'attr' => [
@@ -65,7 +69,7 @@ class UserType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : Belmondo',
+                    'placeholder' => 'Ex : Dupont',
                     'maxlength' => 255,
                     'class' => 'crud-input',
                 ],
